@@ -10,6 +10,7 @@ include_once '../global.php'
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../content/css/css.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -90,26 +91,28 @@ include_once '../global.php'
 
     </nav>
     <!-- content -->
-    <div class=" container mx-auto ">
-        <div class="">
+    <div class=" container mx-auto h-[400]">
+        <div class="bg">
             <div class="text-center mx-auto ">
-                <h1 class="font-medium text-2xl ">ĐĂNG NHẬP</h1>
-                <div class="py-3 pt-10">
-                    <input type="email" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="user" placeholder="Username">
-                </div>
-                <span></span>
-                <div class="py-3">
-                    <input type="text" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="pass" placeholder="Password">
-                </div>
-                <span></span>
-                <div class="flex justify-center py-2 ">
-                
-                        <button class="px-5 py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng nhập</button>
-                  
-                        <a href="register.html" class="px-[9px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng ký</a>
-                    
-                        <button class="px-[9px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Quên mật khẩu</button>
-                    
+                <h1 class="font-medium text-5xl pt-11 py-5 italic text-white">ĐĂNG NHẬP</h1>
+                <form action="">
+                    <div class="py-3 pt-7">
+                        <input type="email" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="user" placeholder="Username">
+                    </div>
+                    <div class="py-3">
+                        <input type="text" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="pass" placeholder="Password">
+                    </div>
+                </form>
+                <div class="mx-auto pt-4">
+                    <div class="py-3">
+                        <button href="" class="px-4 py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng nhập</button>
+                    </div>
+                    <div class="py-3">
+                        <a href="register.html" class="px-[25px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng ký</a>
+                    </div>
+                    <div class="py-3">
+                        <button href="" class="px-[9px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Quên mật khẩu</button>
+                    </div>    
                 </div>
             </div>
         </div>
