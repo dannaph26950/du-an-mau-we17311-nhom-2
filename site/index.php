@@ -2,7 +2,7 @@
 require_once '../global.php';
 if(isset($_GET['products'])){
 
-    $VIEW_NAME = 'product.php';
+    $VIEW_NAME = 'details.php';
 }elseif(isset($_GET['cart'])){
 
     $VIEW_NAME = 'cart.php';

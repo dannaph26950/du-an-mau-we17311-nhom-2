@@ -1,3 +1,6 @@
+<?php
+include_once ('../global.php')
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="/dist/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
@@ -16,13 +19,13 @@
     </header>
     <!-- nav  -->
     <div class="mx-auto container m-10 bg-slate-400 rounded-lg">
-        <nav class=" flex p-6 gap-10">
-            <a href="" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Trang chủ</a>
-            <a href="loaihang.html" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Loại hàng</a>
-            <a href="hanghoa.html" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Sản phẩm</a>
-            <a href="khachhang.html" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Khách hàng</a>
-            <a href="binhluan.html" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Bình luận </a>
-            <a href="thongke.html" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Thống kê</a>
+    <nav class=" flex p-6 gap-10">
+            <a href="<?= ADMIN_URL?>" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Trang chủ</a>
+            <a href="<?= ADMIN_URL?>?loaihang" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Loại hàng</a>
+            <a href="<?= ADMIN_URL?>?products" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Sản phẩm</a>
+            <a href="<?= ADMIN_URL?>?user" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Khách hàng</a>
+            <a href="<?= ADMIN_URL?>?comment" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Bình luận </a>
+            <a href="<?= ADMIN_URL?>?statistical" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Thống kê</a>
         </nav>
     </div>
     <!-- tên chức năng -->
@@ -44,7 +47,7 @@
             <tr class="border border-blue-200">
                 <td class="border border-blue-200 p-3">1</td>
                 <td class="border border-blue-200 p-3">Áo sơ mi</td>
-                <td class="border border-blue-200 p-3"><center><img src="/img/sale 2.png" class=" w-24 h-24 "></center></td>
+                <td class="border border-blue-200 p-3"><center><img src="../content/img/sale 2.png" class=" w-24 h-24 "></center></td>
                 <td class="border border-blue-200 p-3">400.000 đ</td>
                 <td class="border border-blue-200 p-3">20</td>
                 <td class="border border-blue-200 p-3">Aó polo mặc thoáng mát...</td>
@@ -55,7 +58,7 @@
             <tr class="border border-blue-200">
                 <td class="border border-blue-200 p-3">2</td>
                 <td class="border border-blue-200 p-3">Áo sơ mi</td>
-                <td class="border border-blue-200 p-3"><center><img src="/img/sale 2.png" class=" w-24 h-24 "></center></td>
+                <td class="border border-blue-200 p-3"><center><img src="../content/img/sale 2.png" class=" w-24 h-24 "></center></td>
                 <td class="border border-blue-200 p-3">400.000 đ</td>
                 <td class="border border-blue-200 p-3">20</td>
                 <td class="border border-blue-200 p-3">Aó polo mặc thoáng mát...</td>
@@ -66,7 +69,7 @@
             <tr class="border border-blue-200">
                 <td class="border border-blue-200 p-3">3</td>
                 <td class="border border-blue-200 p-3">Áo sơ mi</td>
-                <td class="border border-blue-200 p-3"><center><img src="/img/sale 2.png" class=" w-24 h-24 "></center></td>
+                <td class="border border-blue-200 p-3"><center><img src="../content/img/sale 2.png" class=" w-24 h-24 "></center></td>
                 <td class="border border-blue-200 p-3">400.000 đ</td>
                 <td class="border border-blue-200 p-3">20</td>
                 <td class="border border-blue-200 p-3">Aó polo mặc thoáng mát...</td>
@@ -77,7 +80,7 @@
             <tr class="border border-blue-200">
                 <td class="border border-blue-200 p-3">4</td>
                 <td class="border border-blue-200 p-3">Áo sơ mi</td>
-                <td class="border border-blue-200 p-3"><center><img src="/img/sale 2.png" class=" w-24 h-24 "></center></td>
+                <td class="border border-blue-200 p-3"><center><img src="../content/img/sale 2.png" class=" w-24 h-24 "></center></td>
                 <td class="border border-blue-200 p-3">400.000 đ</td>
                 <td class="border border-blue-200 p-3">20</td>
                 <td class="border border-blue-200 p-3">Aó polo mặc thoáng mát...</td>

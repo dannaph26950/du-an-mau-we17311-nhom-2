@@ -169,7 +169,7 @@
     display: none;
 }
 
-.product-card {
+.product-cart {
     flex: 0 0 auto;
     width: 250px;
     height: 450px;
@@ -200,7 +200,7 @@
     text-transform: capitalize;
 }
 
-.card-btn {
+.cart-btn {
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -217,11 +217,11 @@
     opacity: 0;
 }
 
-.content:hover .card-btn {
+.content:hover .cart-btn {
     opacity: 1;
 }
 
-.card-btn:hover {
+.cart-btn:hover {
     background: #ff7d7d;
     color: #fff;
 }
@@ -331,52 +331,52 @@
     background-color: white;
 }
 
-.slider .card {
+.slider .cart {
     flex: 1;
     margin: 0 10px;
     background: white;
 }
 
-.slider .card .img {
+.slider .cart .img {
     height: 300px;
     width: auto;
     display: grid;
 }
 
-.slider .card .img img {
+.slider .cart .img img {
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
 
-.slider .card .content {
+.slider .cart .content {
     padding: 10px 20px;
 }
 
-.card .content .title {
+.cart .content .title {
     font-size: 25px;
     font-weight: 600;
 }
 
-.card .content .sub-title {
+.cart .content .sub-title {
     font-size: 20px;
     font-weight: 600;
     color: #e74c3c;
     line-height: 20px;
 }
 
-.card .content p {
+.cart .content p {
     text-align: justify;
     margin: 10px 0;
 }
 
-.card .content .btn {
+.cart .content .btn {
     display: block;
     text-align: left;
     margin: 10px 0;
 }
 
-.card .content .btn button {
+.cart .content .btn button {
     background: #e74c3c;
     color: #fff;
     border: none;
@@ -388,18 +388,20 @@
     transition: 0.2s;
 }
 
-.card .content .btn button:hover {
+.cart .content .btn button:hover {
     transform: scale(0.9);
 }
-.bg{
-    background:url("/content/img/background\ cam.png");
+
+.bg {
+    background: url("../img/background\ cam.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 46% 100%;
     padding-bottom: 90px;
 }
-.bg2{
-    background:url("/content/img/background\ cam.png");
+
+.bg2 {
+    background: url("../img/background\ cam.png");
     background-position: center;
     background-size: 100% 100%;
     padding-bottom: 90px;

@@ -9,16 +9,27 @@ include_once '../global.php'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../content/css/input.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="../content/css/input.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <style>
+
+.bg2 {
+    background: url("../content/img/bgimg.png");
+
+    background-position: center;
+    background-size: 100% 100%;
+    padding-bottom: 90px;
+}
+    </style>
 </head>
 <body>
      <!-- header -->
      <div class="mx-auto container bg-gray-400 flex justify-between ">
         <div class="p-4">
-            <img class="h-12 w-40" src="/img/Screen Shot 2022-09-21 at 01.33 1.png" alt="">
+            <img class="h-12 w-40" src="../content/img/Screen Shot 2022-09-21 at 01.33 1.png" alt="">
         </div>
         <div class="flex p-4 ">
             <button class="bg-white px-6 rounded-l-md"><svg width="30" height="30" viewBox="0 0 37 32" fill="none"
@@ -41,17 +52,17 @@ include_once '../global.php'
                 </button>
             </div>
             <div class="">
-                <button class=""><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
+                <button class=""><a href="../site/cart.php">  <button class=""><a href="../site/cart.php"><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 1H3.64487C4.6181 1 5.46728 1.74849 5.71917 2.82212L6.45004 5.95791M11.0185 25.5495C9.50014 25.5495 8.04401 26.2392 6.97039 27.4669C5.89678 28.6947 5.29363 30.3598 5.29363 32.096H35.349M11.0185 25.5495H32.4255C34.5647 20.5305 36.4329 15.3282 38.0053 9.97312C27.7005 6.96859 17.0804 5.61725 6.45004 5.95791M11.0185 25.5495L6.45004 5.95791M8.15605 38.6426C8.15605 39.0766 8.00526 39.4929 7.73686 39.7999C7.46845 40.1068 7.10442 40.2792 6.72484 40.2792C6.34526 40.2792 5.98122 40.1068 5.71282 39.7999C5.44442 39.4929 5.29363 39.0766 5.29363 38.6426C5.29363 38.2085 5.44442 37.7922 5.71282 37.4853C5.98122 37.1784 6.34526 37.0059 6.72484 37.0059C7.10442 37.0059 7.46845 37.1784 7.73686 37.4853C8.00526 37.7922 8.15605 38.2085 8.15605 38.6426V38.6426ZM32.4866 38.6426C32.4866 39.0766 32.3358 39.4929 32.0674 39.7999C31.799 40.1068 31.435 40.2792 31.0554 40.2792C30.6758 40.2792 30.3118 40.1068 30.0434 39.7999C29.775 39.4929 29.6242 39.0766 29.6242 38.6426C29.6242 38.2085 29.775 37.7922 30.0434 37.4853C30.3118 37.1784 30.6758 37.0059 31.0554 37.0059C31.435 37.0059 31.799 37.1784 32.0674 37.4853C32.3358 37.7922 32.4866 38.2085 32.4866 38.6426V38.6426Z"
                             stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    </svg></a></a>
                 </button>
                 <div class=" absolute hidden" id="content">
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
-                        <a href="login.html" class="px-2 bg-blue-300 font-medium " href="">Đăng nhập</a>
-                        <a href="register.html" class="px-2  bg-blue-300 font-medium" href="">Đăng ký</a>
+                        <a href="login.php" class="px-2 bg-blue-300 font-medium " href="">Đăng nhập</a>
+                        <a href="<?= SITE_URL ?>register.php" class="px-2  bg-blue-300 font-medium" href="">Đăng ký</a>
                         <a class="px-2  bg-blue-300 font-medium" href="">Đăng xuất</a>
                     </div>
                 </div>
@@ -76,17 +87,18 @@ include_once '../global.php'
    
     <!-- nav -->
     <nav class=" justify-center gap-8 flex w-full p-6 font-medium text-2xl mx-auto container">
-        <a href="/src/trangchu/home.html" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
-        <a href="/src/gioithieu/introduce.html" class="list-none  hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Giới thiệu</a>
-        <a href="/src/bst/colection.html"
-            class="list-none    hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Bộ sưu tập</a>
+    <a href="<?= SITE_URL ?>" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
+        <a href="<?= SITE_URL ?>?introduce" class="list-none  hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Giới thiệu</a>
+        <a href="<?= SITE_URL ?>?colection"
+            class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Bộ sưu tập</a>
 
-        <a href="/src/sanpham/product.html" class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Sản
+            <a href="<?= SITE_URL ?>?products" class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Sản
             phẩm</a>
 
 
-        <a href="/src/sale/sale.html"
+        <a href="<?= SITE_URL ?>?sale"
             class="list-none  hover:bg-orange-500 hover:px-8 hover:p-2 rounded-md hover:text-white">Sale</a>
+
 
     </nav>
     <!-- content -->
@@ -122,16 +134,17 @@ include_once '../global.php'
                         <span></span>
                     </div>
                 </div>
-                <div class=" font-weight: 500;">
+                <div class=" font-weight: 500 flex flex-col ">
                     <h1 class="text-2xl text-white">Lợi ích của việc đăng kí tài khoản</h1>
                     <div class="py-3 text-white">
                         <p>- Kiểm tra trạng thái đơn hàng nhanh chóng</p>
                         <p>- Bỏ sẵn hàng vào giỏ để mua sau</p>
                         <p>- Mua hàng nhanh cực kì</p>
                     </div>
+                    <br/>
                     <div class="flex gap-2 pt-11">
                         <button class="px-5 py-1 bg-orange-500 text-white border rounded-md hover:bg-yellow-500">Đăng ký</button>
-                        <a href="login.html" class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Đăng nhập</a>
+                        <a href="login.php" class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Đăng nhập</a>
                         <button class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Quên mật khẩu</button>
                     </div>
                 </div>
