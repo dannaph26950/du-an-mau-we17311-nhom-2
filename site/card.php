@@ -1,22 +1,25 @@
-<?php 
-include_once '../global.php'
+<?php
+    require_once '../global.phpg';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Giỏ hàng </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../content/css/css.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 </head>
+
 <body>
-     <!-- header -->
-     <div class="mx-auto container bg-gray-400 flex justify-between ">
+    <div class="container mx-auto">
+        <!-- header -->
+    <div class="mx-auto container bg-gray-400 flex justify-between ">
         <div class="p-4">
             <img class="h-12 w-40" src="../content/img/Screen Shot 2022-09-21 at 01.33 1.png" alt="">
         </div>
@@ -28,7 +31,7 @@ include_once '../global.php'
                         stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
-            <input class="rounded-r-md input" placeholder="Tìm kiếm">
+            <input class="rounded-r-md input w-96" placeholder="Tìm kiếm">
         </div>
         <div class="flex p-4 gap-6">
             <div class="">
@@ -41,16 +44,17 @@ include_once '../global.php'
                 </button>
             </div>
             <div class="">
-                <button class=""><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
+                <a href="<?= SITE_URL ?>?Gio_hang" class=""><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 1H3.64487C4.6181 1 5.46728 1.74849 5.71917 2.82212L6.45004 5.95791M11.0185 25.5495C9.50014 25.5495 8.04401 26.2392 6.97039 27.4669C5.89678 28.6947 5.29363 30.3598 5.29363 32.096H35.349M11.0185 25.5495H32.4255C34.5647 20.5305 36.4329 15.3282 38.0053 9.97312C27.7005 6.96859 17.0804 5.61725 6.45004 5.95791M11.0185 25.5495L6.45004 5.95791M8.15605 38.6426C8.15605 39.0766 8.00526 39.4929 7.73686 39.7999C7.46845 40.1068 7.10442 40.2792 6.72484 40.2792C6.34526 40.2792 5.98122 40.1068 5.71282 39.7999C5.44442 39.4929 5.29363 39.0766 5.29363 38.6426C5.29363 38.2085 5.44442 37.7922 5.71282 37.4853C5.98122 37.1784 6.34526 37.0059 6.72484 37.0059C7.10442 37.0059 7.46845 37.1784 7.73686 37.4853C8.00526 37.7922 8.15605 38.2085 8.15605 38.6426V38.6426ZM32.4866 38.6426C32.4866 39.0766 32.3358 39.4929 32.0674 39.7999C31.799 40.1068 31.435 40.2792 31.0554 40.2792C30.6758 40.2792 30.3118 40.1068 30.0434 39.7999C29.775 39.4929 29.6242 39.0766 29.6242 38.6426C29.6242 38.2085 29.775 37.7922 30.0434 37.4853C30.3118 37.1784 30.6758 37.0059 31.0554 37.0059C31.435 37.0059 31.799 37.1784 32.0674 37.4853C32.3358 37.7922 32.4866 38.2085 32.4866 38.6426V38.6426Z"
                             stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                </button>
+                </a>
+
                 <div class=" absolute hidden" id="content">
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
-                    <a href="<?= SITE_URL ?>?login" class="px-2 bg-blue-300 font-medium " href="">Đăng nhập</a>
+                        <a href="<?= SITE_URL ?>?login" class="px-2 bg-blue-300 font-medium " href="">Đăng nhập</a>
                         <a href="<?= SITE_URL ?>?register" class="px-2  bg-blue-300 font-medium" href="">Đăng ký</a>
                         <a class="px-2  bg-blue-300 font-medium" href="">Đăng xuất</a>
                     </div>
@@ -89,35 +93,85 @@ include_once '../global.php'
             class="list-none  hover:bg-orange-500 hover:px-8 hover:p-2 rounded-md hover:text-white">Sale</a>
 
     </nav>
-    <!-- content -->
-    <div class=" container mx-auto h-[400]">
-        <div class="bg">
-            <div class="text-center mx-auto ">
-                <h1 class="font-medium text-5xl pt-11 py-5 italic text-white">ĐĂNG NHẬP</h1>
-                <form action="">
-                    <div class="py-3 pt-7">
-                        <input type="email" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="user" placeholder="Username">
-                    </div>
-                    <div class="py-3">
-                        <input type="text" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="pass" placeholder="Password">
-                    </div>
-                </form>
-                <div class="mx-auto pt-4">
-                    <div class="py-3">
-                        <button href="" class="px-4 py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng nhập</button>
-                    </div>
-                    <div class="py-3">
-                        <a href="register.html" class="px-[25px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng ký</a>
-                    </div>
-                    <div class="py-3">
-                        <button href="" class="px-[9px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Quên mật khẩu</button>
-                    </div>    
+        <!--  -->
+        <div class="container mx-auto">
+            <div>
+                <h1 class="text-center text-4xl font-medium py-10">Giỏ hàng</h1>
+            </div>
+            <table class="container mx-auto">
+                <tr class="">
+                    <td class="border border-black w-3/5 text-center h-14">Tên sản phẩm</td>
+                    <td class="border border-black w-20 text-center h-14">Hình</td>
+                    <td class="border border-black w-24 text-center h-14">Đơn giá</td>
+                    <td class="border border-black w-20 text-center h-14">Số lượng</td>
+                    <td class="border border-black w-24 text-center h-14">Thành tiền</td>
+                    <td class="border border-black w-24 text-center h-14">Thao tác</td>
+                </tr>
+                <tr>
+                    <td id="pro" data-price="900" class="border border-black w-1/2 text-center h-14">Iphone 13</td>
+                    <td class="border border-black w-20 text-center h-14"><img src="img/facebook.jfif"
+                            class="h-6 mx-auto" alt=""></td>
+                    <td class="border border-black w-24 text-center h-14">900</td>
+                    <td class="border border-black w-14 text-center h-14"><input type="number"
+                            class="text-center w-20 py-3" id="qty1"></td>
+                    <td class="border border-black w-24 text-center h-14"><span id="td1">...</span></td></td>
+                    <td class="text-center border border-black h-14">
+                        <button onclick="xoa1()" class="border border-black text-center  py-2 px-[6px]">Xóa</button>
+                        <button onclick="mua1()" class="border border-black text-center  py-2 px-[4px]">Mua</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="pri" data-price1="100" class="border border-black w-1/2 text-center h-14">pin dự phòng</td>
+                    <td class="border border-black w-20 text-center h-14"><img src="img/facebook.jfif"
+                            class="h-6 mx-auto" alt=""></td>
+                    <td class="border border-black w-24 text-center h-14">100</td>
+                    <td class="border border-black w-14 text-center h-14"><input type="number"
+                            class="text-center w-20 py-3" id="qty2"></td>
+                    <td class="border border-black w-14 text-center h-14"><span id="td2">...</span></td>
+                    <td class="text-center border border-black h-14">
+                        <button onclick="xoa2()" class="border border-black text-center  py-2 px-[6px]">Xóa</button>
+                        <button onclick="mua2()" class="border border-black text-center  py-2 px-[4px]">Mua</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="pre" data-price2="1000" class="border border-black w-1/2 text-center h-10">APPLE Macbook AIR 2022</td>
+                    <td class="border border-black w-20 text-center h-10"><img src="img/facebook.jfif"
+                            class="h-6 mx-auto" alt=""></td>
+                    <td class="border border-black w-24 text-center h-10">1000</td>
+                    <td class="border border-black w-14 text-center h-10"><input type="number"
+                            class="text-center w-20 py-3" id="qty3"></td>
+                    <td class="border border-black w-14 text-center h-10"><span id="td3">...</span></td></td>
+                    <td class="text-center border border-black h-14">
+                        <button onclick="xoa3()" class="border border-black text-center  py-2 px-[6px]">Xóa</button>
+                        <button onclick="mua3()" class="border border-black text-center  py-2 px-[4px]">Mua</button>
+                    </td>
+                </tr>
+            </table>
+            <div class="flex mx-auto">
+                <div class="border border-b-zinc-900 border-l-zinc-900 lg:w-[1274px] md:w-[1230px] w-[534px] h-14">
+                    <h1 class="py-3 text-center">Tổng đơn hàng</h1>
+                </div>
+                <div class="lg:w-[131px] md:w-40 w-[90px] border border-x-black border-b-black ">
+                    <h1 id="tong" class="text-center py-3"><span>...</span></h1>
+                </div>
+                <div class="m:hidden lg:block">
+                    <div class="lg:w-[131px] md:w-10 h-14 border border-r-black border-b-black"></div>
                 </div>
             </div>
+            <div class="flex gap-5">
+                <div class=" py-3">
+                    <button onclick="dong_y()" id="dong_y" class="bg-orange-400 px-3 py-3 rounded-md border border-black">Đồng ý đặt hàng</button>
+                </div>
+                <div class=" py-3">
+                    <button onclick="xoa_gio()" id="xoa_gio" class="bg-orange-400 px-3 py-3 rounded-md border border-black">Xóa giỏ hàng</button>
+                </div>
+            </div>
+        <!--  -->
+        <div>
+
         </div>
     </div>
-    <script src="../content/js/app.js">
-
-    </script>
+    <script src="../content/js/app.js"></script>
 </body>
+
 </html>

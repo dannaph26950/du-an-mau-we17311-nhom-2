@@ -9,12 +9,16 @@ include_once '../global.php'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../content/css/input.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 </head>
 <body>
      <!-- header -->
      <div class="mx-auto container bg-gray-400 flex justify-between ">
         <div class="p-4">
-            <img class="h-12 w-40" src="../content/img/Screen Shot 2022-09-21 at 01.33 1.png" alt="">
+            <img class="h-12 w-40" src="/img/Screen Shot 2022-09-21 at 01.33 1.png" alt="">
         </div>
         <div class="flex p-4 ">
             <button class="bg-white px-6 rounded-l-md"><svg width="30" height="30" viewBox="0 0 37 32" fill="none"
@@ -46,8 +50,8 @@ include_once '../global.php'
                 </button>
                 <div class=" absolute hidden" id="content">
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
-                    <a href="<?= SITE_URL ?>?login" class="px-2 bg-blue-300 font-medium " href="">Đăng nhập</a>
-                        <a href="<?= SITE_URL ?>?register" class="px-2  bg-blue-300 font-medium" href="">Đăng ký</a>
+                        <a href="login.html" class="px-2 bg-blue-300 font-medium " href="">Đăng nhập</a>
+                        <a href="register.html" class="px-2  bg-blue-300 font-medium" href="">Đăng ký</a>
                         <a class="px-2  bg-blue-300 font-medium" href="">Đăng xuất</a>
                     </div>
                 </div>
@@ -72,16 +76,16 @@ include_once '../global.php'
    
     <!-- nav -->
     <nav class=" justify-center gap-8 flex w-full p-6 font-medium text-2xl mx-auto container">
-        <a href="<?= SITE_URL ?>" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
-        <a href="<?= SITE_URL ?>?introduce" class="list-none  hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Giới thiệu</a>
-        <a href="<?= SITE_URL ?>?colection"
-            class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Bộ sưu tập</a>
+        <a href="/src/trangchu/home.html" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
+        <a href="/src/gioithieu/introduce.html" class="list-none  hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Giới thiệu</a>
+        <a href="/src/bst/colection.html"
+            class="list-none    hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Bộ sưu tập</a>
 
-        <a href="<?= SITE_URL ?>?products" class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Sản
+        <a href="/src/sanpham/product.html" class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Sản
             phẩm</a>
 
 
-        <a href="<?= SITE_URL ?>?sale"
+        <a href="/src/sale/sale.html"
             class="list-none  hover:bg-orange-500 hover:px-8 hover:p-2 rounded-md hover:text-white">Sale</a>
 
     </nav>
@@ -89,38 +93,38 @@ include_once '../global.php'
     <div class="container mx-auto w-[800px] h-[500px]">
         <div class="bg2">
             <!-- <img src="img/ao plo.jpg" class="fixed" alt=""> -->
-            <h1 class="text-5xl py-2 pt-14 text-center pb-10 italic font-medium ">ĐĂNG KÝ</h1>
+            <h1 class="text-5xl py-2 pt-14 text-center pb-10 italic font-medium text-white">ĐĂNG KÝ</h1>
             <div class="grid grid-cols-2">
                 <div class="pl-10">
                     <div class="flex gap-4 py-2">
-                        <p class=" font-semibold">Full name *</p>
-                        <div class="pl-[37px]"><input type="text" class="border border-blue-600 rounded-sm" placeholder="Full name"></div>
+                        <p class=" font-semibold text-white">Full name *</p>
+                        <div class="pl-[37px]"><input type="text" class=" border border-blue-600 rounded-sm" placeholder="Full name"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-5">
-                        <p class=" font-semibold">Email *</p>
+                        <p class=" font-semibold text-white">Email *</p>
                         <div class="pl-[64px]"><input type="email" name="" class="border border-blue-600 rounded-sm" placeholder="Email"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
-                        <p class=" font-semibold">Phone number *</p>
+                        <p class=" font-semibold text-white">Phone number *</p>
                         <input type="text" placeholder="Phone number" class="border border-blue-600 rounded-sm" >
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
-                        <p class=" font-semibold">Address *</p>
+                        <p class=" font-semibold text-white">Address *</p>
                         <div class="pl-[49px]"><input type="text" class="border border-blue-600 rounded-sm" placeholder="Address"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
-                        <p class=" font-semibold">Passwword *</p>
+                        <p class=" font-semibold text-white">Passwword *</p>
                         <div class="pl-[27px]"><input type="text" class="border border-blue-600 rounded-sm" placeholder="Passwword"></div>
                         <span></span>
                     </div>
                 </div>
                 <div class=" font-weight: 500;">
-                    <h1 class="text-2xl">Lợi ích của việc đăng kí tài khoản</h1>
-                    <div class="py-3">
+                    <h1 class="text-2xl text-white">Lợi ích của việc đăng kí tài khoản</h1>
+                    <div class="py-3 text-white">
                         <p>- Kiểm tra trạng thái đơn hàng nhanh chóng</p>
                         <p>- Bỏ sẵn hàng vào giỏ để mua sau</p>
                         <p>- Mua hàng nhanh cực kì</p>
