@@ -1,5 +1,7 @@
 <?php 
-include_once '../global.php'
+include_once '../global.php';
+include_once '../dao/pdo.php';
+include_once '../dao/products.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -168,6 +170,12 @@ include_once '../global.php'
 
         </div>
         <div class="grid grid-cols-3 p-4 gap-10">
+            <!-- <?php 
+           $data= products_select_all();
+           foreach($data as $value){
+            echo($value);
+           }
+            ?> -->
             <a href="details.php" class="">
                 <div class="hover:shadow-2xl hover:rounded-2xl ">
                     <center>
@@ -181,71 +189,7 @@ include_once '../global.php'
                     <p class="text-lg text-center font-medium ">459.000đ</p>
                 </div>
             </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 6.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo sơ mi dài tay</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTD 01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 7.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo polo vàng</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:APLV01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 8.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo thun trắng</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ATTC 01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 9.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo Blazer kẻ vuông</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ABZ 01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 10.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo len</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ALM 01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
+           
 
         </div>
     </div>
