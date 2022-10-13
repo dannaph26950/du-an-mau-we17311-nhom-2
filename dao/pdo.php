@@ -7,7 +7,7 @@ function pdo_get_connection(){
     $conn = new PDO(
     "mysql:host=202.92.5.49;dbname=fumpddnwhosting_nhom2;charset=utf8",
     'fumpddnwhosting_nhom2',
-    'WokdrZSV8h'
+    'hellloosololiaaa'
     );
     return $conn;
 }
