@@ -1,5 +1,25 @@
-<?php 
-include_once '../global.php'
+<?php
+
+
+include_once '../global.php';
+include_once '../dao/pdo.php';
+include_once '../dao/role.php';
+include_once '../dao/user.php';
+$data = user_select_all();
+implode($data);
+echo $data;
+if(isset($_POST['login'])){
+   foreach($data as $value){
+    if($_POST['user']===$value['email'] && $_POST['pass']===$value['password']){
+        if($value['role_id'] === '2' ){
+            header('ADMIN_URL');
+        }else{
+            die();
+        }
+    }
+   }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,17 +125,16 @@ include_once '../global.php'
         <div class="bg">
             <div class="text-center mx-auto ">
                 <h1 class="font-medium text-5xl pt-11 py-5 italic text-white">ĐĂNG NHẬP</h1>
-                <form action="">
+                <form action="" method="POST">
                     <div class="py-3 pt-7">
                         <input type="email" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="user" placeholder="Username">
                     </div>
                     <div class="py-3">
                         <input type="text" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="pass" placeholder="Password">
                     </div>
-                </form>
-                <div class="mx-auto pt-4">
+                    <div class="mx-auto pt-4">
                     <div class="py-3">
-                        <button href="" class="px-4 py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng nhập</button>
+                        <button href="" name="login" class="px-4 py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng nhập</button>
                     </div>
                     <div class="py-3">
                         <a href="register.php" class="px-[25px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng ký</a>
@@ -124,6 +143,8 @@ include_once '../global.php'
                         <button href="" class="px-[9px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Quên mật khẩu</button>
                     </div>    
                 </div>
+                </form>
+               
             </div>
         </div>
     </div>

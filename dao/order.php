@@ -1,5 +1,5 @@
 <?php 
-    require "pdo.php";
+    include "pdo.php";
 
     //thêm order
     function order_insert($customer_id,$total_price){

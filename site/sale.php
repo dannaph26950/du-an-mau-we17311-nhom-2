@@ -107,7 +107,7 @@ include_once '../global.php'
         <section class="product ">
 
             <div class="mx-auto container px-8 bg-white">
-                <div class="slider owl-carousel mx-auto py-4  ">
+                <div class="slider owl-carousel mx-auto py-4 ">
                     <div class="cart">
                         <div class="img">
                             <img src="../content/img/sale.png" class=" w-full " alt="">

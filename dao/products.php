@@ -1,5 +1,5 @@
 <?php
-require_once 'pdo.php';
+include_once 'pdo.php';
 
 function products_insert($ten_hh,$so_luong, $don_gia, $giam_gia, $hinh,$mo_ta,$loai){
     $sql = "INSERT INTO products(ten_hh,so_luong, don_gia, giam_gia, hinh,mo_ta,loai) VALUES (?,?,?,?,?,?)";

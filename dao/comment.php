@@ -1,5 +1,5 @@
 <?php
-require_once 'pdo.php';
+include_once 'pdo.php';
 
 function comment_insert($id, $content, $product_id, $user_id){
     $sql = "INSERT INTO comment(content, product_id, 'user_id') VALUES (?,?,?)";

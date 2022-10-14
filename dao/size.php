@@ -1,5 +1,5 @@
 <?php 
-    require "pdo.php";
+    include "pdo.php";
 
     //thêm size
     function size_insert($ma_size,$size_name){
