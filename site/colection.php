@@ -1,5 +1,9 @@
 <?php 
-include_once '../global.php'
+include_once '../global.php';
+require "../dao/products.php";
+$data = products_select_all();
+echo "<pre>";
+var_dump($data);
 ?>
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
@@ -150,43 +154,14 @@ include_once '../global.php'
                     </div>
                 </div>
             </div>
+        <?php foreach($data as $key=>$value){ ?>
             <div class="card">
                 <div class="img">
-                    <img src="../content/img/image 1.png" alt="">
+                    <img src="../content/img/image 2.png" class=" w-full "  alt="">
                 </div>
                 <div class="content">
                     <div class="title">
-                        Áo sơ mi tay ngắn</div>
-                    <div class="sub-title">
-                        350.000 đ</div>
-                    
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img//image 7.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        Áo polo vàng</div>
-                    <div class="sub-title">
-                        500.000đ</div>
-                   
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img/image 5.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        Áo polo đen</div>
+                        <?php echo $value["name"] ?></div>
                     <div class="sub-title">
                         450.000 đ</div>
                     <div class="btn">
@@ -194,7 +169,10 @@ include_once '../global.php'
                     </div>
                 </div>
             </div>
-            
+
+        <?php
+            }
+        ?>
         </div>
         <div class="">
             <h1 class="text-center font-medium text-2xl">BST Đông 2022</h1>
