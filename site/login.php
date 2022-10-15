@@ -6,15 +6,14 @@ include_once '../dao/pdo.php';
 include_once '../dao/role.php';
 include_once '../dao/user.php';
 $data = user_select_all();
-implode($data);
-echo $data;
+// print_r($data);
 if(isset($_POST['login'])){
    foreach($data as $value){
-    if($_POST['user']===$value['email'] && $_POST['pass']===$value['password']){
-        if($value['role_id'] === '2' ){
-            header('ADMIN_URL');
+    if($_POST['user']==$value['email'] && $_POST['pass']==$value['password']){
+        if($value['role_id'] == 2 ){
+            header("Location:http://localhost/du-an-mau-we17311-nhom-2/admin/");
         }else{
-            die();
+            header("Location:http://localhost/du-an-mau-we17311-nhom-2/site/");
         }
     }
    }
