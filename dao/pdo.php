@@ -4,11 +4,12 @@
  */
 function pdo_get_connection(){
     //hàm kết nối cơ sở dữ liệu
-    $conn = new PDO(
-    "mysql:host=202.92.5.49;dbname=fumpddnwhosting_nhom2;charset=utf8",
-    'fumpddnwhosting_nhom2',
-    'WokdrZSV8h'
-    );
+    $dburl = "mysql:host=202.92.5.49;dbname=fumpddnwhosting_nhom2;charset=utf8";
+    $username = 'fumpddnwhosting_nhom2';
+    $password = 'hellloosololiaaa';
+
+    $conn = new PDO($dburl, $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $conn;
 }
 /**
@@ -23,7 +24,6 @@ function pdo_execute($sql){
     $input = array_slice(func_get_args(),1);
     $stmt = $conn->prepare($sql);
     $stmt->execute($input);
-    echo "Connected successfully";
 }
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
