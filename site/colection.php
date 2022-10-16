@@ -145,13 +145,13 @@ $data = products_select_all();
                 <div class="img">
                     <img src="../content/img/image 2.png" class=" w-full "  alt="">
                 </div>
-                <div class="content">
-                    <div class="title">
+                <div class="content text-center">
+                    <div class="title font-medium text-xl">
                         <?php echo $value["name"] ?></div>
-                    <div class="sub-title">
-                        <?php echo $value["price"] ?></div>
+                    <div class="sub-title text-2xl text-red-500 font-bold">
+                        <?php echo $value["price"] ?>.000</div>
                     <div class="btn">
-                        <button>Xem ngay</button>
+                        <button class="bg-orange-400 text-2xl px-3 py-1 rounded-md">Xem ngay</button>
                     </div>
                 </div>
             </div>
@@ -169,13 +169,13 @@ $data = products_select_all();
                 <div class="img">
                     <img src="../content/img/image 3.png" class=" w-full "  alt="">
                 </div>
-                <div class="content">
-                    <div class="title">
+                <div class="content text-center">
+                    <div class="title font-medium text-xl">
                         <?php echo $value["name"] ?></div>
-                    <div class="sub-title">
-                        <?php echo $value["price"] ?></div>
-                    <div class="btn">
-                        <button>Xem ngay</button>
+                    <div class="sub-title text-2xl text-red-500 font-bold">
+                        <?php echo $value["price"] ?>.000</div>
+                    <div class="btn ">
+                        <button class="bg-orange-400 text-2xl px-3 py-1 rounded-md">Xem ngay</button>
                     </div>
                 </div>
             </div>
