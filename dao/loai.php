@@ -1,5 +1,5 @@
 <?php
-require_once 'pdo.php';
+include_once 'pdo.php';
 
 /**
  * Thêm loại mới
