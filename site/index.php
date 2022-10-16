@@ -1,5 +1,5 @@
 <?php
-require_once '../global.php';
+include_once '../global.php';
 if(isset($_GET['products'])){
 
     $VIEW_NAME = 'product.php';

@@ -1,5 +1,5 @@
 <?php
-require_once 'pdo.php';
+include_once 'pdo.php';
 
 function products_insert($ten_hh,$so_luong, $don_gia, $giam_gia, $hinh,$mo_ta,$loai){
     $sql = "INSERT INTO products(ten_hh,so_luong, don_gia, giam_gia, hinh,mo_ta,loai) VALUES (?,?,?,?,?,?)";
@@ -24,7 +24,7 @@ function products_delete($ma_hh){
 }
 
 function products_select_all(){
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT * FROM products,product_img where products.id = product_img.product_id";
     return pdo_query($sql);
 }
 

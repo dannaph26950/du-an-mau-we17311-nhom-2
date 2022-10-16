@@ -10,7 +10,7 @@
     const BASE_URL = "http://localhost/du-an-mau-we17311-nhom-2/";
 const SITE_URL = BASE_URL . 'site/index.php';
 const CONTENT_URL = BASE_URL . 'content/';
-const ADMIN_URL = BASE_URL . 'admin/';
+const ADMIN_URL = BASE_URL . 'admin/index.php';
     // Định nghĩa đường dẫn chứa ảnh sử dụng trong upload
 
     $IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"]. "$ROOT_URL/content/images";
@@ -20,7 +20,7 @@ const ADMIN_URL = BASE_URL . 'admin/';
     $VIE_NAME = "index.php";
     $MESSAGE = "";
 
-    /** kiểm tra sự tồn tại của một tham số trong require;
+    /** kiểm tra sự tồn tại của một tham số trong include;
     * @param string $fieldname là tên tham số cần kiểm tra
     * @param string $target_dir là thư mục lưu file
     * @return là tên file upload 

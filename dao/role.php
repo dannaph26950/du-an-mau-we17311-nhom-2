@@ -1,5 +1,5 @@
 <?php 
-    require "pdo.php";
+    include_once "pdo.php";
 
     //thêm role
     function role_insert($ma_role,$role_name){
