@@ -1,30 +1,25 @@
 <?php 
 include_once '../global.php';
-include_once "../dao/products.php";
-include_once '../dao/loai.php';
-$bst = loai_all();
-
+include_once '../dao/pdo.php';
+include_once '../dao/products.php';
+$id = $_GET['cate'];
+echo $id;
 $data = products_select_all();
-// echo "<pre>";
-// var_dump($data);
 ?>
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
-    <!-- <title>Owl-carousel Cards Slider | CodingNepal</title> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="../content/css/input.css">
+
 </head>
 
-<body >
+<body>
     <!-- header -->
     <div class="mx-auto container bg-gray-400 flex justify-between ">
         <div class="p-4">
@@ -51,12 +46,12 @@ $data = products_select_all();
                 </button>
             </div>
             <div class="">
-                <button class=""><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
+                <button class="">  <button class=""><a href="../site/cart.php"><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 1H3.64487C4.6181 1 5.46728 1.74849 5.71917 2.82212L6.45004 5.95791M11.0185 25.5495C9.50014 25.5495 8.04401 26.2392 6.97039 27.4669C5.89678 28.6947 5.29363 30.3598 5.29363 32.096H35.349M11.0185 25.5495H32.4255C34.5647 20.5305 36.4329 15.3282 38.0053 9.97312C27.7005 6.96859 17.0804 5.61725 6.45004 5.95791M11.0185 25.5495L6.45004 5.95791M8.15605 38.6426C8.15605 39.0766 8.00526 39.4929 7.73686 39.7999C7.46845 40.1068 7.10442 40.2792 6.72484 40.2792C6.34526 40.2792 5.98122 40.1068 5.71282 39.7999C5.44442 39.4929 5.29363 39.0766 5.29363 38.6426C5.29363 38.2085 5.44442 37.7922 5.71282 37.4853C5.98122 37.1784 6.34526 37.0059 6.72484 37.0059C7.10442 37.0059 7.46845 37.1784 7.73686 37.4853C8.00526 37.7922 8.15605 38.2085 8.15605 38.6426V38.6426ZM32.4866 38.6426C32.4866 39.0766 32.3358 39.4929 32.0674 39.7999C31.799 40.1068 31.435 40.2792 31.0554 40.2792C30.6758 40.2792 30.3118 40.1068 30.0434 39.7999C29.775 39.4929 29.6242 39.0766 29.6242 38.6426C29.6242 38.2085 29.775 37.7922 30.0434 37.4853C30.3118 37.1784 30.6758 37.0059 31.0554 37.0059C31.435 37.0059 31.799 37.1784 32.0674 37.4853C32.3358 37.7922 32.4866 38.2085 32.4866 38.6426V38.6426Z"
                             stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    </svg></a>
                 </button>
                 <div class=" absolute hidden" id="content">
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
@@ -93,95 +88,79 @@ $data = products_select_all();
             class="list-none  hover:bg-orange-500 hover:px-8 hover:p-2 rounded-md hover:text-white">Sale</a>
 
     </nav>
-    <!-- banner -->
+    <!-- baner -->
     <div class="mx-auto container relative ">
 
         <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade ">
 
+            <img class="w-full max-height" src="../content/img/bannercolection2.png" alt="">
 
-        <img class="w-full max-height" src="../content/img/bannercolection2.png" alt="">
+        </div>
 
+        <div class="mySlides fade ">
 
+            <img src="../content/img/bannercolection.png" class="w-full max-height" alt="">
 
+        </div>
+
+        <div class="mySlides fade ">
+
+            <img src="../content/img/bannercolection1.png" class="w-full max-height" alt="">
+
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
     </div>
     <!-- content -->
-    <div class="mx-auto container p-6">
-        <div class="flex gap-10">
+    <div class="mx-auto container py-4">
+        <!-- nav content -->
+        <div class="p-4 text-center">
+            <h1 class=" font-medium text-2xl">Sản phẩm</h1>
+          
+        </div>
+        <!-- list sp -->
+        <div class="grid grid-cols-4 gap-8 p-4">
             <?php 
-            foreach($bst as $index => $value){
+            foreach($data as $key =>$value){
 
-           
-            ?>
-             <a class="w-1/4" href="pro_colection.php?cate=<?php echo $value['id'] ?>">
-            <div class="relative hover:scale-110 ">
+            if($value['category_id']==$id ){
 
-                <img class="w-full h-auto " src="../content/img/image 12.png" alt="">
-                <div class="absolute md:bottom-10 md:left-4">
-                    <h1 class=" text-orange-400 text-lg font-medium">Thời trang nam</h1>
-
-                 <button class="p-2 px-8 bg-white hover:bg-orange-400 hover:text-white"><?php echo $value['name']?></button>
-                </div>
-            </div>
-            </a> 
-          <?php 
-          }?>
-
-
-        </div>
         
+            ?>
+            <a href="details.php?id=<?= $value['id'] ?>" class="">
+                <div class="hover:shadow-2xl hover:rounded-2xl ">
+                    <center>
+                        <img class="pt-4" src="../content/img/image 5.png" alt="">
+                    </center>
+                    <h1 class="text-center font-medium pt-2 text-lg"><?= $value['name']?></h1>
+                    <!-- MSP -->
+                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTN 01
+                    </h1>
+                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">450.000đ
+                    </h1>
+                </div>
+            </a>
+          <?php    } }?>
+        </div>
+        <div class=" flex justify-center gap-8 py-4">
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">1</button>
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">2</button>
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">3</button>
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">...</button>
+        </div>
     </div>
-    </div>
-    <!-- BST -->
-    <div class="mx-auto container px-8 ">
-        <div class="">
-            <h1 class="text-center font-medium text-2xl">BST Hè 2022</h1>
-        </div>
-        <div class="slider owl-carousel mx-auto py-4  ">
-        <?php foreach($data as $key=>$value){ ?>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img/image 2.png" class=" w-full "  alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        <?php echo $value["name"] ?></div>
-                    <div class="sub-title">
-                        <?php echo $value["price"] ?></div>
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-
-        <?php
-            }
-        ?>
-        </div>
-        <div class="">
-            <h1 class="text-center font-medium text-2xl">BST Đông 2022</h1>
-        </div>
-        <div class="slider owl-carousel mx-auto py-4  ">
-        <?php foreach($data as $key=>$value){ ?>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img/image 3.png" class=" w-full "  alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        <?php echo $value["name"] ?></div>
-                    <div class="sub-title">
-                        <?php echo $value["price"] ?></div>
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
-        </div>
-
-    </div>
-     <!-- footet -->
-     <footer class="mx-auto container bg-slate-400 mt-4 ">
+    <!-- footet -->
+    <footer class="mx-auto container bg-slate-400 mt-4 ">
         <div class="flex justify-between p-4">
             <div class="">
                 <h1 class="text-xl font-medium">KẾT NỐI VỚI SOUTH FACTION</h1>
@@ -212,25 +191,8 @@ $data = products_select_all();
                 </div>
             </div>
         </div>
-        </footer>
-    <script>
-  function showhide(){
-  var ct=document.getElementById("content");
-  if(ct.style.display == 'block')
-ct.style.display = 'none';
-else
-ct.style.display = 'block';
-}
-$(".slider").owlCarousel({
-    loop: true,
-    autoplay: true,
-    autoplayTimeout: 2000, //2000ms = 2s;
-    autoplayHoverPause: true,
-    
-    });
-
-    </script>
-
+    </footer>
+    <script src="../content/js/app.js"></script>
 </body>
 
 </html>

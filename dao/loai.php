@@ -31,7 +31,7 @@ function loai_update($id, $name){
  * @return array mảng loại truy vấn được
  * @throws PDOException lỗi truy vấn
  */
-function comment_all(){
+function loai_all(){
     $sql = "SELECT * FROM categories";
     return pdo_query($sql);
 }

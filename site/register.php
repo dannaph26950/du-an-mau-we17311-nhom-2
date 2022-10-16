@@ -1,5 +1,19 @@
 <?php 
-include_once '../global.php'
+include_once '../global.php';
+include_once '../dao/pdo.php';
+include_once '../dao/user.php';
+if(isset($_POST['register'])){
+   
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $fake_pass=password_hash($password, PASSWORD_DEFAULT);
+    $adress = $_POST['adress'];
+    $phone = $_POST['phone'];
+    $role_id = 1;
+    $name = $_POST['name'];
+    user_insert($email,$fake_pass,$adress,$phone,'1',$name);
+    echo ('thành công');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,31 +120,32 @@ include_once '../global.php'
         <div class="bg2">
             <!-- <img src="img/ao plo.jpg" class="fixed" alt=""> -->
             <h1 class="text-5xl py-2 pt-14 text-center pb-10 italic font-medium text-white">ĐĂNG KÝ</h1>
+            <form action="" method="post">
             <div class="grid grid-cols-2">
                 <div class="pl-10">
                     <div class="flex gap-4 py-2">
                         <p class=" font-semibold text-white">Full name *</p>
-                        <div class="pl-[37px]"><input type="text" class=" border border-blue-600 rounded-sm" placeholder="Full name"></div>
+                        <div class="pl-[37px]"><input type="text" name="name" class=" border border-blue-600 rounded-sm" placeholder="Full name"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-5">
                         <p class=" font-semibold text-white">Email *</p>
-                        <div class="pl-[64px]"><input type="email" name="" class="border border-blue-600 rounded-sm" placeholder="Email"></div>
+                        <div class="pl-[64px]"><input type="email" name="email" class="border border-blue-600 rounded-sm" placeholder="Email"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
                         <p class=" font-semibold text-white">Phone number *</p>
-                        <input type="text" placeholder="Phone number" class="border border-blue-600 rounded-sm" >
+                        <input type="text" name="phone" placeholder="Phone number" class="border border-blue-600 rounded-sm" >
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
                         <p class=" font-semibold text-white">Address *</p>
-                        <div class="pl-[49px]"><input type="text" class="border border-blue-600 rounded-sm" placeholder="Address"></div>
+                        <div class="pl-[49px]"><input type="text" name="adress" class="border border-blue-600 rounded-sm" placeholder="Address"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
-                        <p class=" font-semibold text-white">Passwword *</p>
-                        <div class="pl-[27px]"><input type="text" class="border border-blue-600 rounded-sm" placeholder="Passwword"></div>
+                        <p class=" font-semibold text-white">Password *</p>
+                        <div class="pl-[27px]"><input type="text" name="password" class="border border-blue-600 rounded-sm" placeholder="Passwword"></div>
                         <span></span>
                     </div>
                 </div>
@@ -143,12 +158,13 @@ include_once '../global.php'
                     </div>
                     <br/>
                     <div class="flex gap-2 pt-11">
-                        <button class="px-5 py-1 bg-orange-500 text-white border rounded-md hover:bg-yellow-500">Đăng ký</button>
+                        <button name="register" class="px-5 py-1 bg-orange-500 text-white border rounded-md hover:bg-yellow-500">Đăng ký</button>
                         <a href="login.php" class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Đăng nhập</a>
                         <button class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Quên mật khẩu</button>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
     <script src="../content/js/app.js">

@@ -22,11 +22,10 @@ function pdo_get_connection(){
  */
 function pdo_execute($sql){
     //hàm thao tác dữ liệu
-    $conn = pdo_get_connection();
-    $input = array_slice(func_get_args(),1);
-    $stmt = $conn->prepare($sql);
-    $stmt->execute($input);
-    echo "Connected successfully";
+    $connect = pdo_get_connection();
+    $inputData = array_slice(func_get_args(), 1);
+    $stmt = $connect->prepare($sql);
+    $stmt->execute($inputData);
 }
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)

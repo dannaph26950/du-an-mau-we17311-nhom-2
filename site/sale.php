@@ -3,6 +3,7 @@ include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/products.php';
 
+
 $data = products_select_all();
 ?>
 <!DOCTYPE html>
