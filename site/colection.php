@@ -1,6 +1,8 @@
 <?php 
 include_once '../global.php';
-require "../dao/products.php";
+include_once "../dao/products.php";
+include_once '../dao/loai.php';
+$bst = loai_all();
 $data = products_select_all();
 // echo "<pre>";
 // var_dump($data);
@@ -103,31 +105,25 @@ $data = products_select_all();
     </div>
     <!-- content -->
     <div class="mx-auto container p-6">
-        <div class="grid grid-cols-3 gap-10">
+    <div class="flex gap-10">
+            <?php 
+            foreach($bst as $index => $value){
+
+           
+            ?>
+             <a class="w-1/4" href="pro_colection.php?cate=<?php echo $value['id'] ?>">
             <div class="relative hover:scale-110 ">
 
                 <img class="w-full h-auto " src="../content/img/image 12.png" alt="">
                 <div class="absolute md:bottom-10 md:left-4">
                     <h1 class=" text-orange-400 text-lg font-medium">Thời trang nam</h1>
-                    <button class="p-2 px-8 bg-white hover:bg-orange-400 hover:text-white">Xem tất cả</button>
-                </div>
-            </div>
-            <div class="relative hover:scale-110  ">
 
-                <img class="w-full h-auto  " src="../content/img/image 10.png" alt="">
-                <div class="absolute md:bottom-10 md:left-4">
-                    <h1 class=" text-orange-400 text-lg font-medium">Thu-Đông 2022</h1>
-                    <button class="p-2 px-8 bg-white hover:bg-orange-400 hover:text-white">Xem tất cả</button>
+                 <button class="p-2 px-8 bg-white hover:bg-orange-400 hover:text-white"><?php echo $value['name']?></button>
                 </div>
             </div>
-            <div class="relative hover:scale-110 ">
-
-                <img class="w-full h-auto  " src="../content/img/image 4.png" alt="">
-                <div class="absolute md:bottom-10 md:left-4">
-                    <h1 class=" text-orange-400 text-lg font-medium">Đông 2022</h1>
-                    <button class="p-2 px-8 bg-white hover:bg-orange-400 hover:text-white">Xem tất cả</button>
-                </div>
-            </div>
+            </a> 
+          <?php 
+          }?>
 
 
         </div>
@@ -140,7 +136,9 @@ $data = products_select_all();
             <h1 class="text-center font-medium text-2xl">BST Hè 2022</h1>
         </div>
         <div class="slider owl-carousel mx-auto py-4  ">
-        <?php foreach($data as $key=>$value){ ?>
+        <?php foreach($data as $key=>$value){ 
+            if($value['category_id']==1){
+            ?>
             <div class="card">
                 <div class="img">
                     <img src="../content/img/image 2.png" class=" w-full "  alt="">
@@ -157,14 +155,16 @@ $data = products_select_all();
             </div>
 
         <?php
-            }
+             } }
         ?>
         </div>
         <div class="">
             <h1 class="text-center font-medium text-2xl">BST Đông 2022</h1>
         </div>
         <div class="slider owl-carousel mx-auto py-4  ">
-        <?php foreach($data as $key=>$value){ ?>
+        <?php foreach($data as $key=>$value){ 
+            if($value["category_id"]==2){
+            ?>
             <div class="card">
                 <div class="img">
                     <img src="../content/img/image 3.png" class=" w-full "  alt="">
@@ -179,7 +179,7 @@ $data = products_select_all();
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php } } ?>
         </div>
 
     </div>

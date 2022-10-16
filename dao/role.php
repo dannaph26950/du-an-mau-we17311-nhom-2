@@ -14,20 +14,20 @@
     }
 
     //xóa role
-    function loai_delete($ma_role){
+    function role_delete($ma_role){
         $sql = "DELETE FROM roles WHERE id=?";
                 pdo_execute($sql, $ma_role);
             }
 
     //truy vấn tất cả các role
-    function loai_select_all(){
-        $sql = "SELECT * FROM role";
+    function role_select_all(){
+        $sql = "SELECT * FROM roles";
         return pdo_query($sql);
     }
 
     //Kiểm tra sự tồn tại của một role
-    function loai_exist($ma_role){
-        $sql = "SELECT count(*) FROM role WHERE id=?";
+    function role_exist($ma_role){
+        $sql = "SELECT count(*) FROM roles WHERE id=?";
         return pdo_query_value($sql, $ma_role) > 0;
     }
     

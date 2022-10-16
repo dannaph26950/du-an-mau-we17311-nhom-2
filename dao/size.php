@@ -14,20 +14,20 @@
     }
 
     //xóa size
-    function loai_delete($id){
+    function size_delete($id){
         $sql = "DELETE FROM sizes WHERE id=?";
                 pdo_execute($sql, $id);
             }
 
     //truy vấn tất cả các size
-    function loai_select_all(){
-        $sql = "SELECT * FROM size";
+    function size_select_all(){
+        $sql = "SELECT * FROM sizes";
         return pdo_query($sql);
     }
 
     //Kiểm tra sự tồn tại của một size
-    function loai_exist($id){
-        $sql = "SELECT count(*) FROM size WHERE id=?";
+    function size_exist($id){
+        $sql = "SELECT count(*) FROM sizes WHERE id=?";
         return pdo_query_value($sql, $id) > 0;
     }
     
