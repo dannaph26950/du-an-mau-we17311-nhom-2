@@ -177,7 +177,7 @@ $data = products_select_all();
                 if(isset($value['sale_id'])){
                 ?>
                 
-            <a href="details.php?<?= $value['id'] ?>" class="">
+            <a href="details.php?id=<?= $value['id'] ?>" class="">
                 <div class="hover:shadow-2xl hover:rounded-2xl ">
                     <center>
                         <img class="pt-4 w-[390px] h-[390px]" src='<?php echo ($value['img_url']); ?>' alt="">
