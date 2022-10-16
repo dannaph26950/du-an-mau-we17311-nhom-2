@@ -20,7 +20,7 @@ const ADMIN_URL = BASE_URL . 'admin/index.php';
     $VIE_NAME = "index.php";
     $MESSAGE = "";
 
-    /** kiểm tra sự tồn tại của một tham số trong require;
+    /** kiểm tra sự tồn tại của một tham số trong include;
     * @param string $fieldname là tên tham số cần kiểm tra
     * @param string $target_dir là thư mục lưu file
     * @return là tên file upload 
