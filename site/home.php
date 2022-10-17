@@ -1,5 +1,8 @@
 <?php 
-include_once '../global.php'
+include_once '../global.php';
+include_once '../dao/pdo.php';
+include_once '../dao/products.php';
+$data = products_select_all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,111 +126,27 @@ include_once '../global.php'
                 <h1 class="text-2xl font-medium ">Sản phẩm mới</h1>
             </div>
         </div>
-        <div class="grid grid-cols-4 gap-8">
-            <a href="details.php" class="">
+        <div class="grid grid-cols-3 p-4 gap-10">
+            <?php foreach($data as $key =>$value){
+                
+                if(isset($value['sale_id'])){
+                ?>
+                
+            <a href="details.php?id=<?= $value['id'] ?>" class="">
                 <div class="hover:shadow-2xl hover:rounded-2xl ">
                     <center>
-                        <img class="pt-4" src="../content/img/image 5.png" alt="">
+                        <img class="pt-4 w-[390px] h-[390px]" src='<?php echo ($value['img_url']); ?>' alt="">
                     </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo sơ mi</h1>
+                    <h1 class="text-center font-medium pt-2 text-lg"><?= $value['name'] ?></h1>
                     <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTN 01
-                    </h1>
-                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">450.000đ
-                    </h1>
+                    <!-- <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTN 01</h1> -->
+                    <p class="line-through text-red-600 text-center font-medium "><?= $value['price']?>.000đ</p>
+                    <p class="text-lg text-center font-medium "><?= ceil( ceil($value['price'])*0.75)?>.000đ</p>
                 </div>
             </a>
-            <a href="detail.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 6.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo sơ mi dài tay</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTD 01
-                    </h1>
-                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">500.000đ
-                    </h1>
-                </div>
-            </a>
-            <a href="detail.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 7.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo polo vàng</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:APLV01
-                    </h1>
-                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">400.000đ
-                    </h1>
-                </div>
-            </a>
-            <a href="detail.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 8.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo thun trắng</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ATTC 01
-                    </h1>
-                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">300.000đ
-                    </h1>
-                </div>
-            </a>
-            <a href="detail.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 9.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo Blazer kẻ vuông</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ABZ 01
-                    </h1>
-                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">800.000đ
-                    </h1>
-                </div>
-            </a>
-            <a href="detail.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 10.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo len</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ALM 01
-                    </h1>
-                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">450.000đ
-                    </h1>
-                </div>
-            </a>
-            <a href="detail.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 13.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo ba lỗ</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ABL 01
-                    </h1>
-                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">200.000đ
-                    </h1>
-                </div>
-            </a>
-            <a href="detail.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 12.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo thun dài tay</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ATDT 01
-                    </h1>
-                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">300.000đ
-                    </h1>
-                </div>
-            </a>
+<?php }
+ }?>
+
         </div>
         <!-- bai viet -->
         <div class="grid grid-cols-3 gap-10 p-4 py-8">
