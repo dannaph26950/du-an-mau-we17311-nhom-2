@@ -126,6 +126,8 @@ $data = products_select_all();
                 <h1 class="text-2xl font-medium ">Sản phẩm mới</h1>
             </div>
         </div>
+
+        <!-- đổ dữ liệu sản phẩm -->
         <div class="grid grid-cols-3 p-4 gap-10">
             <?php foreach($data as $key =>$value){
                 

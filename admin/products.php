@@ -1,5 +1,8 @@
 <?php
-include_once ('../global.php')
+include_once '../global.php';
+include_once '../dao/pdo.php';
+include_once '../dao/products.php';
+$data = products_select_all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +38,10 @@ include_once ('../global.php')
     <!-- content -->
     <div class="mx-auto container">
        <table border="1" class="w-full mt-6 text-center">
-            <tr class="bg-green-300 text-2xl">
+           
+        
+            <tr class="bg-green-300 text-2xl" >
+                
                 <th class="p-6">Mã sản phẩm</th>
                 <th class="border border-blue-200 p-3">Tên sản phẩm</th>
                 <th class="border border-blue-200 p-3">Images</th>
@@ -44,51 +50,21 @@ include_once ('../global.php')
                 <th class="border border-blue-200 p-3">Mô tả</th>
                 <th class="border border-blue-200 p-3">Chức năng</th>
             </tr>
+             <?php foreach($data as $key =>$value){ ?>
             <tr class="border border-blue-200">
-                <td class="border border-blue-200 p-3">1</td>
-                <td class="border border-blue-200 p-3">Áo sơ mi</td>
-                <td class="border border-blue-200 p-3"><center><img src="../content/img/sale 2.png" class=" w-24 h-24 "></center></td>
-                <td class="border border-blue-200 p-3">400.000 đ</td>
+                <td class="border border-blue-200 p-3"><?php echo $value['id']; ?></td>
+                <td class="border border-blue-200 p-3 md:w-60"><?php echo $value['name']; ?></td>
+                <td class="border border-blue-200 p-3"><center><img src='<?php echo ($value['img_url']); ?>' class=" w-24 h-24 "></center></td>
+                <td class="border border-blue-200 p-3"><?php echo $value['price']; ?> đ</td>
                 <td class="border border-blue-200 p-3">20</td>
-                <td class="border border-blue-200 p-3">Aó polo mặc thoáng mát...</td>
-                <td class="border border-blue-200 p-3"><button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Sửa </button>
-                    <button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Xóa </button>
-                    <button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Chi tiết </button></td>
+                <td class="border border-blue-200 p-3 md:w-96"><?php echo $value['detail']; ?></td>
+                <td class="  p-3 flex justify-center"><button type="button" class="border rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200"
+                 name="btn-sua" onclick="location.href='edit.php?id=<?php echo $value['id']; ?>"> Sửa </button>
+                    <button class="border rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200" name="btn-sua" ><a href="javascript:comfirmDeletez('delete.php?id=<?php echo $value["id"]; ?>')">Xóa</a></button>
+                    <button class="border rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200" name="btn-sua" >Chi tiết </button></td>
             </tr>
-            <tr class="border border-blue-200">
-                <td class="border border-blue-200 p-3">2</td>
-                <td class="border border-blue-200 p-3">Áo sơ mi</td>
-                <td class="border border-blue-200 p-3"><center><img src="../content/img/sale 2.png" class=" w-24 h-24 "></center></td>
-                <td class="border border-blue-200 p-3">400.000 đ</td>
-                <td class="border border-blue-200 p-3">20</td>
-                <td class="border border-blue-200 p-3">Aó polo mặc thoáng mát...</td>
-                <td class="border border-blue-200 p-3"><button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Sửa </button>
-                    <button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Xóa </button>
-                    <button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Chi tiết </button></td>
-            </tr>
-            <tr class="border border-blue-200">
-                <td class="border border-blue-200 p-3">3</td>
-                <td class="border border-blue-200 p-3">Áo sơ mi</td>
-                <td class="border border-blue-200 p-3"><center><img src="../content/img/sale 2.png" class=" w-24 h-24 "></center></td>
-                <td class="border border-blue-200 p-3">400.000 đ</td>
-                <td class="border border-blue-200 p-3">20</td>
-                <td class="border border-blue-200 p-3">Aó polo mặc thoáng mát...</td>
-                <td class="border border-blue-200 p-3"><button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Sửa </button>
-                    <button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Xóa </button>
-                    <button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Chi tiết </button></td>
-            </tr>
-            <tr class="border border-blue-200">
-                <td class="border border-blue-200 p-3">4</td>
-                <td class="border border-blue-200 p-3">Áo sơ mi</td>
-                <td class="border border-blue-200 p-3"><center><img src="../content/img/sale 2.png" class=" w-24 h-24 "></center></td>
-                <td class="border border-blue-200 p-3">400.000 đ</td>
-                <td class="border border-blue-200 p-3">20</td>
-                <td class="border border-blue-200 p-3">Aó polo mặc thoáng mát...</td>
-                <td class="border border-blue-200 p-3"><button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Sửa </button>
-                    <button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Xóa </button>
-                    <button class="border rounded-md bg-slate-100 px-2" name="btn-sua" >Chi tiết </button></td>
-            </tr>
-            
+            <?php } ?>
+           
        </table>
        <button type="submit" class="p-4 border rounded-lg bg-orange-400 hover:text-white font-medium mt-8">Thêm sản phẩm</button>
     </div>
