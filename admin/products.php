@@ -56,7 +56,7 @@ $data = products_select_all();
                 <td class="border border-blue-200 p-3 md:w-60"><?php echo $value['name']; ?></td>
                 <td class="border border-blue-200 p-3"><center><img src='<?php echo ($value['img_url']); ?>' class=" w-24 h-24 "></center></td>
                 <td class="border border-blue-200 p-3"><?php echo $value['price']; ?> đ</td>
-                <td class="border border-blue-200 p-3">20</td>
+                <td class="border border-blue-200 p-3"><?php echo $value['quantily']; ?></td>
                 <td class="border border-blue-200 p-3 md:w-96"><?php echo $value['detail']; ?></td>
                 <td class="  p-3 flex justify-center"><button type="button" class="border rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200"
                  name="btn-sua" onclick="location.href='edit.php?id=<?php echo $value['id']; ?>"> Sửa </button>
