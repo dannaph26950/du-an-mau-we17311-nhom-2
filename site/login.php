@@ -1,12 +1,9 @@
 <?php
-
-
 include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/role.php';
 include_once '../dao/user.php';
 $data = user_select_all();
-// print_r($data);
 if(isset($_POST['login'])){
    foreach($data as $value){
     if($_POST['user']==$value['email'] && $_POST['pass']==$value['password']){

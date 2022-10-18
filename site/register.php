@@ -2,6 +2,7 @@
 include_once '../global.php';
 include_once '../dao/pdo.php';
 
+
 if(isset($_POST['register'])){
 $flag = true   ;
 
@@ -43,6 +44,7 @@ $flag = true   ;
   
 
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
