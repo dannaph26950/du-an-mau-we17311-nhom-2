@@ -38,7 +38,7 @@ $flag = true   ;
         $sql = "INSERT INTO user VALUES (null, '$email',' $fake_pass',' $adress',' $phone',' $role_id','$ho_ten')";
         $conn=pdo_get_connection();
         $conn->exec($sql);
-        echo 'đăng kí người dùng thành công';
+        $succes='đăng kí người dùng thành công';
     }
   
 
@@ -146,10 +146,14 @@ $flag = true   ;
 
     </nav>
     <!-- content -->
+    <h1 class="text-center" style="color: green;"> <?php echo isset($succes)? $succes : '' ?></h1>
     <div class="container mx-auto w-[800px] h-[500px]">
         <div class="bg2">
             <!-- <img src="img/ao plo.jpg" class="fixed" alt=""> -->
             <h1 class="text-5xl py-2 pt-14 text-center pb-10 italic font-medium text-white">ĐĂNG KÝ</h1>
+        
+        
+
             <form action="" method="post">
             <div class="grid grid-cols-2">
                 <div class="pl-10">
