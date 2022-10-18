@@ -23,9 +23,10 @@ function pdo_get_connection(){
 function pdo_execute($sql){
     //hàm thao tác dữ liệu
     $connect = pdo_get_connection();
-    $inputData = array_slice(func_get_args(), 1);
-    $stmt = $connect->prepare($sql);
-    $stmt->execute($inputData);
+    // $inputData = array_slice(func_get_args(), 1);
+    // $stmt = $connect->prepare($sql);
+    // $stmt->execute($inputData);
+    $connect->exec($sql);
 }
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)

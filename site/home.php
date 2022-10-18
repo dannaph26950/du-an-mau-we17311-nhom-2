@@ -51,7 +51,7 @@ include_once '../global.php'
                 <div class=" absolute hidden" id="content">
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
                         <a href="login.php" class="px-2 bg-blue-300 font-medium " href="">Đăng nhập</a>
-                        <a href="<?= SITE_URL?>register" class="px-2  bg-blue-300 font-medium" href="">Đăng ký</a>
+                        <a href="<?= SITE_URL?>?register" class="px-2  bg-blue-300 font-medium" href="">Đăng ký</a>
                         <a class="px-2  bg-blue-300 font-medium" href="">Đăng xuất</a>
                     </div>
                 </div>

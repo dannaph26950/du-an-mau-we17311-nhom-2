@@ -2,8 +2,8 @@
 include_once 'pdo.php';
 
 function user_insert($email, $mat_khau, $address,$phone,  $role_id, $ho_ten){
-    $sql = "INSERT INTO user(id,email, password,address_number, phone, ,role_id,name) VALUES (null,?, ?, ?, ?, ?, ?)";
-    pdo_execute($sql,null,$email, $mat_khau,$address,$phone,   $role_id, $ho_ten);
+    $sql = "INSERT INTO user VALUES (null,$email, $mat_khau,$address,$phone,$role_id, $ho_ten)";
+    pdo_execute($sql);
 }
 
 function user_update($ma_kh, $mat_khau, $ho_ten, $email, $phone, $address,$role_id){
