@@ -1,4 +1,5 @@
 <?php
+
 include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/products.php';
@@ -17,9 +18,14 @@ $data = products_select_all();
 
 <body>
     <!-- header  -->
-    <header class="mx-auto container bg-red-200 rounded-lg">
-        <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
+  
+       <header class="mx-auto container bg-red-200 rounded-lg flex justify-between items-center">
+         <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
+        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+
     </header>
+
+   
     <!-- nav  -->
     <div class="mx-auto container m-10 bg-slate-400 rounded-lg">
     <nav class=" flex p-6 gap-10">
@@ -64,7 +70,7 @@ $data = products_select_all();
                 <td class="  p-3 flex justify-center"><button type="button" class="border rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200"
                  name="btn-sua" onclick="location.href='edit.php?id=<?php echo $value['id']; ?>"> Sửa </button>
                     <button class="border rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200" name="btn-sua" ><a href="javascript:comfirmDeletez('delete.php?id=<?php echo $value["id"]; ?>')">Xóa</a></button>
-                    <button class="border rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200" name="btn-sua" >Chi tiết </button></td>
+                    <button class="border w-3/4 rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200" name="btn-sua" >Chi tiết </button></td>
             </tr>
             <?php } ?>
            

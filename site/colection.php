@@ -39,6 +39,7 @@ $data = products_select_all();
             </button>
             <input class="rounded-r-md input" placeholder="Tìm kiếm">
         </div>
+        <div>
         <div class="flex p-4 gap-6">
             <div class="">
                 <button class=""><svg width="35" height="35" viewBox="0 0 45 39" fill="none"
@@ -75,6 +76,8 @@ $data = products_select_all();
                 </button>
                
             </div>
+        </div>
+        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
         </div>
     </div>
     <!-- nav -->
