@@ -2,18 +2,18 @@
 include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/user.php';
-if(isset($_POST['register'])){
+// if(isset($_POST['register'])){
    
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $fake_pass=password_hash($password, PASSWORD_DEFAULT);
-    $adress = $_POST['adress'];
-    $phone = $_POST['phone'];
-    $role_id = '1';
-    $name = $_POST['name'];
-    user_insert($email,$password,$adress,$phone, $role_id,$name);
-    echo ('thành công');
-}
+//     $email = $_POST['email'];
+//     $password = $_POST['password'];
+//     $fake_pass=password_hash($password, PASSWORD_DEFAULT);
+//     $adress = $_POST['adress'];
+//     $phone = $_POST['phone'];
+//     $role_id = '1';
+//     $name = $_POST['name'];
+//     user_insert($email,$password,$adress,$phone, $role_id,$name);
+//     echo ('thành công');
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
