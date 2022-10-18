@@ -79,7 +79,6 @@ include_once ('../global.php')
 
         </table>
         <button type="submit" class="p-2 px-4 border rounded-lg bg-orange-400 hover:text-white font-medium mt-8">Vai trò</button>
-        <button <?php header('') ?> type="submit" class="p-2 px-4 border rounded-lg bg-orange-400 hover:text-white font-medium mt-8">Thêm Khách hàng</button>
     </div>
 </body>
 

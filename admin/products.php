@@ -35,8 +35,11 @@ $data = products_select_all();
     <div class="mx-auto container bg-green-200 rounded-lg">
         <h1 class=" p-6 text-2xl font-medium ">Danh sách sản phẩm</h1>
     </div>
+
     <!-- content -->
     <div class="mx-auto container">
+    <button type="submit" class="p-4 border rounded-lg bg-orange-400 hover:text-white font-medium mt-8">Thêm sản phẩm</button>
+
        <table border="1" class="w-full mt-6 text-center">
            
         
@@ -66,7 +69,6 @@ $data = products_select_all();
             <?php } ?>
            
        </table>
-       <button type="submit" class="p-4 border rounded-lg bg-orange-400 hover:text-white font-medium mt-8">Thêm sản phẩm</button>
     </div>
 </body>
 
