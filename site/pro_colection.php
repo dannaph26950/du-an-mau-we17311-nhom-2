@@ -1,5 +1,10 @@
 <?php 
-include_once '../global.php'
+include_once '../global.php';
+include_once '../dao/pdo.php';
+include_once '../dao/products.php';
+$id = $_GET['cate'];
+echo $id;
+$data = products_select_all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,16 +15,13 @@ include_once '../global.php'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="../content/css/input.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-
 </head>
-       <!-- header -->
-       <div class="mx-auto container bg-gray-400 flex justify-between ">
+
+<body>
+    <!-- header -->
+    <div class="mx-auto container bg-gray-400 flex justify-between ">
         <div class="p-4">
             <img class="h-12 w-40" src="../content/img/Screen Shot 2022-09-21 at 01.33 1.png" alt="">
         </div>
@@ -87,57 +89,78 @@ include_once '../global.php'
 
     </nav>
     <!-- baner -->
-    <div class="mx-auto container ">
-        <img src="../content/img/baner.png" class="w-full max-height" alt="">
+    <div class="mx-auto container relative ">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade ">
+
+            <img class="w-full max-height" src="../content/img/bannercolection2.png" alt="">
+
+        </div>
+
+        <div class="mySlides fade ">
+
+            <img src="../content/img/bannercolection.png" class="w-full max-height" alt="">
+
+        </div>
+
+        <div class="mySlides fade ">
+
+            <img src="../content/img/bannercolection1.png" class="w-full max-height" alt="">
+
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
     </div>
     <!-- content -->
-    <div class="container mx-auto  pl-6 flex">
-        <a href="" class="font-bold px-3 py-4 text-2xl">Giới thiệu</a>
-        <button>
-            <svg width="50" height="55" class="py-3" viewBox="0 0 77 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M3 35.1345L10.936 27.9935M10.936 27.9935L38.7118 3L66.4877 27.9935M10.936 27.9935V63.6984C10.936 65.6704 12.7125 67.2689 14.9039 67.2689H26.8079M66.4877 27.9935L74.4236 35.1345M66.4877 27.9935V63.6984C66.4877 65.6704 64.7112 67.2689 62.5197 67.2689H50.6157M26.8079 67.2689C28.9993 67.2689 30.7758 65.6704 30.7758 63.6984V49.4164C30.7758 47.4444 32.5523 45.8459 34.7438 45.8459H42.6798C44.8713 45.8459 46.6478 47.4444 46.6478 49.4164V63.6984C46.6478 65.6704 48.4242 67.2689 50.6157 67.2689M26.8079 67.2689H50.6157"
-                    stroke="#4A5568" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </button>
-    </div>
-    <div class="container mx-auto  pt-4">
-        <div class="flex gap-40 justify-center">
-            <div>
-                <p class="font-bold py-3 text-xl">
-                    THƯƠNG HIỆU <br>
-                    QUẦN ÁO NAM CHÍNH HÃNG
-                </p>
-                <p class="text-lg font-medium">
-                    Đến nay, thương hiệu đã tạo được dấu ấn trên thị <br> trường và đánh giá cao nhờ quy cách phục vụ
-                    chuyên <br> nghiệp, sản phẩm chất lượng cao, mẫu mã đa dạng và <br> cập nhật xu hướng một cách nhanh
-                    chóng. Đến nay, dù <br> có tuổi đời còn mới nhưng Hiddle đã có những thành <br> tựu đáng kể. Chỉ
-                    tính riêng nửa đầu năm 2021, số <br> lượng sản phẩm được bán ra trên sàn thương mại điện <br> tử
-                    Shopee của Hiddle đã vượt mức 2000 sản phẩm.
-                </p>
-            </div>
-            <img src="../content/img/sale 2.png" class="w-[360px] h-[350px]" alt="">
+    <div class="mx-auto container py-4">
+        <!-- nav content -->
+        <div class="p-4 text-center">
+            <h1 class=" font-medium text-2xl">Sản phẩm</h1>
+          
+        </div>
+        <!-- list sp -->
+        <div class="grid grid-cols-4 gap-8 p-4">
+            <?php 
+            foreach($data as $key =>$value){
+
+            if($value['category_id']==$id ){
+
+        
+            ?>
+            <a href="details.php?id=<?= $value['id'] ?>" class="">
+                <div class="hover:shadow-2xl hover:rounded-2xl ">
+                    <center>
+                        <img class="pt-4" src="../content/img/image 5.png" alt="">
+                    </center>
+                    <h1 class="text-center font-medium pt-2 text-lg"><?= $value['name']?></h1>
+                    <!-- MSP -->
+                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTN 01
+                    </h1>
+                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">450.000đ
+                    </h1>
+                </div>
+            </a>
+          <?php    } }?>
+        </div>
+        <div class=" flex justify-center gap-8 py-4">
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">1</button>
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">2</button>
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">3</button>
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">...</button>
         </div>
     </div>
-    <div class="container mx-auto w-[1200px] py-8 pt-10">
-        <div class="flex gap-56 justify-center">
-            <img src="../content/img/sale.png" class="w-[360px] h-[350px]" alt="">
-            <div>
-                <p class="font-bold py-3 text-2xl">
-                    SỨ MỆNH CỦA CHÚNG TÔI
-                </p>
-                <p class="text-lg font-medium">
-                    Với sứ mệnh là đem đến vẻ ngoài hoàn hảo <br> cho người đàn ông Việt Nam và đang từng <br> bước hoàn
-                    thiện và nâng cao chất lượng, dịch <br> vụ của mình. Chúng tôi hiểu rằng, chỉ có sáng <br> tạo mới
-                    mang thời trang đi xa. Đồng thời, <br> chúng tôi luôn không ngừng nỗ lực nâng cao <br> chất lượng
-                    sản phẩm cũng như dịch vụ chăm <br> sóc khách hàng để đem đến những trải <br> nghiệm mua sắm tốt
-                    nhất cho quý khách.
-                </p>
-            </div>
-        </div>
-    </div>
-     <!-- footer -->
-     <footer class="mx-auto container bg-slate-400 mt-4 ">
+    <!-- footet -->
+    <footer class="mx-auto container bg-slate-400 mt-4 ">
         <div class="flex justify-between p-4">
             <div class="">
                 <h1 class="text-xl font-medium">KẾT NỐI VỚI SOUTH FACTION</h1>
@@ -170,8 +193,6 @@ include_once '../global.php'
         </div>
     </footer>
     <script src="../content/js/app.js"></script>
-<body>
-
 </body>
 
 </html>

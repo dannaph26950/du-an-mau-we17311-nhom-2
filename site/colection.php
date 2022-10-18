@@ -1,5 +1,11 @@
 <?php 
-include_once '../global.php'
+include_once '../global.php';
+include_once "../dao/products.php";
+include_once '../dao/loai.php';
+$bst = loai_all();
+$data = products_select_all();
+// echo "<pre>";
+// var_dump($data);
 ?>
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
@@ -11,7 +17,7 @@ include_once '../global.php'
     <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
     <!-- <title>Owl-carousel Cards Slider | CodingNepal</title> -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../content/./css/./input.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -99,31 +105,25 @@ include_once '../global.php'
     </div>
     <!-- content -->
     <div class="mx-auto container p-6">
-        <div class="grid grid-cols-3 gap-10">
+    <div class="flex gap-10">
+            <?php 
+            foreach($bst as $index => $value){
+
+           
+            ?>
+             <a class="w-1/4" href="pro_colection.php?cate=<?php echo $value['id'] ?>">
             <div class="relative hover:scale-110 ">
 
                 <img class="w-full h-auto " src="../content/img/image 12.png" alt="">
                 <div class="absolute md:bottom-10 md:left-4">
                     <h1 class=" text-orange-400 text-lg font-medium">Thời trang nam</h1>
-                    <button class="p-2 px-8 bg-white hover:bg-orange-400 hover:text-white">Xem tất cả</button>
-                </div>
-            </div>
-            <div class="relative hover:scale-110  ">
 
-                <img class="w-full h-auto  " src="../content/img/image 10.png" alt="">
-                <div class="absolute md:bottom-10 md:left-4">
-                    <h1 class=" text-orange-400 text-lg font-medium">Thu-Đông 2022</h1>
-                    <button class="p-2 px-8 bg-white hover:bg-orange-400 hover:text-white">Xem tất cả</button>
+                 <button class="p-2 px-8 bg-white hover:bg-orange-400 hover:text-white"><?php echo $value['name']?></button>
                 </div>
             </div>
-            <div class="relative hover:scale-110 ">
-
-                <img class="w-full h-auto  " src="../content/img/image 4.png" alt="">
-                <div class="absolute md:bottom-10 md:left-4">
-                    <h1 class=" text-orange-400 text-lg font-medium">Đông 2022</h1>
-                    <button class="p-2 px-8 bg-white hover:bg-orange-400 hover:text-white">Xem tất cả</button>
-                </div>
-            </div>
+            </a> 
+          <?php 
+          }?>
 
 
         </div>
@@ -136,129 +136,50 @@ include_once '../global.php'
             <h1 class="text-center font-medium text-2xl">BST Hè 2022</h1>
         </div>
         <div class="slider owl-carousel mx-auto py-4  ">
-            <div class="card">
+        <?php foreach($data as $key=>$value){ 
+            if($value['category_id']==1){
+            ?>
+            <div class="">
                 <div class="img">
                     <img src="../content/img/image 2.png" class=" w-full "  alt="">
                 </div>
-                <div class="content">
-                    <div class="title">
-                        Áo polo đen</div>
-                    <div class="sub-title">
-                        450.000 đ</div>
+                <div class="content text-center">
+                    <div class="title font-medium text-xl">
+                        <?php echo $value["name"] ?></div>
+                    <div class="sub-title text-2xl text-red-500 font-bold">
+                        <?php echo $value["price"] ?>.000</div>
                     <div class="btn">
-                        <button>Xem ngay</button>
+                        <button class="bg-orange-400 text-2xl px-3 py-1 rounded-md">Xem ngay</button>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img/image 1.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        Áo sơ mi tay ngắn</div>
-                    <div class="sub-title">
-                        350.000 đ</div>
-                    
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img//image 7.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        Áo polo vàng</div>
-                    <div class="sub-title">
-                        500.000đ</div>
-                   
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img/image 5.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        Áo polo đen</div>
-                    <div class="sub-title">
-                        450.000 đ</div>
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-            
+
+        <?php
+             } }
+        ?>
         </div>
         <div class="">
             <h1 class="text-center font-medium text-2xl">BST Đông 2022</h1>
         </div>
         <div class="slider owl-carousel mx-auto py-4  ">
-            <div class="card">
+        <?php foreach($data as $key=>$value){ 
+            if($value["category_id"]==2){
+            ?>
+            <div class="">
                 <div class="img">
                     <img src="../content/img/image 3.png" class=" w-full "  alt="">
                 </div>
-                <div class="content">
-                    <div class="title">
-                        Áo len</div>
-                    <div class="sub-title">
-                        450.000 đ</div>
-                    <div class="btn">
-                        <button>Xem ngay</button>
+                <div class="content text-center">
+                    <div class="title font-medium text-xl">
+                        <?php echo $value["name"] ?></div>
+                    <div class="sub-title text-2xl text-red-500 font-bold">
+                        <?php echo $value["price"] ?>.000</div>
+                    <div class="btn ">
+                        <button class="bg-orange-400 text-2xl px-3 py-1 rounded-md">Xem ngay</button>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img/image 9.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        Áo Blazer</div>
-                    <div class="sub-title">
-                        350.000 đ</div>
-                    
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img//image 10.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        Áp len mỏng</div>
-                    <div class="sub-title">
-                        500.000đ</div>
-                   
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="../content/img/image 12.png" alt="">
-                </div>
-                <div class="content">
-                    <div class="title">
-                        Áo nỉ</div>
-                    <div class="sub-title">
-                        450.000 đ</div>
-                    <div class="btn">
-                        <button>Xem ngay</button>
-                    </div>
-                </div>
-            </div>
-            
+        <?php } } ?>
         </div>
 
     </div>

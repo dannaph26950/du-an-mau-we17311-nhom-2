@@ -51,7 +51,6 @@ ct.style.display = 'block';
 }
 
 
-
 function mua1() {
   var pro = document.getElementById('pro');
   var price = pro.getAttribute('data-price');
@@ -117,5 +116,6 @@ function xoa_gio(){
   document.getElementById('td2').innerHTML = dem;
   document.getElementById('td3').innerHTML = dem;
 }
+
 
 
