@@ -18,10 +18,10 @@ $data = user_select_all();
 
 <body>
     <!-- header  -->
-    <header class="mx-auto container bg-red-200 rounded-lg">
+   <header class="mx-auto container bg-red-200 rounded-lg">
        <header class="mx-auto container bg-red-200 rounded-lg flex justify-between items-center">
          <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
-        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+        <h2> <?php echo isset($_SESSION['name_admin'])? 'Xin chào,'.$_SESSION['name_admin']: '' ?> </h2>
 
     </header>
     </header>

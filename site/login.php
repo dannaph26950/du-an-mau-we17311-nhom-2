@@ -7,10 +7,12 @@ $data = user_select_all();
 if(isset($_POST['login'])){
    foreach($data as $key => $value){
     if($_POST['user']==$value['email'] && $_POST['pass']==$value['password']){
-        $_SESSION['name_user'] = $value['name'];
+       
         if($value['role_id'] == 2 ){
+            $_SESSION['name_admin'] = $value['name'];
             header("Location:http://localhost/du-an-mau-we17311-nhom-2/admin/");
         }else{
+            $_SESSION['name_user'] = $value['name'];
             header("Location:http://localhost/du-an-mau-we17311-nhom-2/site/");
         }
     }

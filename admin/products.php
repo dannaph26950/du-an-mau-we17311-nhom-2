@@ -21,7 +21,7 @@ $data = products_select_all();
   
        <header class="mx-auto container bg-red-200 rounded-lg flex justify-between items-center">
          <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
-        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+        <h2> <?php echo isset($_SESSION['name_admin'])? 'Xin chào,'.$_SESSION['name_admin']: '' ?> </h2>
 
     </header>
 
@@ -54,23 +54,25 @@ $data = products_select_all();
                 <th class="p-6">Mã sản phẩm</th>
                 <th class="border border-blue-200 p-3">Tên sản phẩm</th>
                 <th class="border border-blue-200 p-3">Images</th>
-                <th class="border border-blue-200 p-3">Giá </th>
+                <th class="border border-blue-200 p-3 w-1/6">Giá </th>
                 <th class="border border-blue-200 p-3">Số lượng</th>
                 <th class="border border-blue-200 p-3">Mô tả</th>
-                <th class="border border-blue-200 p-3">Chức năng</th>
+                <th class="border border-blue-200 p-3 w-1/6">Chức năng</th>
             </tr>
              <?php foreach($data as $key =>$value){ ?>
             <tr class="border border-blue-200">
                 <td class="border border-blue-200 p-3"><?php echo $value['id']; ?></td>
                 <td class="border border-blue-200 p-3 md:w-60"><?php echo $value['name']; ?></td>
                 <td class="border border-blue-200 p-3"><center><img src='<?php echo ($value['img_url']); ?>' class=" w-24 h-24 "></center></td>
-                <td class="border border-blue-200 p-3"><?php echo $value['price']; ?> đ</td>
+                <td class="border border-blue-200 p-3"><?php echo $value['price']; ?> .000đ</td>
                 <td class="border border-blue-200 p-3"><?php echo $value['quantily']; ?></td>
                 <td class="border border-blue-200 p-3 md:w-96"><?php echo $value['detail']; ?></td>
-                <td class="  p-3 flex justify-center"><button type="button" class="border rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200"
+                <th class="  flex flex-col p-3 m-3" >
+                    <button type="button" class="border rounded-md bg-slate-100 hover:bg-blue-200 mb-3"
                  name="btn-sua" onclick="location.href='edit.php?id=<?php echo $value['id']; ?>"> Sửa </button>
-                    <button class="border rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200" name="btn-sua" ><a href="javascript:comfirmDeletez('delete.php?id=<?php echo $value["id"]; ?>')">Xóa</a></button>
-                    <button class="border w-3/4 rounded-md bg-slate-100 px-2 mx-2 hover:bg-blue-200" name="btn-sua" >Chi tiết </button></td>
+                    <button class="border rounded-md bg-slate-100 hover:bg-blue-200 mb-3" name="btn-sua" ><a href="javascript:comfirmDeletez('delete.php?id=<?php echo $value["id"]; ?>')">Xóa</a></button>
+                    <button class="border  rounded-md bg-slate-100 hover:bg-blue-200" name="btn-sua" >Chi tiết </button>
+                </th>
             </tr>
             <?php } ?>
            
