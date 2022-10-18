@@ -9,7 +9,6 @@ $flag = true   ;
     $email = $_POST['email'];
     $password = $_POST['password'];
     $fake_pass=password_hash($password, PASSWORD_DEFAULT);
-    echo $fake_pass;
     $adress = $_POST['adress'];
     $phone = $_POST['phone'];
     $role_id = '1';
