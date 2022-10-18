@@ -2,6 +2,7 @@
 include_once ('../global.php');
 include_once ('../dao/user.php');
 include_once ('../dao/pdo.php');
+
 $data = user_select_all();
 ?>
 <!DOCTYPE html>
@@ -58,7 +59,9 @@ foreach($data as $key => $value){
             <tr class="border border-blue-200">
                <td class="p-3 border border-blue-200"><?php echo $value['id']?></td>
                <td class="border border-blue-200"><?php echo $value['name'] ?></td>
-               <td class="border border-blue-200"><?php echo $value['role_id'] ?></td>
+               <td class="border border-blue-200"><?php if($value['role_id'] ==1){
+                echo ('Khách hàng');
+               }elseif($value['role_id'] ==2){echo ('Khách hàng'); } else{ echo ('Tác giả');}?></td>
                <td class="border border-blue-200"></td>
                <!-- <td class="border border-blue-200">19</td> -->
                <td class="border border-blue-200">
