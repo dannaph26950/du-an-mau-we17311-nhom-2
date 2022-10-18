@@ -1,18 +1,47 @@
 <?php 
 include_once '../global.php';
 include_once '../dao/pdo.php';
-include_once '../dao/user.php';
+
 if(isset($_POST['register'])){
-   
+$flag = true   ;
+
     $email = $_POST['email'];
     $password = $_POST['password'];
     $fake_pass=password_hash($password, PASSWORD_DEFAULT);
+    echo $fake_pass;
     $adress = $_POST['adress'];
     $phone = $_POST['phone'];
     $role_id = '1';
-    $name = $_POST['name'];
-    user_insert($email,$password,$adress,$phone, $role_id,$name);
-    echo ('thành công');
+    $ho_ten = $_POST['name'];
+    if(empty($ho_ten)){
+         $err_name = 'không được để trống';
+        $flag=false;
+    }
+    if(empty($email)){
+        $err_email = 'không được để trống';
+        $flag=false;
+    }
+    if(empty($phone)){
+        $err_phone = 'không được để trống';
+        $flag=false;
+    }
+    if(empty($adress)){
+        $err_adress = 'không được để trống';
+        $flag=false;
+    }
+    if(empty($password)){
+        $err_pass = 'không được để trống';
+        $flag=false;
+    }
+  
+    if($flag==true){
+        $sql = "INSERT INTO user VALUES (null, '$email',' $fake_pass',' $adress',' $phone',' $role_id','$ho_ten')";
+        $conn=pdo_get_connection();
+        $conn->exec($sql);
+        echo 'đăng kí người dùng thành công';
+    }
+  
+
 }
 ?>
 <!DOCTYPE html>
@@ -125,27 +154,27 @@ if(isset($_POST['register'])){
                 <div class="pl-10">
                     <div class="flex gap-4 py-2">
                         <p class=" font-semibold text-white">Full name *</p>
-                        <div class="pl-[37px]"><input type="text" name="name" class=" border border-blue-600 rounded-sm" placeholder="Full name"></div>
+                        <div class="pl-[37px]"><input type="text" name="name" class=" border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_name)?  $err_name: 'full name' ?>"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-5">
                         <p class=" font-semibold text-white">Email *</p>
-                        <div class="pl-[64px]"><input type="email" name="email" class="border border-blue-600 rounded-sm" placeholder="Email"></div>
+                        <div class="pl-[64px]"><input type="email" name="email" class="border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_email)?  $err_email: 'email' ?>"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
                         <p class=" font-semibold text-white">Phone number *</p>
-                        <input type="text" name="phone" placeholder="Phone number" class="border border-blue-600 rounded-sm" >
+                        <input type="text" name="phone" placeholder="<?php echo isset($err_phone)?  $err_phone: 'phone' ?>" class="border border-blue-600 rounded-sm" >
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
                         <p class=" font-semibold text-white">Address *</p>
-                        <div class="pl-[49px]"><input type="text" name="adress" class="border border-blue-600 rounded-sm" placeholder="Address"></div>
+                        <div class="pl-[49px]"><input type="text" name="adress" class="border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_adress)?  $err_adress: 'address' ?>"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
                         <p class=" font-semibold text-white">Password *</p>
-                        <div class="pl-[27px]"><input type="text" name="password" class="border border-blue-600 rounded-sm" placeholder="Passwword"></div>
+                        <div class="pl-[27px]"><input type="text" name="password" class="border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_pass)?  $err_pass: 'password' ?>"></div>
                         <span></span>
                     </div>
                 </div>

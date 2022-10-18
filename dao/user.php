@@ -1,9 +1,9 @@
 <?php
-include 'pdo.php';
+include_once 'pdo.php';
 
-function user_insert($id, $email, $password, $address, $phone_number, $role_id){
-    $sql = "INSERT INTO user(id, email, 'password', 'address', phone_number, role_id) VALUES (?, ?, ?, ?, ?, ?)";
-    pdo_execute($sql, $id, $email, $password, $address, $phone_number, $role_id);
+function user_insert($id, $email, $password, $address, $phone_number, $role_id,$ho_ten){
+    $sql = "INSERT INTO user VALUES ($id, $email, $password, $address, $phone_number, $role_id,$ho_ten)";
+    pdo_execute($sql, $id, $email, $password, $address, $phone_number, $role_id,$ho_ten);
 
 }
 
