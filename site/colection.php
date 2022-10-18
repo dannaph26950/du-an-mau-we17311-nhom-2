@@ -3,7 +3,6 @@ include_once '../global.php';
 include_once "../dao/products.php";
 include_once '../dao/loai.php';
 $bst = loai_all();
-
 $data = products_select_all();
 // echo "<pre>";
 // var_dump($data);
@@ -18,7 +17,7 @@ $data = products_select_all();
     <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
     <!-- <title>Owl-carousel Cards Slider | CodingNepal</title> -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../content/./css/./input.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -106,7 +105,7 @@ $data = products_select_all();
     </div>
     <!-- content -->
     <div class="mx-auto container p-6">
-        <div class="flex gap-10">
+    <div class="flex gap-10">
             <?php 
             foreach($bst as $index => $value){
 
@@ -137,46 +136,50 @@ $data = products_select_all();
             <h1 class="text-center font-medium text-2xl">BST Hè 2022</h1>
         </div>
         <div class="slider owl-carousel mx-auto py-4  ">
-        <?php foreach($data as $key=>$value){ ?>
-            <div class="card">
+        <?php foreach($data as $key=>$value){ 
+            if($value['category_id']==1){
+            ?>
+            <div class="">
                 <div class="img">
                     <img src="../content/img/image 2.png" class=" w-full "  alt="">
                 </div>
-                <div class="content">
-                    <div class="title">
+                <div class="content text-center">
+                    <div class="title font-medium text-xl">
                         <?php echo $value["name"] ?></div>
-                    <div class="sub-title">
-                        <?php echo $value["price"] ?></div>
+                    <div class="sub-title text-2xl text-red-500 font-bold">
+                        <?php echo $value["price"] ?>.000</div>
                     <div class="btn">
-                        <button>Xem ngay</button>
+                        <button class="bg-orange-400 text-2xl px-3 py-1 rounded-md">Xem ngay</button>
                     </div>
                 </div>
             </div>
 
         <?php
-            }
+             } }
         ?>
         </div>
         <div class="">
             <h1 class="text-center font-medium text-2xl">BST Đông 2022</h1>
         </div>
         <div class="slider owl-carousel mx-auto py-4  ">
-        <?php foreach($data as $key=>$value){ ?>
-            <div class="card">
+        <?php foreach($data as $key=>$value){ 
+            if($value["category_id"]==2){
+            ?>
+            <div class="">
                 <div class="img">
                     <img src="../content/img/image 3.png" class=" w-full "  alt="">
                 </div>
-                <div class="content">
-                    <div class="title">
+                <div class="content text-center">
+                    <div class="title font-medium text-xl">
                         <?php echo $value["name"] ?></div>
-                    <div class="sub-title">
-                        <?php echo $value["price"] ?></div>
-                    <div class="btn">
-                        <button>Xem ngay</button>
+                    <div class="sub-title text-2xl text-red-500 font-bold">
+                        <?php echo $value["price"] ?>.000</div>
+                    <div class="btn ">
+                        <button class="bg-orange-400 text-2xl px-3 py-1 rounded-md">Xem ngay</button>
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        <?php } } ?>
         </div>
 
     </div>
