@@ -10,6 +10,7 @@ function products_update($id,$name, $quantily, $detail, $price,$category_id,$sal
     $sql = "UPDATE products SET 'name'=?, quantily=?, detail=?, price=?, category_id=?, sale_id=? WHERE id=?";
     pdo_execute($sql,$id,$name, $quantily, $detail, $price,$category_id,$sale_id);
 }
+
 // categories
 function loai_all(){
     $sql="SELECT * FROM categories";
@@ -20,6 +21,16 @@ function sale_product(){
     $sql="SELECT * FROM products_sale";
     return pdo_query($sql);
 }
+
+
+
+function products_delete($ma_hh){
+    $sql = "DELETE FROM products WHERE  id=?";
+            pdo_execute($sql, $ma_hh);
+            echo $sql;
+        }
+
+
 
 // select product_img
 function products_img_All(){

@@ -1,78 +1,26 @@
 <?php 
-include_once '../global.php';
-include_once '../dao/pdo.php';
-
-
-if(isset($_POST['register'])){
-$flag = true   ;
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $fake_pass=password_hash($password, PASSWORD_DEFAULT);
-    $adress = $_POST['adress'];
-    $phone = $_POST['phone'];
-    $role_id = '1';
-    $ho_ten = $_POST['name'];
-    if(empty($ho_ten)){
-         $err_name = 'không được để trống';
-        $flag=false;
-    }
-    if(empty($email)){
-        $err_email = 'không được để trống';
-        $flag=false;
-    }
-    if(empty($phone)){
-        $err_phone = 'không được để trống';
-        $flag=false;
-    }
-    if(empty($adress)){
-        $err_adress = 'không được để trống';
-        $flag=false;
-    }
-    if(empty($password)){
-        $err_pass = 'không được để trống';
-        $flag=false;
-    }
-  
-    if($flag==true){
-        $sql = "INSERT INTO user VALUES (null, '$email',' $fake_pass',' $adress',' $phone',' $role_id','$ho_ten')";
-        $conn=pdo_get_connection();
-        $conn->exec($sql);
-        $succes='đăng kí người dùng thành công';
-    }
-  
-
-}
-
-
+include_once '../global.php'
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <link rel="stylesheet" href="../content/css/input.css">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <style>
 
-.bg2 {
-    background: url("../content/img/bgimg.png");
-
-    background-position: center;
-    background-size: 100% 100%;
-    padding-bottom: 90px;
-}
-    </style>
 </head>
+
 <body>
-     <!-- header -->
-     <div class="mx-auto container bg-gray-400 flex justify-between ">
+    <!-- header -->
+    <div class="mx-auto container bg-gray-400 flex justify-between ">
         <div class="p-4">
             <img class="h-12 w-40" src="../content/img/Screen Shot 2022-09-21 at 01.33 1.png" alt="">
         </div>
@@ -86,7 +34,6 @@ $flag = true   ;
             </button>
             <input class="rounded-r-md input" placeholder="Tìm kiếm">
         </div>
-        <div>
         <div class="flex p-4 gap-6">
             <div class="">
                 <button class=""><svg width="35" height="35" viewBox="0 0 45 39" fill="none"
@@ -98,12 +45,12 @@ $flag = true   ;
                 </button>
             </div>
             <div class="">
-                <button class=""><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
+                <button class="">  <button class=""><a href="../site/cart.php"><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 1H3.64487C4.6181 1 5.46728 1.74849 5.71917 2.82212L6.45004 5.95791M11.0185 25.5495C9.50014 25.5495 8.04401 26.2392 6.97039 27.4669C5.89678 28.6947 5.29363 30.3598 5.29363 32.096H35.349M11.0185 25.5495H32.4255C34.5647 20.5305 36.4329 15.3282 38.0053 9.97312C27.7005 6.96859 17.0804 5.61725 6.45004 5.95791M11.0185 25.5495L6.45004 5.95791M8.15605 38.6426C8.15605 39.0766 8.00526 39.4929 7.73686 39.7999C7.46845 40.1068 7.10442 40.2792 6.72484 40.2792C6.34526 40.2792 5.98122 40.1068 5.71282 39.7999C5.44442 39.4929 5.29363 39.0766 5.29363 38.6426C5.29363 38.2085 5.44442 37.7922 5.71282 37.4853C5.98122 37.1784 6.34526 37.0059 6.72484 37.0059C7.10442 37.0059 7.46845 37.1784 7.73686 37.4853C8.00526 37.7922 8.15605 38.2085 8.15605 38.6426V38.6426ZM32.4866 38.6426C32.4866 39.0766 32.3358 39.4929 32.0674 39.7999C31.799 40.1068 31.435 40.2792 31.0554 40.2792C30.6758 40.2792 30.3118 40.1068 30.0434 39.7999C29.775 39.4929 29.6242 39.0766 29.6242 38.6426C29.6242 38.2085 29.775 37.7922 30.0434 37.4853C30.3118 37.1784 30.6758 37.0059 31.0554 37.0059C31.435 37.0059 31.799 37.1784 32.0674 37.4853C32.3358 37.7922 32.4866 38.2085 32.4866 38.6426V38.6426Z"
                             stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    </svg></a>
                 </button>
                 <div class=" absolute hidden" id="content">
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
@@ -124,87 +71,67 @@ $flag = true   ;
                
             </div>
         </div>
-        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
-        </div>
-
     </div>
-   
-    
-   
     <!-- nav -->
     <nav class=" justify-center gap-8 flex w-full p-6 font-medium text-2xl mx-auto container">
-    <a href="<?= SITE_URL ?>" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
+        <a href="<?= SITE_URL ?>" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
         <a href="<?= SITE_URL ?>?introduce" class="list-none  hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Giới thiệu</a>
         <a href="<?= SITE_URL ?>?colection"
             class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Bộ sưu tập</a>
 
-            <a href="<?= SITE_URL ?>?products" class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Sản
+        <a href="<?= SITE_URL ?>?products" class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Sản
             phẩm</a>
 
 
         <a href="<?= SITE_URL ?>?sale"
             class="list-none  hover:bg-orange-500 hover:px-8 hover:p-2 rounded-md hover:text-white">Sale</a>
 
-
     </nav>
-    <!-- content -->
-    <h1 class="text-center" style="color: green;"> <?php echo isset($succes)? $succes : '' ?></h1>
-    <div class="container mx-auto w-[800px] h-[500px]">
-        <div class="bg2">
-            <!-- <img src="img/ao plo.jpg" class="fixed" alt=""> -->
-            <h1 class="text-5xl py-2 pt-14 text-center pb-10 italic font-medium text-white">ĐĂNG KÝ</h1>
-        
-        
-
-            <form action="" method="post">
-            <div class="grid grid-cols-2">
-                <div class="pl-10">
-                    <div class="flex gap-4 py-2">
-                        <p class=" font-semibold text-white">Full name *</p>
-                        <div class="pl-[37px]"><input type="text" name="name" class=" border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_name)?  $err_name: 'full name' ?>"></div>
-                        <span></span>
-                    </div>
-                    <div class="flex py-2 gap-5">
-                        <p class=" font-semibold text-white">Email *</p>
-                        <div class="pl-[64px]"><input type="email" name="email" class="border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_email)?  $err_email: 'email' ?>"></div>
-                        <span></span>
-                    </div>
-                    <div class="flex py-2 gap-4">
-                        <p class=" font-semibold text-white">Phone number *</p>
-                        <input type="text" name="phone" placeholder="<?php echo isset($err_phone)?  $err_phone: 'phone' ?>" class="border border-blue-600 rounded-sm" >
-                        <span></span>
-                    </div>
-                    <div class="flex py-2 gap-4">
-                        <p class=" font-semibold text-white">Address *</p>
-                        <div class="pl-[49px]"><input type="text" name="adress" class="border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_adress)?  $err_adress: 'address' ?>"></div>
-                        <span></span>
-                    </div>
-                    <div class="flex py-2 gap-4">
-                        <p class=" font-semibold text-white">Password *</p>
-                        <div class="pl-[27px]"><input type="text" name="password" class="border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_pass)?  $err_pass: 'password' ?>"></div>
-                        <span></span>
-                    </div>
-                </div>
-                <div class=" font-weight: 500 flex flex-col ">
-                    <h1 class="text-2xl text-white">Lợi ích của việc đăng kí tài khoản</h1>
-                    <div class="py-3 text-white">
-                        <p>- Kiểm tra trạng thái đơn hàng nhanh chóng</p>
-                        <p>- Bỏ sẵn hàng vào giỏ để mua sau</p>
-                        <p>- Mua hàng nhanh cực kì</p>
-                    </div>
-                    <br/>
-                    <div class="flex gap-2 pt-11">
-                        <button name="register" class="px-5 py-1 bg-orange-500 text-white border rounded-md hover:bg-yellow-500">Đăng ký</button>
-                        <a href="login.php" class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Đăng nhập</a>
-                        <button class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Quên mật khẩu</button>
-                    </div>
-                </div>
-            </div>
-            </form>
+    <div class='container mx-auto'>
+        <div class="align_item justify-center flex"><img src='../content/img/image 5.png'/></div>
+        <div class='flex flex-col text-center'>
+            <p class="">Name</p>
+            <p>email</p>
+            <p>adress</p>
+            <p>phone number</p>
+            
         </div>
     </div>
-    <script src="../content/js/app.js">
+   
+    <!-- footer -->
+    <footer class="mx-auto container bg-slate-400 mt-4 ">
+        <div class="flex justify-between p-4">
+            <div class="">
+                <h1 class="text-xl font-medium">KẾT NỐI VỚI SOUTH FACTION</h1>
+                <div class="flex py-2 gap-4">
+                    <img class="h-8 w-8" src="../content/img/Rectangle 12.png" alt="">
+                    <img class="h-8 w-8" src="../content/img/Rectangle 13.png" alt="">
+                    <img class="h-8 w-8" src="../content/img/Rectangle 14.png" alt="">
+                    <img class="h-8 w-8" src="../content/img/🦆 icon _phone_.png" alt="">
+                </div>
+                <h1 class="text-xl font-sm ">Hotline: 090 166 0116</h1>
+            </div>
+            <div class="">
+                <h1 class="text-xl font-medium">THƯƠNG HIỆU THỜI TRANG NAM SOUTH FASHION®</h1>
+                <div class="">
+                    <p class="text-xl ">Email mua hàng: southfashion@com.vn</p>
+                    <p class="text-xl ">Hotline: 090 166 0116</p>
+                    <p class="text-xl ">Tìm địa chỉ CỬA HÀNG gần bạn</p>
 
-    </script>
+                </div>
+            </div>
+            <div class="">
+                <h1 class="text-xl font-medium">CHÍNH SÁCH</h1>
+                <div class="">
+                    <p class="text-xl ">Chính sách khách vip</p>
+                    <p class="text-xl ">Thanh toán - Giao hàng</p>
+                    <p class="text-xl ">Chính sách đổi trả</p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
+
 </html>
