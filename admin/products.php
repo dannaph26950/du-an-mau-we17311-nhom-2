@@ -3,7 +3,8 @@
 include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/products.php';
-$data = products_select_all();
+$data = product_img();
+
 if(isset($_POST['add'])){
     $conn = pdo_get_connection();
     $name=$_POST["name"];

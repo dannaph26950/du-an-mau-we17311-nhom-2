@@ -4,9 +4,20 @@ include_once ('../dao/user.php');
 include_once ('../dao/pdo.php');
 include_once '../dao/role.php';
 $data = user_select_all();
-$role_all=role_select_all();
+$data_role = role_select_all();
 
-
+if(isset($_POST['add'])){
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $addres = $_POST['addres'];
+    $phone = $_POST['phone'];
+    $role_id = $_POST['role_id'];
+   $conn = pdo_get_connection();
+   $sql = "INSERT INTO user VALUES(null,'$email','$password','$addres','$phone','$role_id','$name') ";
+   $conn -> exec($sql);
+   $succes = "Them nguoi dung thanh cong";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +50,28 @@ $role_all=role_select_all();
             <a href="<?= ADMIN_URL?>?statistical" class="text-2xl rounded-lg border p-2 hover:bg-orange-400 hover:text-white">Thống kê</a>
         </nav>
     </div>
+    <form action="" method="POST" class="w-1/2 container mx-auto">
+        <p>them moi</p>
+        <label class="">Name</label>
+        <input type="text" class="w-full border" name="name">
+        <label class="">Email</label>
+        <input type="text" class="w-full border" name="email">
+        <label class="">Password</label>
+        <input type="password" class="w-full border" name="password">git
+        <label class="">Addres</label>
+        <input type="text" class="w-full border" name="addres">
+        <label class="">Phone number</label>
+        <input type="text" class="w-full border" name="phone">
+        <label class="">Vai trò</label>
+        <select name="role_id">
+               <?php foreach($data_role as $key =>$value){ ?>
+                <option value="<?php echo $value['id'] ?>"><?php echo $value['name'] ?></option>
+                <?php } ?>
+        </select>
+        <br>
+        <button name="add" type="submit" class="p-2 px-4 border rounded-lg bg-orange-400 hover:text-white font-medium mt-8">Thêm Tài khoản</button>
+        <?php echo isset($succes)? $succes : '' ?>
+        </form>
     <!-- tên chức năng -->
     <div class="mx-auto container bg-green-200 rounded-lg">
         <h1 class=" p-6 text-2xl font-medium ">Danh sách khách hàng</h1>
@@ -66,31 +99,13 @@ foreach($data as $key => $value){
                <td class="border border-blue-200"></td>
                <!-- <td class="border border-blue-200">19</td> -->
                <td class="border border-blue-200">
-                <button name="btn-detal" class="border rounded-md bg-slate-100 px-2">Sửa</button>
+             <a href="edituser.php?id=<?= $value['id']?>">   <button name="btn-detal"  class="border rounded-md bg-slate-100 px-2">Sửa</button></a>
                 <a href="user.php?id=<?php echo $value['id'] ?>"><button name="btn-delete" class="border rounded-md bg-slate-100 px-2">Xóa</button></a>
                </td>
             </tr>
             <?php } ?>
         </table>
-        <form action="" method="POST" class="w-[400px]">
-        <label class="">Name</label>
-        <input type="text" class="w-full border" name="name">
-        <label class="">Email</label>
-        <input type="text" class="w-full border" name="email">
-        <label class="">Password</label>
-        <input type="password" class="w-full border" name="password">git
-        <label class="">Addres</label>
-        <input type="text" class="w-full border" name="addres">
-        <label class="">Phone number</label>
-        <input type="text" class="w-full border" name="phone">
-        <label class="">Vai trò</label>
-        <section name="role_id">
-               <?php foreach($role_all as $key =>$valueRole){ ?>
-                <option value="<?php echo $valueRole['id'] ?>"><?php echo $valueRole['name'] ?></option>
-                <?php } ?>
-        </section>
-        <button type="submit" class="p-2 px-4 border rounded-lg bg-orange-400 hover:text-white font-medium mt-8">Thêm Tài khoản</button>
-        </form>
+        
     </div>
 </body>
 </html>

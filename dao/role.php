@@ -21,7 +21,7 @@
 
     //truy vấn tất cả các role
     function role_select_all(){
-        $sql = "SELECT * FROM role";
+        $sql = "SELECT * FROM roles";
         return pdo_query($sql);
     }
 
