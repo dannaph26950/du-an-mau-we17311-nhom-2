@@ -116,9 +116,9 @@ $data = products_select_all();
 
             <div class="mx-auto container px-8 bg-white">
                 <div class="slider owl-carousel mx-auto py-4 ">
-                    <div class="cart">
-                        <div class="img">
-                            <img src="../content/img/sale.png" class=" w-full " alt="">
+                    <div class="cart w-[450px]">
+                        <div class="img w-full">
+                            <img src="../content/img/sale.png" class="w-full" alt="">
                         </div>
                         <div class="content">
                             <span class="discount-tag">50% off</span>
@@ -126,12 +126,12 @@ $data = products_select_all();
                                 Áo sơ mi trắng</div>
                             <div class="sub-title">
                                 500.000 đ</div>
-                            <button class="cart-btn">add to cart</button>
+                            <button class=" cart-btn">add to cart</button>
 
                         </div>
                     </div>
-                    <div class="cart ">
-                        <div class="img">
+                    <div class="cart w-[450px]">
+                        <div class="img w-full">
                             <img src="../content/img/sale 2.png" class=" w-full " alt="">
                         </div>
                         <div class="content ">
@@ -143,8 +143,8 @@ $data = products_select_all();
                             <button class="cart-btn">add to cart</button>
                         </div>
                     </div>
-                    <div class="cart">
-                        <div class="img">
+                    <div class="cart w-[450px]">
+                        <div class="img w-full">
                             <img src="../content/img/sale 3.png" class=" w-full " alt="">
                         </div>
                         <div class="content">
