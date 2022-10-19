@@ -1,5 +1,7 @@
 <?php
 include_once '../dao/user.php';
+include_once '../global.php';
+include_once '../dao/pdo.php';
 
 // function user_insert($id, $email, $password, $address, $phone_number, $role_id,$ho_ten){
 //     $sql = "INSERT INTO user VALUES ($id, $email, $password, $address, $phone_number, $role_id,$ho_ten)";
@@ -17,7 +19,7 @@ function user_update($ma_kh, $mat_khau, $ho_ten, $email, $phone, $address,$role_
 }
 
 function user_delete($ma_kh){
-    $sql = "DELETE FROM user  WHERE ma_kh=?";
+    $sql = "DELETE FROM user  WHERE id=?";
     if(is_array($ma_kh)){
         foreach ($ma_kh as $ma) {
             pdo_execute($sql, $ma);

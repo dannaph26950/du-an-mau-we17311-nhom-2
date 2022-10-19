@@ -8,7 +8,7 @@ $cate = loai_new();
 $cateAll = loai_select_all();
 $products = products_select_all();
 $products_img=products_img_All();
-
+$sale=sale_product();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -162,7 +162,18 @@ $products_img=products_img_All();
                         <!-- MSP -->
                         <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:<?php echo $value['id'] ?>
                         </h1>
-                        <h1 class="text-center font-medium pb-2 text-lg text-red-500"><?php echo $value['price'] ?>.000đ
+                        <h1 class="text-center font-medium pb-2 text-lg text-red-500"><?php foreach($sale as $key => $valueSale){
+                           
+                                if($valueSale['id']==$value['sale_id']){
+                                    if($valueSale['sale']!=0){
+                                    echo round($value['price']*(100-$valueSale['sale'])/100,0);
+                                    }
+                                    else{
+                                        echo $value['price'];
+                                    }
+                                }
+                           
+                        } ?>.000đ
                         </h1>
                     </div>
                 </a>

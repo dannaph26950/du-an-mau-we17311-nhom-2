@@ -11,6 +11,18 @@ function products_update($id,$name, $quantily, $detail, $price,$category_id,$sal
     pdo_execute($sql,$id,$name, $quantily, $detail, $price,$category_id,$sale_id);
 }
 
+// categories
+function loai_all(){
+    $sql="SELECT * FROM categories";
+    return pdo_query($sql);
+}
+// sale product
+function sale_product(){
+    $sql="SELECT * FROM products_sale";
+    return pdo_query($sql);
+}
+
+
 
 function products_delete($ma_hh){
     $sql = "DELETE FROM products WHERE  id=?";
@@ -19,15 +31,21 @@ function products_delete($ma_hh){
         }
 
 
+
 // select product_img
 function products_img_All(){
     $sql = "SELECT * FROM product_img";
     return pdo_query($sql);
 }
+// select product,img
+function product_img(){
+    $sql ="SELECT * FROM products,product_img where products.id=product_img.product_id";
+    return pdo_query($sql);
+}
 // select product
 
 function products_select_all(){
-    $sql = "SELECT * FROM products,product_img where products.id = product_img.product_id";
+    $sql = "SELECT * FROM products";
     return pdo_query($sql);
 }
 
