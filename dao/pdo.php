@@ -4,11 +4,12 @@
  */
 function pdo_get_connection(){
     //hàm kết nối cơ sở dữ liệu
-    $dburl = "mysql:host=202.92.5.49;dbname=fumpddnwhosting_nhom2;charset=utf8";
-    $username = 'fumpddnwhosting_nhom2';
-    $password = 'hellloosololiaaa';
-    $conn = new PDO($dburl, $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $conn = new PDO(
+    "mysql:host=202.92.5.49;dbname=fumpddnwhosting_nhom2;charset=utf8",
+    'fumpddnwhosting_nhom2',
+    'hellloosololiaaa'
+    );
     return $conn;
 }
 /**
@@ -19,18 +20,11 @@ function pdo_get_connection(){
  */
 function pdo_execute($sql){
     //hàm thao tác dữ liệu
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
+    $conn = pdo_get_connection();
+    $input = array_slice(func_get_args(),1);
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($input);
+    echo "Connected successfully";
 }
 /**
  * Thực thi câu lệnh sql truy vấn dữ liệu (SELECT)
@@ -41,20 +35,10 @@ function pdo_execute($sql){
  */
 function pdo_query($sql){
     //hàm truy vấn nhiều dữ liệu
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $rows = $stmt->fetchAll();
-        return $rows;
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
+    $conn = pdo_get_connection();
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
 /**
  * Thực thi câu lệnh sql truy vấn một bản ghi
@@ -65,20 +49,11 @@ function pdo_query($sql){
  */
 function pdo_query_one($sql){
       //hàm truy vấn nhiều 1 dữ liệu
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $row;
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
+      $conn = pdo_get_connection();
+      $input = array_slice(func_get_args(),1);
+      $stmt = $conn->prepare($sql);
+      $stmt->execute($input);
+      return $stmt->fetch();
 }
 /**
  * Thực thi câu lệnh sql truy vấn một giá trị
@@ -89,19 +64,11 @@ function pdo_query_one($sql){
  */
 function pdo_query_value($sql){
     //hàm truy vấn trả về giá trịs
-    $sql_args = array_slice(func_get_args(), 1);
-    try{
-        $conn = pdo_get_connection();
-        $stmt = $conn->prepare($sql);
-        $stmt->execute($sql_args);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return array_values($row)[0];
-    }
-    catch(PDOException $e){
-        throw $e;
-    }
-    finally{
-        unset($conn);
-    }
+    $conn = pdo_get_connection();
+    $stmt = $conn->prepare($sql);
+    $input = array_slice(func_get_args(),1);
+    $stmt->execute($input);
+    $row = $stmt->fetch();
+    return array_values($row)[0];
 }
 ?>

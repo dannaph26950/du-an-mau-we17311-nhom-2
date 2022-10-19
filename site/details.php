@@ -1,3 +1,4 @@
+
 <?php
 include_once '../global.php';
 include_once "../dao/details.php";
@@ -9,6 +10,7 @@ $category_product=select_product_categories();
 $product_img=products_img_All();
 $comment=select_comment();
 $user=select_user();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +20,7 @@ $user=select_user();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../content/css/input.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="../content/css/input.css" rel="stylesheet">
 </head>
@@ -35,6 +38,7 @@ $user=select_user();
             </button>
             <input class="rounded-r-md input" placeholder="Tìm kiếm">
         </div>
+        <div>
         <div class="flex p-4 gap-6">
             <div class="">
                 <button class=""><svg width="35" height="35" viewBox="0 0 45 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,6 +66,8 @@ $user=select_user();
                 </button>
 
             </div>
+        </div>
+        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
         </div>
     </div>
     <!-- nav -->
@@ -178,6 +184,7 @@ $user=select_user();
             </p>
             <p class="font-medium  py-2">Màu sắc:Trắng kẻ xanh</p>
             <p class="font-medium  py-2">Size: 38/39/40/41/42/43</p>
+
 
 
         </div>

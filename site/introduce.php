@@ -13,6 +13,8 @@ include_once '../global.php'
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="../content/css/input.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
 </head>
@@ -31,6 +33,7 @@ include_once '../global.php'
             </button>
             <input class="rounded-r-md input" placeholder="Tìm kiếm">
         </div>
+        <div>
         <div class="flex p-4 gap-6">
             <div class="">
                 <button class=""><svg width="35" height="35" viewBox="0 0 45 39" fill="none"
@@ -67,6 +70,8 @@ include_once '../global.php'
                 </button>
                
             </div>
+        </div>
+        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
         </div>
     </div>
     <!-- nav -->

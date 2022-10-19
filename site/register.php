@@ -1,5 +1,49 @@
 <?php 
-include_once '../global.php'
+include_once '../global.php';
+include_once '../dao/pdo.php';
+
+
+if(isset($_POST['register'])){
+$flag = true   ;
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $fake_pass=password_hash($password, PASSWORD_DEFAULT);
+    $adress = $_POST['adress'];
+    $phone = $_POST['phone'];
+    $role_id = '1';
+    $ho_ten = $_POST['name'];
+    if(empty($ho_ten)){
+         $err_name = 'không được để trống';
+        $flag=false;
+    }
+    if(empty($email)){
+        $err_email = 'không được để trống';
+        $flag=false;
+    }
+    if(empty($phone)){
+        $err_phone = 'không được để trống';
+        $flag=false;
+    }
+    if(empty($adress)){
+        $err_adress = 'không được để trống';
+        $flag=false;
+    }
+    if(empty($password)){
+        $err_pass = 'không được để trống';
+        $flag=false;
+    }
+  
+    if($flag==true){
+        $sql = "INSERT INTO user VALUES (null, '$email',' $fake_pass',' $adress',' $phone',' $role_id','$ho_ten')";
+        $conn=pdo_get_connection();
+        $conn->exec($sql);
+        $succes='đăng kí người dùng thành công';
+    }
+  
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +53,21 @@ include_once '../global.php'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="../content/css/input.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <style>
+
+.bg2 {
+    background: url("../content/img/bgimg.png");
+
+    background-position: center;
+    background-size: 100% 100%;
+    padding-bottom: 90px;
+}
+    </style>
 </head>
 <body>
      <!-- header -->
@@ -26,6 +85,7 @@ include_once '../global.php'
             </button>
             <input class="rounded-r-md input" placeholder="Tìm kiếm">
         </div>
+        <div>
         <div class="flex p-4 gap-6">
             <div class="">
                 <button class=""><svg width="35" height="35" viewBox="0 0 45 39" fill="none"
@@ -62,9 +122,9 @@ include_once '../global.php'
                 </button>
                
             </div>
-            
         </div>
-        
+        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+        </div>
 
     </div>
    
@@ -72,66 +132,74 @@ include_once '../global.php'
    
     <!-- nav -->
     <nav class=" justify-center gap-8 flex w-full p-6 font-medium text-2xl mx-auto container">
-        <a href="<?= SITE_URL ?>" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
+    <a href="<?= SITE_URL ?>" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
         <a href="<?= SITE_URL ?>?introduce" class="list-none  hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Giới thiệu</a>
         <a href="<?= SITE_URL ?>?colection"
             class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Bộ sưu tập</a>
 
-        <a href="<?= SITE_URL ?>?products" class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Sản
+            <a href="<?= SITE_URL ?>?products" class="list-none   hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Sản
             phẩm</a>
 
 
         <a href="<?= SITE_URL ?>?sale"
             class="list-none  hover:bg-orange-500 hover:px-8 hover:p-2 rounded-md hover:text-white">Sale</a>
 
+
     </nav>
     <!-- content -->
+    <h1 class="text-center" style="color: green;"> <?php echo isset($succes)? $succes : '' ?></h1>
     <div class="container mx-auto w-[800px] h-[500px]">
         <div class="bg2">
             <!-- <img src="img/ao plo.jpg" class="fixed" alt=""> -->
-            <h1 class="text-5xl py-2 pt-14 text-center pb-10 italic font-medium ">ĐĂNG KÝ</h1>
+            <h1 class="text-5xl py-2 pt-14 text-center pb-10 italic font-medium text-white">ĐĂNG KÝ</h1>
+        
+        
+
+            <form action="" method="post">
             <div class="grid grid-cols-2">
                 <div class="pl-10">
                     <div class="flex gap-4 py-2">
-                        <p class=" font-semibold">Full name *</p>
-                        <div class="pl-[37px]"><input type="text" class="border border-blue-600 rounded-sm" placeholder="Full name"></div>
+                        <p class=" font-semibold text-white">Full name *</p>
+                        <div class="pl-[37px]"><input type="text" name="name" class=" border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_name)?  $err_name: 'full name' ?>"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-5">
-                        <p class=" font-semibold">Email *</p>
-                        <div class="pl-[64px]"><input type="email" name="" class="border border-blue-600 rounded-sm" placeholder="Email"></div>
+                        <p class=" font-semibold text-white">Email *</p>
+                        <div class="pl-[64px]"><input type="email" name="email" class="border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_email)?  $err_email: 'email' ?>"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
-                        <p class=" font-semibold">Phone number *</p>
-                        <input type="text" placeholder="Phone number" class="border border-blue-600 rounded-sm" >
+                        <p class=" font-semibold text-white">Phone number *</p>
+                        <input type="text" name="phone" placeholder="<?php echo isset($err_phone)?  $err_phone: 'phone' ?>" class="border border-blue-600 rounded-sm" >
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
-                        <p class=" font-semibold">Address *</p>
-                        <div class="pl-[49px]"><input type="text" class="border border-blue-600 rounded-sm" placeholder="Address"></div>
+                        <p class=" font-semibold text-white">Address *</p>
+                        <div class="pl-[49px]"><input type="text" name="adress" class="border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_adress)?  $err_adress: 'address' ?>"></div>
                         <span></span>
                     </div>
                     <div class="flex py-2 gap-4">
-                        <p class=" font-semibold">Passwword *</p>
-                        <div class="pl-[27px]"><input type="text" class="border border-blue-600 rounded-sm" placeholder="Passwword"></div>
+                        <p class=" font-semibold text-white">Password *</p>
+                        <div class="pl-[27px]"><input type="text" name="password" class="border border-blue-600 rounded-sm" placeholder="<?php echo isset($err_pass)?  $err_pass: 'password' ?>"></div>
                         <span></span>
                     </div>
                 </div>
-                <div class=" font-weight: 500;">
-                    <h1 class="text-2xl">Lợi ích của việc đăng kí tài khoản</h1>
-                    <div class="py-3">
+                <div class=" font-weight: 500 flex flex-col ">
+                    <h1 class="text-2xl text-white">Lợi ích của việc đăng kí tài khoản</h1>
+                    <div class="py-3 text-white">
                         <p>- Kiểm tra trạng thái đơn hàng nhanh chóng</p>
                         <p>- Bỏ sẵn hàng vào giỏ để mua sau</p>
                         <p>- Mua hàng nhanh cực kì</p>
                     </div>
+                    <br/>
                     <div class="flex gap-2 pt-11">
-                        <button class="px-5 py-1 bg-orange-500 text-white border rounded-md hover:bg-yellow-500">Đăng ký</button>
-                        <a href="login.html" class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Đăng nhập</a>
+                        <button name="register" class="px-5 py-1 bg-orange-500 text-white border rounded-md hover:bg-yellow-500">Đăng ký</button>
+                        <a href="login.php" class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Đăng nhập</a>
                         <button class="px-5 py-1 bg-orange-500 text-white border rounded-md  hover:bg-yellow-500">Quên mật khẩu</button>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
     <script src="../content/js/app.js">

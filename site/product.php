@@ -19,7 +19,10 @@ $products_img=products_img_All();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="../content/css/input.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../content/css/input.css">
+
+
 </head>
 
 <body>
@@ -35,6 +38,7 @@ $products_img=products_img_All();
             </button>
             <input class="rounded-r-md input" placeholder="Tìm kiếm">
         </div>
+        <div>
         <div class="flex p-4 gap-6">
             <div class="">
                 <button class=""><svg width="35" height="35" viewBox="0 0 45 39" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,6 +66,8 @@ $products_img=products_img_All();
                 </button>
 
             </div>
+        </div>
+        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
         </div>
     </div>
     <!-- nav -->
@@ -125,6 +131,7 @@ $products_img=products_img_All();
                 </a>
             <?php } ?>
 
+
         </div>
         <hr>
         <!-- nav content -->
@@ -138,6 +145,7 @@ $products_img=products_img_All();
         </div>
         <!-- list sp -->
         <div class="grid grid-cols-4 gap-8 p-4">
+
             <?php foreach ($products as $key => $value) { ?>
                 <a href="details.php?id=<?= $value['id'] ?>" class="">
 
@@ -159,6 +167,7 @@ $products_img=products_img_All();
                     </div>
                 </a>
             <?php } ?>
+
         </div>
         <div class=" flex justify-center gap-8 py-4">
             <button class="bg-gray-500 h-8 w-8 text-lg text-white">1</button>

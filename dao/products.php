@@ -1,22 +1,21 @@
 <?php
-require_once 'pdo.php';
+include_once 'pdo.php';
 
-function products_insert($ten_hh,$so_luong, $don_gia, $giam_gia, $hinh,$mo_ta,$loai){
-    $sql = "INSERT INTO products(ten_hh,so_luong, don_gia, giam_gia, hinh,mo_ta,loai) VALUES (?,?,?,?,?,?)";
-    pdo_execute($sql,$ten_hh,$so_luong, $don_gia, $giam_gia, $hinh,$mo_ta,$loai);
+function products_insert($id,$name, $quantily, $detail, $price,$category_id,$sale_id){
+    $sql = "INSERT INTO products (id, 'name', 'quantily, detail, price, category_id, sale_id) VALUES (?,?,?,?,?,?,?)";
+    pdo_execute($sql,$id,$name, $quantily, $detail, $price,$category_id,$sale_id);
 }
 
-function products_update($ma_hh,$ten_hh,$so_luong, $don_gia, $giam_gia, $hinh,$mo_ta,$loai){
-    $sql = "UPDATE products SET ten_hh=?,don_gia=?,giam_gia=?,hinh=?,ma_loai=?,dac_biet=?,so_luot_xem=?,ngay_nhap=?,mo_ta=? WHERE ma_hh=?";
-    pdo_execute($sql,$ten_hh,$so_luong, $don_gia, $giam_gia, $hinh,$mo_ta,$loai);
+function products_update($id,$name, $quantily, $detail, $price,$category_id,$sale_id){
+    $sql = "UPDATE products SET 'name'=?, quantily=?, detail=?, price=?, category_id=?, sale_id=? WHERE id=?";
+    pdo_execute($sql,$id,$name, $quantily, $detail, $price,$category_id,$sale_id);
 }
 
 function products_delete($ma_hh){
-    $sql = "DELETE FROM products WHERE  ma_hh=?";
-    if(is_array($ma_hh)){
-        foreach ($ma_hh as $ma) {
-            pdo_execute($sql, $ma);
+    $sql = "DELETE FROM products WHERE  id=?";
+            pdo_execute($sql, $ma_hh);
         }
+
     }
     else{
         pdo_execute($sql, $ma_hh);
@@ -28,8 +27,9 @@ function products_img_All(){
     return pdo_query($sql);
 }
 // select product
+
 function products_select_all(){
-    $sql = "SELECT * FROM products";
+    $sql = "SELECT * FROM products,product_img where products.id = product_img.product_id";
     return pdo_query($sql);
 }
 

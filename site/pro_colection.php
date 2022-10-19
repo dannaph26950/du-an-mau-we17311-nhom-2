@@ -1,27 +1,14 @@
-<?php
+<?php 
 include_once '../global.php';
 include_once '../dao/pdo.php';
-include_once '../dao/role.php';
-include_once '../dao/user.php';
-$data = user_select_all();
-if(isset($_POST['login'])){
-   foreach($data as $key => $value){
-    if($_POST['user']==$value['email'] && $_POST['pass']==$value['password']){
-       
-        if($value['role_id'] == 2 ){
-            $_SESSION['name_admin'] = $value['name'];
-            header("Location:http://localhost/du-an-mau-we17311-nhom-2/admin/");
-        }else{
-            $_SESSION['name_user'] = $value['name'];
-            header("Location:http://localhost/du-an-mau-we17311-nhom-2/site/");
-        }
-    }
-   }
-}
-
+include_once '../dao/products.php';
+$id = $_GET['cate'];
+echo $id;
+$data = products_select_all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,24 +16,12 @@ if(isset($_POST['login'])){
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../content/css/input.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <link rel="stylesheet" href="../content/css/input.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <style>
-        .bg {
-    background: url("../content/img/bgimg.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 46% 100%;
-    padding-bottom: 90px;
-}
-    </style>
 </head>
+
 <body>
-     <!-- header -->
-     <div class="mx-auto container bg-gray-400 flex justify-between ">
+    <!-- header -->
+    <div class="mx-auto container bg-gray-400 flex justify-between ">
         <div class="p-4">
             <img class="h-12 w-40" src="../content/img/Screen Shot 2022-09-21 at 01.33 1.png" alt="">
         </div>
@@ -100,12 +75,7 @@ if(isset($_POST['login'])){
         </div>
         <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
         </div>
-        
-
     </div>
-   
-    
-   
     <!-- nav -->
     <nav class=" justify-center gap-8 flex w-full p-6 font-medium text-2xl mx-auto container">
         <a href="<?= SITE_URL ?>" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
@@ -121,36 +91,111 @@ if(isset($_POST['login'])){
             class="list-none  hover:bg-orange-500 hover:px-8 hover:p-2 rounded-md hover:text-white">Sale</a>
 
     </nav>
+    <!-- baner -->
+    <div class="mx-auto container relative ">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade ">
+
+            <img class="w-full max-height" src="../content/img/bannercolection2.png" alt="">
+
+        </div>
+
+        <div class="mySlides fade ">
+
+            <img src="../content/img/bannercolection.png" class="w-full max-height" alt="">
+
+        </div>
+
+        <div class="mySlides fade ">
+
+            <img src="../content/img/bannercolection1.png" class="w-full max-height" alt="">
+
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
     <!-- content -->
-    <div class=" container mx-auto h-[400]">
-        <div class="bg">
-            <div class="text-center mx-auto ">
-                <h1 class="font-medium text-5xl pt-11 py-5 italic text-white">ĐĂNG NHẬP</h1>
-                <form action="" method="POST">
-                    <div class="py-3 pt-7">
-                        <input type="email" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="user" placeholder="Username">
-                    </div>
-                    <div class="py-3">
-                        <input type="text" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="pass" placeholder="Password">
-                    </div>
-                    <div class="mx-auto pt-4">
-                    <div class="py-3">
-                        <button href="" name="login" class="px-4 py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng nhập</button>
-                    </div>
-                    <div class="py-3">
-                        <a href="register.php" class="px-[25px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng ký</a>
-                    </div>
-                    <div class="py-3">
-                        <button href="" class="px-[9px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Quên mật khẩu</button>
-                    </div>    
+    <div class="mx-auto container py-4">
+        <!-- nav content -->
+        <div class="p-4 text-center">
+            <h1 class=" font-medium text-2xl">Sản phẩm</h1>
+          
+        </div>
+        <!-- list sp -->
+        <div class="grid grid-cols-4 gap-8 p-4">
+            <?php 
+            foreach($data as $key =>$value){
+
+            if($value['category_id']==$id ){
+
+        
+            ?>
+            <a href="details.php?id=<?= $value['id'] ?>" class="">
+                <div class="hover:shadow-2xl hover:rounded-2xl ">
+                    <center>
+                        <img class="pt-4" src="../content/img/image 5.png" alt="">
+                    </center>
+                    <h1 class="text-center font-medium pt-2 text-lg"><?= $value['name']?></h1>
+                    <!-- MSP -->
+                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTN 01
+                    </h1>
+                    <h1 class="text-center font-medium pb-2 text-lg text-red-500">450.000đ
+                    </h1>
                 </div>
-                </form>
-               
-            </div>
+            </a>
+          <?php    } }?>
+        </div>
+        <div class=" flex justify-center gap-8 py-4">
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">1</button>
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">2</button>
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">3</button>
+            <button class="bg-gray-500 h-8 w-8 text-lg text-white">...</button>
         </div>
     </div>
-    <script src="../content/js/app.js">
+    <!-- footet -->
+    <footer class="mx-auto container bg-slate-400 mt-4 ">
+        <div class="flex justify-between p-4">
+            <div class="">
+                <h1 class="text-xl font-medium">KẾT NỐI VỚI SOUTH FACTION</h1>
+                <div class="flex py-2 gap-4">
+                    <img class="h-8 w-8" src="../content/img/Rectangle 12.png" alt="">
+                    <img class="h-8 w-8" src="../content/img/Rectangle 13.png" alt="">
+                    <img class="h-8 w-8" src="../content/img/Rectangle 14.png" alt="">
+                    <img class="h-8 w-8" src="../content/img/🦆 icon _phone_.png" alt="">
+                </div>
+                <h1 class="text-xl font-sm ">Hotline: 090 166 0116</h1>
+            </div>
+            <div class="">
+                <h1 class="text-xl font-medium">THƯƠNG HIỆU THỜI TRANG NAM SOUTH FASHION®</h1>
+                <div class="">
+                    <p class="text-xl ">Email mua hàng: southfashion@com.vn</p>
+                    <p class="text-xl ">Hotline: 090 166 0116</p>
+                    <p class="text-xl ">Tìm địa chỉ CỬA HÀNG gần bạn</p>
 
-    </script>
+                </div>
+            </div>
+            <div class="">
+                <h1 class="text-xl font-medium">CHÍNH SÁCH</h1>
+                <div class="">
+                    <p class="text-xl ">Chính sách khách vip</p>
+                    <p class="text-xl ">Thanh toán - Giao hàng</p>
+                    <p class="text-xl ">Chính sách đổi trả</p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="../content/js/app.js"></script>
 </body>
+
 </html>
