@@ -4,6 +4,7 @@
  */
 function pdo_get_connection(){
     //hàm kết nối cơ sở dữ liệu
+
     $conn = new PDO(
     "mysql:host=202.92.5.49;dbname=fumpddnwhosting_nhom2;charset=utf8",
     'fumpddnwhosting_nhom2',

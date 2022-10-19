@@ -16,6 +16,18 @@ function products_delete($ma_hh){
             pdo_execute($sql, $ma_hh);
         }
 
+    }
+    else{
+        pdo_execute($sql, $ma_hh);
+    }
+}
+// select product_img
+function products_img_All(){
+    $sql = "SELECT * FROM product_img";
+    return pdo_query($sql);
+}
+// select product
+
 function products_select_all(){
     $sql = "SELECT * FROM products,product_img where products.id = product_img.product_id";
     return pdo_query($sql);
