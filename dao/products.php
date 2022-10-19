@@ -14,6 +14,7 @@ function products_update($id,$name, $quantily, $detail, $price,$category_id,$sal
 function products_delete($ma_hh){
     $sql = "DELETE FROM products WHERE  id=?";
             pdo_execute($sql, $ma_hh);
+            echo $sql;
         }
 
     }
