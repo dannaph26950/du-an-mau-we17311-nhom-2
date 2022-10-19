@@ -3,6 +3,7 @@ include_once '../global.php';
 include_once "../dao/products.php";
 include_once '../dao/loai.php';
 $bst = loai_all();
+$img = products_img_All();
 $data = products_select_all();
 // echo "<pre>";
 // var_dump($data);
@@ -144,7 +145,12 @@ $data = products_select_all();
             ?>
             <div class="">
                 <div class="img">
-                    <img src="../content/img/image 2.png" class=" w-full "  alt="">
+                    <img src="<?php foreach($img as $key=>$val){
+                        if($value['product_id']==$val['id']){
+                            echo $val['img_url'];
+        
+                        }
+                    } ?>" class=" w-full "  alt="">
                 </div>
                 <div class="content text-center">
                     <div class="title font-medium text-xl">
@@ -170,7 +176,9 @@ $data = products_select_all();
             ?>
             <div class="">
                 <div class="img">
-                    <img src="../content/img/image 3.png" class=" w-full "  alt="">
+                <img src="<?php foreach($img as $key=>$value){
+                        echo $value['img_url'];
+                    } ?>" class=" w-full "  alt="">
                 </div>
                 <div class="content text-center">
                     <div class="title font-medium text-xl">
