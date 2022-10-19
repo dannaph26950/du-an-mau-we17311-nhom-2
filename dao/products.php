@@ -11,16 +11,7 @@ function products_update($id,$name, $quantily, $detail, $price,$category_id,$sal
     pdo_execute($sql,$id,$name, $quantily, $detail, $price,$category_id,$sale_id);
 }
 
-function products_delete($ma_hh){
-    $sql = "DELETE FROM products WHERE  id=?";
-            pdo_execute($sql, $ma_hh);
-        }
 
-    }
-    else{
-        pdo_execute($sql, $ma_hh);
-    }
-}
 // select product_img
 function products_img_All(){
     $sql = "SELECT * FROM product_img";

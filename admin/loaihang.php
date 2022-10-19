@@ -1,5 +1,15 @@
 <?php
-include_once ('../global.php')
+include_once ('../global.php');
+include_once ('../dao/pdo.php');
+include_once ('../dao/loai.php');
+if(isset($_POST['add'])){
+    $conn = pdo_get_connection();
+    $name = $_POST['name'];
+    $sql = "INSERT INTO categories VALUES (null, '$name',null)";
+    echo $sql;
+    $conn->exec($sql);
+    $succes = 'them loai hang thanh cong';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,15 +48,16 @@ include_once ('../global.php')
     </div>
     <!-- content -->
     <div class="mx-auto container">
-        <form action="" method="" class="w-96 p-10">
+        <form action="" method="post" class="w-96 p-10">
             <span class="font-medium text-xl">Mã loại</span><br>
             <input type="text" class="border rounded-lg w-full py-2 my-4" placeholder="auto number">
             <span class="font-medium text-xl"> Tên loại</span><br>
-            <input type="text" class="border rounded-lg w-full py-2 my-4" placeholder="Name ">
-            <button type="submit" class=" p-2 font-medium rounded-lg border bg-orange-400 hover:text-white" name="btn-submit ">Thêm mới</button>
+            <input name="name" type="text" class="border rounded-lg w-full py-2 my-4" placeholder="Name ">
+            <button name='add' type="submit" class=" p-2 font-medium rounded-lg border bg-orange-400 hover:text-white" name="btn-submit ">Thêm mới</button>
             <button class="p-2 font-medium rounded-lg border bg-orange-400 hover:text-white" name="btn-reset">Nhập lại</button>
             <a href="listloaihang.php" class="p-2 font-medium rounded-lg border bg-orange-400 hover:text-white" >Danh sách</a>
         </form>
+        <?php echo isset(    $succes)? $succes:'' ?>
     </div>
 </body>
 
