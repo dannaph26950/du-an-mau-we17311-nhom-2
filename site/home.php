@@ -2,7 +2,8 @@
 include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/products.php';
-$data = products_select_all();
+$data = product_img();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

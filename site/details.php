@@ -10,7 +10,8 @@ $category_product=select_product_categories();
 $product_img=products_img_All();
 $comment=select_comment();
 $user=select_user();
-
+$sale=sale_product()
+;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,6 +130,22 @@ $user=select_user();
                 <!-- masp -->
                 <h1 class=" font-medium py-2 text-lg text-orange-500">MSP:<?= $rowdetail['id'] ?>
                 </h1>
+
+                <!-- gia -->
+                <h1 class=" font-medium py-2 text-lg text-orange-500">PRICE:<?php foreach($sale as $key => $valueSale){
+                           
+                           if($valueSale['id']==$rowdetail['sale_id']){
+                               if($valueSale['sale']!=0){
+                               echo round($rowdetail['price']*(100-$valueSale['sale'])/100,0);
+                               }
+                               else{
+                                   echo $rowdetail['price'];
+                               }
+                           }
+                      
+                   } ?>.000đ
+                </h1>
+
                 <!-- kieu ao -->
                 <h1 class=" font-medium py-2 text-lg text-gray-400">Trắng kẻ xanh
                 </h1>
@@ -184,9 +201,6 @@ $user=select_user();
             </p>
             <p class="font-medium  py-2">Màu sắc:Trắng kẻ xanh</p>
             <p class="font-medium  py-2">Size: 38/39/40/41/42/43</p>
-
-
-
         </div>
         <!-- Sản phẩm tương tự -->
         <h1 class="p-4 text-2xl font-medium">Sản phẩm tương tự</h1>
@@ -205,7 +219,18 @@ $user=select_user();
                     <!-- MSP -->
                     <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:<?= $value['id'] ?>
                     </h1>
-                    <h1 class="text-center font-medium pb-2 text-lg text-red-500"><?= $value['price'] ?>.000đ
+                    <h1 class="text-center font-medium pb-2 text-lg text-red-500"><?php foreach($sale as $key => $valSale){
+                           
+                           if($valSale['id']==$value['sale_id']){
+                               if($valSale['sale']!=0){
+                               echo round($value['price']*(100-$valSale['sale'])/100,0);
+                               }
+                               else{
+                                   echo $value['price'];
+                               }
+                           }
+                      
+                   } ?>.000đ
                     </h1>
                 </div>
             </a>
