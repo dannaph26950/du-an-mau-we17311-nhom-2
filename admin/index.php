@@ -12,6 +12,10 @@ elseif(isset($_GET['comment'])){
 
     $VIEW_NAME = 'comment.php';
 }
+elseif(isset($_GET['delete'])){
+
+    $VIEW_NAME = 'delete.php';
+}
 elseif(isset($_GET['user'])){
 
     $VIEW_NAME = 'user.php';
@@ -19,6 +23,9 @@ elseif(isset($_GET['user'])){
 elseif(isset($_GET['loaihang'])){
 
     $VIEW_NAME = 'loaihang.php';
+}elseif(isset($_GET['edit'])){
+
+    $VIEW_NAME = 'edit.php';
 }
 elseif(isset($_GET['listloaihang'])){
 
