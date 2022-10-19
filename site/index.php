@@ -1,8 +1,8 @@
 <?php
-require_once '../global.php';
+include_once '../global.php';
 if(isset($_GET['products'])){
 
-    $VIEW_NAME = 'details.php';
+    $VIEW_NAME = 'product.php';
 }elseif(isset($_GET['cart'])){
 
     $VIEW_NAME = 'cart.php';

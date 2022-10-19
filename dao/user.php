@@ -1,5 +1,10 @@
 <?php
-require_once 'pdo.php';
+include_once '../dao/user.php';
+
+// function user_insert($id, $email, $password, $address, $phone_number, $role_id,$ho_ten){
+//     $sql = "INSERT INTO user VALUES ($id, $email, $password, $address, $phone_number, $role_id,$ho_ten)";
+//     pdo_execute($sql, $id, $email, $password, $address, $phone_number, $role_id,$ho_ten);
+// }
 
 function user_insert(  $email,$mat_khau, $ho_ten, $phone, $address,$role_id){
     $sql = "INSERT INTO user(email, mat_khau, ho_ten,adress, phone,role_id) VALUES (?, ?, ?, ?, ?,?)";

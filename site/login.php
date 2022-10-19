@@ -1,5 +1,24 @@
-<?php 
-include_once '../global.php'
+<?php
+include_once '../global.php';
+include_once '../dao/pdo.php';
+include_once '../dao/role.php';
+include_once '../dao/user.php';
+$data = user_select_all();
+if(isset($_POST['login'])){
+   foreach($data as $key => $value){
+    if($_POST['user']==$value['email'] && $_POST['pass']==$value['password']){
+       
+        if($value['role_id'] == 2 ){
+            $_SESSION['name_admin'] = $value['name'];
+            header("Location:http://localhost/du-an-mau-we17311-nhom-2/admin/");
+        }else{
+            $_SESSION['name_user'] = $value['name'];
+            header("Location:http://localhost/du-an-mau-we17311-nhom-2/site/");
+        }
+    }
+   }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +60,7 @@ include_once '../global.php'
             </button>
             <input class="rounded-r-md input" placeholder="Tìm kiếm">
         </div>
+        <div>
         <div class="flex p-4 gap-6">
             <div class="">
                 <button class=""><svg width="35" height="35" viewBox="0 0 45 39" fill="none"
@@ -52,12 +72,12 @@ include_once '../global.php'
                 </button>
             </div>
             <div class="">
-                <button class="">  <button class=""><a href="../site/cart.php"><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
+                <button class=""><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 1H3.64487C4.6181 1 5.46728 1.74849 5.71917 2.82212L6.45004 5.95791M11.0185 25.5495C9.50014 25.5495 8.04401 26.2392 6.97039 27.4669C5.89678 28.6947 5.29363 30.3598 5.29363 32.096H35.349M11.0185 25.5495H32.4255C34.5647 20.5305 36.4329 15.3282 38.0053 9.97312C27.7005 6.96859 17.0804 5.61725 6.45004 5.95791M11.0185 25.5495L6.45004 5.95791M8.15605 38.6426C8.15605 39.0766 8.00526 39.4929 7.73686 39.7999C7.46845 40.1068 7.10442 40.2792 6.72484 40.2792C6.34526 40.2792 5.98122 40.1068 5.71282 39.7999C5.44442 39.4929 5.29363 39.0766 5.29363 38.6426C5.29363 38.2085 5.44442 37.7922 5.71282 37.4853C5.98122 37.1784 6.34526 37.0059 6.72484 37.0059C7.10442 37.0059 7.46845 37.1784 7.73686 37.4853C8.00526 37.7922 8.15605 38.2085 8.15605 38.6426V38.6426ZM32.4866 38.6426C32.4866 39.0766 32.3358 39.4929 32.0674 39.7999C31.799 40.1068 31.435 40.2792 31.0554 40.2792C30.6758 40.2792 30.3118 40.1068 30.0434 39.7999C29.775 39.4929 29.6242 39.0766 29.6242 38.6426C29.6242 38.2085 29.775 37.7922 30.0434 37.4853C30.3118 37.1784 30.6758 37.0059 31.0554 37.0059C31.435 37.0059 31.799 37.1784 32.0674 37.4853C32.3358 37.7922 32.4866 38.2085 32.4866 38.6426V38.6426Z"
                             stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg></a>
+                    </svg>
                 </button>
                 <div class=" absolute hidden" id="content">
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
@@ -77,7 +97,8 @@ include_once '../global.php'
                 </button>
                
             </div>
-            
+        </div>
+        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
         </div>
         
 
@@ -105,17 +126,16 @@ include_once '../global.php'
         <div class="bg">
             <div class="text-center mx-auto ">
                 <h1 class="font-medium text-5xl pt-11 py-5 italic text-white">ĐĂNG NHẬP</h1>
-                <form action="">
+                <form action="" method="POST">
                     <div class="py-3 pt-7">
                         <input type="email" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="user" placeholder="Username">
                     </div>
                     <div class="py-3">
                         <input type="text" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="pass" placeholder="Password">
                     </div>
-                </form>
-                <div class="mx-auto pt-4">
+                    <div class="mx-auto pt-4">
                     <div class="py-3">
-                        <button href="" class="px-4 py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng nhập</button>
+                        <button href="" name="login" class="px-4 py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng nhập</button>
                     </div>
                     <div class="py-3">
                         <a href="register.php" class="px-[25px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Đăng ký</a>
@@ -124,6 +144,8 @@ include_once '../global.php'
                         <button href="" class="px-[9px] py-2 bg-orange-500 text-stone-50 italic border rounded-md hover:bg-yellow-500">Quên mật khẩu</button>
                     </div>    
                 </div>
+                </form>
+               
             </div>
         </div>
     </div>

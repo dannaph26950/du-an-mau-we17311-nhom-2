@@ -1,5 +1,10 @@
 <?php 
-include_once '../global.php'
+include_once '../global.php';
+include_once '../dao/pdo.php';
+include_once '../dao/products.php';
+
+
+$data = products_select_all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +39,7 @@ include_once '../global.php'
             </button>
             <input class="rounded-r-md input" placeholder="Tìm kiếm">
         </div>
+        <div>
         <div class="flex p-4 gap-6">
             <div class="">
                 <button class=""><svg width="35" height="35" viewBox="0 0 45 39" fill="none"
@@ -45,12 +51,12 @@ include_once '../global.php'
                 </button>
             </div>
             <div class="">
-                <button class="">  <button class=""><a href="../site/cart.php"><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
+                <button class=""><svg width="35" height="35" viewBox="0 0 39 42" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M1 1H3.64487C4.6181 1 5.46728 1.74849 5.71917 2.82212L6.45004 5.95791M11.0185 25.5495C9.50014 25.5495 8.04401 26.2392 6.97039 27.4669C5.89678 28.6947 5.29363 30.3598 5.29363 32.096H35.349M11.0185 25.5495H32.4255C34.5647 20.5305 36.4329 15.3282 38.0053 9.97312C27.7005 6.96859 17.0804 5.61725 6.45004 5.95791M11.0185 25.5495L6.45004 5.95791M8.15605 38.6426C8.15605 39.0766 8.00526 39.4929 7.73686 39.7999C7.46845 40.1068 7.10442 40.2792 6.72484 40.2792C6.34526 40.2792 5.98122 40.1068 5.71282 39.7999C5.44442 39.4929 5.29363 39.0766 5.29363 38.6426C5.29363 38.2085 5.44442 37.7922 5.71282 37.4853C5.98122 37.1784 6.34526 37.0059 6.72484 37.0059C7.10442 37.0059 7.46845 37.1784 7.73686 37.4853C8.00526 37.7922 8.15605 38.2085 8.15605 38.6426V38.6426ZM32.4866 38.6426C32.4866 39.0766 32.3358 39.4929 32.0674 39.7999C31.799 40.1068 31.435 40.2792 31.0554 40.2792C30.6758 40.2792 30.3118 40.1068 30.0434 39.7999C29.775 39.4929 29.6242 39.0766 29.6242 38.6426C29.6242 38.2085 29.775 37.7922 30.0434 37.4853C30.3118 37.1784 30.6758 37.0059 31.0554 37.0059C31.435 37.0059 31.799 37.1784 32.0674 37.4853C32.3358 37.7922 32.4866 38.2085 32.4866 38.6426V38.6426Z"
                             stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg></a>
+                    </svg>
                 </button>
                 <div class=" absolute hidden" id="content">
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
@@ -70,6 +76,8 @@ include_once '../global.php'
                 </button>
                
             </div>
+        </div>
+        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
         </div>
     </div>
     <!-- nav -->
@@ -107,10 +115,10 @@ include_once '../global.php'
         <section class="product ">
 
             <div class="mx-auto container px-8 bg-white">
-                <div class="slider owl-carousel mx-auto py-4  ">
-                    <div class="cart">
-                        <div class="img">
-                            <img src="../content/img/sale.png" class=" w-full " alt="">
+                <div class="slider owl-carousel mx-auto py-4 ">
+                    <div class="cart w-[450px]">
+                        <div class="img w-full">
+                            <img src="../content/img/sale.png" class="w-full" alt="">
                         </div>
                         <div class="content">
                             <span class="discount-tag">50% off</span>
@@ -118,12 +126,12 @@ include_once '../global.php'
                                 Áo sơ mi trắng</div>
                             <div class="sub-title">
                                 500.000 đ</div>
-                            <button class="cart-btn">add to cart</button>
+                            <button class=" cart-btn">add to cart</button>
 
                         </div>
                     </div>
-                    <div class="cart ">
-                        <div class="img">
+                    <div class="cart w-[450px]">
+                        <div class="img w-full">
                             <img src="../content/img/sale 2.png" class=" w-full " alt="">
                         </div>
                         <div class="content ">
@@ -135,8 +143,8 @@ include_once '../global.php'
                             <button class="cart-btn">add to cart</button>
                         </div>
                     </div>
-                    <div class="cart">
-                        <div class="img">
+                    <div class="cart w-[450px]">
+                        <div class="img w-full">
                             <img src="../content/img/sale 3.png" class=" w-full " alt="">
                         </div>
                         <div class="content">
@@ -168,84 +176,25 @@ include_once '../global.php'
 
         </div>
         <div class="grid grid-cols-3 p-4 gap-10">
-            <a href="details.php" class="">
+            <?php foreach($data as $key =>$value){
+                
+                if(isset($value['sale_id'])){
+                ?>
+                
+            <a href="details.php?id=<?= $value['id'] ?>" class="">
                 <div class="hover:shadow-2xl hover:rounded-2xl ">
                     <center>
-                        <img class="pt-4" src="../content/img/image 5.png" alt="">
+                        <img class="pt-4 w-[390px] h-[390px]" src='<?php echo ($value['img_url']); ?>' alt="">
                     </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo sơ mi</h1>
+                    <h1 class="text-center font-medium pt-2 text-lg"><?= $value['name'] ?></h1>
                     <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTN 01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
+                    <!-- <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTN 01</h1> -->
+                    <p class="line-through text-red-600 text-center font-medium "><?= $value['price']?>.000đ</p>
+                    <p class="text-lg text-center font-medium "><?= ceil( ceil($value['price'])*0.75)?>.000đ</p>
                 </div>
             </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 6.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo sơ mi dài tay</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTD 01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 7.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo polo vàng</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:APLV01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 8.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo thun trắng</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ATTC 01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 9.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo Blazer kẻ vuông</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ABZ 01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
-            <a href="details.php" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4" src="../content/img/image 10.png" alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg">Áo len</h1>
-                    <!-- MSP -->
-                    <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ALM 01
-                    </h1>
-                    <p class="line-through text-red-600 text-center font-medium ">598.000đ</p>
-                    <p class="text-lg text-center font-medium ">459.000đ</p>
-                </div>
-            </a>
+<?php }
+ }?>
 
         </div>
     </div>

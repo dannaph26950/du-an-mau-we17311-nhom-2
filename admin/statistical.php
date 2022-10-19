@@ -14,8 +14,12 @@ include_once ('../global.php')
 
 <body>
     <!-- header  -->
-    <header class="mx-auto container bg-red-200 rounded-lg">
-        <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
+   <header class="mx-auto container bg-red-200 rounded-lg">
+       <header class="mx-auto container bg-red-200 rounded-lg flex justify-between items-center">
+         <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
+        <h2> <?php echo isset($_SESSION['name_admin'])? 'Xin chào,'.$_SESSION['name_admin']: '' ?> </h2>
+
+    </header>
     </header>
     <!-- nav  -->
     <div class="mx-auto container m-10 bg-slate-400 rounded-lg">

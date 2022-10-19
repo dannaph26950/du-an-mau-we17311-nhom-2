@@ -1,5 +1,5 @@
 <?php
-require_once 'pdo.php';
+include_once 'pdo.php';
 
 /**
  * Thêm loại mới
@@ -31,7 +31,15 @@ function loai_update($id, $name){
  * @return array mảng loại truy vấn được
  * @throws PDOException lỗi truy vấn
  */
-function comment_all(){
+
+// select 4 giá trị mới nhất 
+function loai_new(){
+    $sql ="SELECT * FROM categories ORDER BY ID DESC LIMIT 4";
+    return pdo_query($sql);
+}
+// select all danh mục
+function loai_select_all(){
+
     $sql = "SELECT * FROM categories";
     return pdo_query($sql);
 }

@@ -1,5 +1,9 @@
 <?php
-include_once ('../global.php')
+include_once ('../global.php');
+include_once ('../dao/user.php');
+include_once ('../dao/pdo.php');
+
+$data = user_select_all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +18,12 @@ include_once ('../global.php')
 
 <body>
     <!-- header  -->
-    <header class="mx-auto container bg-red-200 rounded-lg">
-        <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
+   <header class="mx-auto container bg-red-200 rounded-lg">
+       <header class="mx-auto container bg-red-200 rounded-lg flex justify-between items-center">
+         <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
+        <h2> <?php echo isset($_SESSION['name_admin'])? 'Xin chào,'.$_SESSION['name_admin']: '' ?> </h2>
+
+    </header>
     </header>
     <!-- nav  -->
     <div class="mx-auto container m-10 bg-slate-400 rounded-lg">
@@ -40,46 +48,30 @@ include_once ('../global.php')
                 <th class="border border-blue-200">Tên khách hàng</th>
                 <th class="border border-blue-200">Vai trò</th>
                 <th class="border border-blue-200">Avatar</th>
-                <th class="border border-blue-200">Tuổi</th>
+                <!-- <th class="border border-blue-200">Tuổi</th> -->
                 <th class="border border-blue-200">Chức năng</th>
             </tr>
+<?php 
+foreach($data as $key => $value){
+
+
+?>
             <tr class="border border-blue-200">
-               <td class="p-3 border border-blue-200">1</td>
-               <td class="border border-blue-200">nqv</td>
-               <td class="border border-blue-200">Quản trị</td>
+               <td class="p-3 border border-blue-200"><?php echo $value['id']?></td>
+               <td class="border border-blue-200"><?php echo $value['name'] ?></td>
+               <td class="border border-blue-200"><?php if($value['role_id'] ==1){
+                echo ('Khách hàng');
+               }elseif($value['role_id'] ==2){echo ('Khách hàng'); } else{ echo ('Tác giả');}?></td>
                <td class="border border-blue-200"></td>
-               <td class="border border-blue-200">19</td>
+               <!-- <td class="border border-blue-200">19</td> -->
                <td class="border border-blue-200">
                 <button name="btn-detal" class="border rounded-md bg-slate-100 px-2">Chi tiết</button>
                 <button name="btn-delete" class="border rounded-md bg-slate-100 px-2">Xóa</button>
                </td>
             </tr>
-            <tr class="border border-blue-200">
-                <td class="p-3">2</td>
-                <td class="border border-blue-200">nvg</td>
-                <td class="border border-blue-200">Khách hàng</td>
-                <td class="border border-blue-200"></td>
-                <td class="border border-blue-200">19</td>
-                <td class="border border-blue-200">
-                 <button name="btn-detal" class="border rounded-md bg-slate-100 px-2">Chi tiết</button>
-                 <button name="btn-delete" class="border rounded-md bg-slate-100 px-2">Xóa</button>
-                </td>
-             </tr>
-             <tr class="border border-blue-200">
-                <td class="p-3 border border-blue-200">3</td>
-                <td class="border border-blue-200">nmh</td>
-                <td class="border border-blue-200">Khách hàng</td>
-                <td class="border border-blue-200"></td>
-                <td class="border border-blue-200">19</td>
-                <td class="border border-blue-200">
-                 <button name="btn-detal" class="border rounded-md bg-slate-100 px-2">Chi tiết</button>
-                 <button name="btn-delete" class="border rounded-md bg-slate-100 px-2">Xóa</button>
-                </td>
-             </tr>
-
+            <?php } ?>
         </table>
         <button type="submit" class="p-2 px-4 border rounded-lg bg-orange-400 hover:text-white font-medium mt-8">Vai trò</button>
-        <button <?php header('') ?> type="submit" class="p-2 px-4 border rounded-lg bg-orange-400 hover:text-white font-medium mt-8">Thêm Khách hàng</button>
     </div>
 </body>
 
