@@ -1,5 +1,8 @@
 <?php
-include_once ('../global.php')
+include_once ('../global.php');
+include_once ('../dao/pdo.php');
+include_once ('../dao/loai.php');
+$data = loai_select_all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,24 +47,15 @@ include_once ('../global.php')
                 <th class="border border-blue-200">Tên loại</th>
                 <th class="border border-blue-200">Chức năng</th>
             </tr>
+            <?php foreach($data as $key => $value){ ?>
             <tr class="text-center border border-blue-200">
-                <td  class="border border-blue-200 p-3" >1</td>
-                <td class="border border-blue-200">Áo polo</td>
+                <td  class="border border-blue-200 p-3" ><?php echo $key?></td>
+                <td class="border border-blue-200"> <?php echo $value['name'] ?></td></td>
                 <td class="border border-blue-200"><button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-edit">Sửa </button>
                     <button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-delete">Xóa</button></td>
             </tr>
-            <tr class="text-center  border border-blue-200 ">
-                <td class="border border-blue-200 p-3">2</td>
-                <td class="border border-blue-200">Áo sơ mi</td>
-                <td class="border border-blue-200"><button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-edit">Sửa </button>
-                    <button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-delete">Xóa</button></td>
-            </tr>
-            <tr class="text-center  border border-blue-200 ">
-                <td  class="border border-blue-200 p-3">3</td>
-                <td class="border border-blue-200">Áo khoác</td>
-                <td class="border border-blue-200"><button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-edit">Sửa </button>
-                    <button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-delete">Xóa</button></td>
-            </tr>
+            <?php  } ?>
+           
        </table>
        <button type="submit" class=" p-2 font-medium rounded-lg border bg-orange-400 hover:text-white mt-4" name="btn-submit ">Thêm mới</button>
     </div>
