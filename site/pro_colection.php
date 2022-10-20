@@ -3,7 +3,7 @@ include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/products.php';
 $id = $_GET['cate'];
-echo $id;
+// echo $id;
 $data = products_select_all();
 ?>
 <!DOCTYPE html>
