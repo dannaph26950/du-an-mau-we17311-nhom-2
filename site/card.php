@@ -1,10 +1,5 @@
-<?php 
-include_once '../global.php';
-include_once '../dao/pdo.php';
-include_once '../dao/products.php';
-
-
-$data =product_img();
+<?php
+    require_once '../global.phpg';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,17 +8,17 @@ $data =product_img();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Giỏ hàng </title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="../content/css/input.css">
+    <link rel="stylesheet" href="../content/css/css.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-
 </head>
 
 <body>
-    <!-- header -->
+    <div class="container mx-auto">
+        <!-- header -->
     <div class="mx-auto container bg-gray-400 flex justify-between ">
         <div class="p-4">
             <img class="h-12 w-40" src="../content/img/Screen Shot 2022-09-21 at 01.33 1.png" alt="">
@@ -36,7 +31,7 @@ $data =product_img();
                         stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </button>
-            <input class="rounded-r-md input" placeholder="Tìm kiếm">
+            <input class="rounded-r-md input w-96" placeholder="Tìm kiếm">
         </div>
         <div>
         <div class="flex p-4 gap-6">
@@ -78,7 +73,12 @@ $data =product_img();
         </div>
         <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
         </div>
+        
+
     </div>
+   
+    
+   
     <!-- nav -->
     <nav class=" justify-center gap-8 flex w-full p-6 font-medium text-2xl mx-auto container">
         <a href="<?= SITE_URL ?>" class="list-none hover:bg-orange-500 hover:p-2 rounded-md hover:text-white">Trang chủ</a>
@@ -94,159 +94,85 @@ $data =product_img();
             class="list-none  hover:bg-orange-500 hover:px-8 hover:p-2 rounded-md hover:text-white">Sale</a>
 
     </nav>
-    <!-- baner -->
-    <div class="mx-auto container ">
-        <img src="../content/img/bannersale.png" class="w-full max-height" alt="">
-    </div>
-    <!-- content -->
-    <div class="mx-auto container">
-        <div class="flex">
-            <h1 class="text-2xl font-medium p-4">Bestsale </h1>
-            <div class="p-4">
-                <svg width="30" height="30" viewBox="0 0 42 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M9.858 19.1562L1.5 24.5L9.858 29.8438M9.858 19.1562L21 26.2812L32.142 19.1562M9.858 19.1562L1.5 13.8125L21 1.34375L40.5 13.8125L32.142 19.1562M32.142 19.1562L40.5 24.5L32.142 29.8438M32.142 29.8438L40.5 35.1875L21 47.6562L1.5 35.1875L9.858 29.8438M32.142 29.8438L21 36.9688L9.858 29.8438"
-                        stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+        <!--  -->
+        <div class="container mx-auto">
+            <div>
+                <h1 class="text-center text-4xl font-medium py-10">Giỏ hàng</h1>
             </div>
-
-        </div>
-        <section class="product ">
-
-            <div class="mx-auto container px-8 bg-white">
-                <div class="slider owl-carousel mx-auto py-4 ">
-                    <div class="cart w-[450px]">
-                        <div class="img w-full">
-                            <img src="../content/img/sale.png" class="w-full" alt="">
-                        </div>
-                        <div class="content">
-                            <span class="discount-tag">50% off</span>
-                            <div class="title">
-                                Áo sơ mi trắng</div>
-                            <div class="sub-title">
-                                500.000 đ</div>
-                            <button class=" cart-btn">add to cart</button>
-
-                        </div>
-                    </div>
-                    <div class="cart w-[450px]">
-                        <div class="img w-full">
-                            <img src="../content/img/sale 2.png" class=" w-full " alt="">
-                        </div>
-                        <div class="content ">
-                            <span class="discount-tag">40% off</span>
-                            <div class="title">
-                                Áo polo trắng</div>
-                            <div class="sub-title">
-                                450.000 đ</div>
-                            <button class="cart-btn">add to cart</button>
-                        </div>
-                    </div>
-                    <div class="cart w-[450px]">
-                        <div class="img w-full">
-                            <img src="../content/img/sale 3.png" class=" w-full " alt="">
-                        </div>
-                        <div class="content">
-                            <span class="discount-tag">30% off</span>
-                            <div class="title">
-                                Áo sơ mi xám</div>
-                            <div class="sub-title">
-                                400.000 đ</div>
-                            <button class="cart-btn">add to cart</button>
-
-                        </div>
-                    </div>
+            <table class="container mx-auto">
+                <tr class="">
+                    <td class="border border-black w-3/5 text-center h-14">Tên sản phẩm</td>
+                    <td class="border border-black w-20 text-center h-14">Hình</td>
+                    <td class="border border-black w-24 text-center h-14">Đơn giá</td>
+                    <td class="border border-black w-20 text-center h-14">Số lượng</td>
+                    <td class="border border-black w-24 text-center h-14">Thành tiền</td>
+                    <td class="border border-black w-24 text-center h-14">Thao tác</td>
+                </tr>
+                <tr>
+                    <td id="pro" data-price="900" class="border border-black w-1/2 text-center h-14">Iphone 13</td>
+                    <td class="border border-black w-20 text-center h-14"><img src="img/facebook.jfif"
+                            class="h-6 mx-auto" alt=""></td>
+                    <td class="border border-black w-24 text-center h-14">900</td>
+                    <td class="border border-black w-14 text-center h-14"><input type="number"
+                            class="text-center w-20 py-3" id="qty1"></td>
+                    <td class="border border-black w-24 text-center h-14"><span id="td1">...</span></td></td>
+                    <td class="text-center border border-black h-14">
+                        <button onclick="xoa1()" class="border border-black text-center  py-2 px-[6px]">Xóa</button>
+                        <button onclick="mua1()" class="border border-black text-center  py-2 px-[4px]">Mua</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="pri" data-price1="100" class="border border-black w-1/2 text-center h-14">pin dự phòng</td>
+                    <td class="border border-black w-20 text-center h-14"><img src="img/facebook.jfif"
+                            class="h-6 mx-auto" alt=""></td>
+                    <td class="border border-black w-24 text-center h-14">100</td>
+                    <td class="border border-black w-14 text-center h-14"><input type="number"
+                            class="text-center w-20 py-3" id="qty2"></td>
+                    <td class="border border-black w-14 text-center h-14"><span id="td2">...</span></td>
+                    <td class="text-center border border-black h-14">
+                        <button onclick="xoa2()" class="border border-black text-center  py-2 px-[6px]">Xóa</button>
+                        <button onclick="mua2()" class="border border-black text-center  py-2 px-[4px]">Mua</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="pre" data-price2="1000" class="border border-black w-1/2 text-center h-10">APPLE Macbook AIR 2022</td>
+                    <td class="border border-black w-20 text-center h-10"><img src="img/facebook.jfif"
+                            class="h-6 mx-auto" alt=""></td>
+                    <td class="border border-black w-24 text-center h-10">1000</td>
+                    <td class="border border-black w-14 text-center h-10"><input type="number"
+                            class="text-center w-20 py-3" id="qty3"></td>
+                    <td class="border border-black w-14 text-center h-10"><span id="td3">...</span></td></td>
+                    <td class="text-center border border-black h-14">
+                        <button onclick="xoa3()" class="border border-black text-center  py-2 px-[6px]">Xóa</button>
+                        <button onclick="mua3()" class="border border-black text-center  py-2 px-[4px]">Mua</button>
+                    </td>
+                </tr>
+            </table>
+            <div class="flex mx-auto">
+                <div class="border border-b-zinc-900 border-l-zinc-900 lg:w-[1274px] md:w-[1230px] w-[534px] h-14">
+                    <h1 class="py-3 text-center">Tổng đơn hàng</h1>
+                </div>
+                <div class="lg:w-[131px] md:w-40 w-[90px] border border-x-black border-b-black ">
+                    <h1 id="tong" class="text-center py-3"><span>...</span></h1>
+                </div>
+                <div class="m:hidden lg:block">
+                    <div class="lg:w-[131px] md:w-10 h-14 border border-r-black border-b-black"></div>
                 </div>
             </div>
-        </section>
-    </div>
-    <!-- Flashsale
-     -->
-    <div class="mx-auto container">
-        <div class="flex">
-            <h1 class="text-2xl font-medium p-4">Flashsale </h1>
-            <div class="p-4">
-                <svg width="30" height="30" viewBox="0 0 42 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M9.858 19.1562L1.5 24.5L9.858 29.8438M9.858 19.1562L21 26.2812L32.142 19.1562M9.858 19.1562L1.5 13.8125L21 1.34375L40.5 13.8125L32.142 19.1562M32.142 19.1562L40.5 24.5L32.142 29.8438M32.142 29.8438L40.5 35.1875L21 47.6562L1.5 35.1875L9.858 29.8438M32.142 29.8438L21 36.9688L9.858 29.8438"
-                        stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-
-        </div>
-        <div class="grid grid-cols-3 p-4 gap-10">
-            <?php foreach($data as $key =>$value){
-                
-                if($value['sale_id']!=1){
-                ?>
-                
-            <a href="details.php?id=<?= $value['id'] ?>" class="">
-                <div class="hover:shadow-2xl hover:rounded-2xl ">
-                    <center>
-                        <img class="pt-4 w-[390px] h-[390px]" src='<?php echo ($value['img_url']); ?>' alt="">
-                    </center>
-                    <h1 class="text-center font-medium pt-2 text-lg"><?= $value['name'] ?></h1>
-                    <!-- MSP -->
-                    <!-- <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTN 01</h1> -->
-                    <p class="line-through text-red-600 text-center font-medium "><?= $value['price']?>.000đ</p>
-                    <p class="text-lg text-center font-medium "><?= ceil( ceil($value['price'])*0.75)?>.000đ</p>
+            <div class="flex gap-5">
+                <div class=" py-3">
+                    <button onclick="dong_y()" id="dong_y" class="bg-orange-400 px-3 py-3 rounded-md border border-black">Đồng ý đặt hàng</button>
                 </div>
-            </a>
-<?php }
- }?>
+                <div class=" py-3">
+                    <button onclick="xoa_gio()" id="xoa_gio" class="bg-orange-400 px-3 py-3 rounded-md border border-black">Xóa giỏ hàng</button>
+                </div>
+            </div>
+        <!--  -->
+        <div>
 
         </div>
     </div>
-    <!-- footer -->
-    <footer class="mx-auto container bg-slate-400 mt-4 ">
-        <div class="flex justify-between p-4">
-            <div class="">
-                <h1 class="text-xl font-medium">KẾT NỐI VỚI SOUTH FACTION</h1>
-                <div class="flex py-2 gap-4">
-                    <img class="h-8 w-8" src="../content/img/Rectangle 12.png" alt="">
-                    <img class="h-8 w-8" src="../content/img/Rectangle 13.png" alt="">
-                    <img class="h-8 w-8" src="../content/img/Rectangle 14.png" alt="">
-                    <img class="h-8 w-8" src="../content/img/🦆 icon _phone_.png" alt="">
-                </div>
-                <h1 class="text-xl font-sm ">Hotline: 090 166 0116</h1>
-            </div>
-            <div class="">
-                <h1 class="text-xl font-medium">THƯƠNG HIỆU THỜI TRANG NAM SOUTH FASHION®</h1>
-                <div class="">
-                    <p class="text-xl ">Email mua hàng: southfashion@com.vn</p>
-                    <p class="text-xl ">Hotline: 090 166 0116</p>
-                    <p class="text-xl ">Tìm địa chỉ CỬA HÀNG gần bạn</p>
-
-                </div>
-            </div>
-            <div class="">
-                <h1 class="text-xl font-medium">CHÍNH SÁCH</h1>
-                <div class="">
-                    <p class="text-xl ">Chính sách khách vip</p>
-                    <p class="text-xl ">Thanh toán - Giao hàng</p>
-                    <p class="text-xl ">Chính sách đổi trả</p>
-
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script>
-        function showhide() {
-            var ct = document.getElementById("content");
-            if (ct.style.display == 'block')
-                ct.style.display = 'none';
-            else
-                ct.style.display = 'block';
-        }
-        $(".slider").owlCarousel({
-            loop: true,
-            autoplay: true,
-            // autoplayTimeout: 2000, //2000ms = 2s;
-            autoplayHoverPause: true,
-
-        });
-
-    </script>
+    <script src="../content/js/app.js"></script>
 </body>
 
 </html>
