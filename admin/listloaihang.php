@@ -49,7 +49,7 @@ $data = loai_select_all();
             </tr>
             <?php foreach($data as $key => $value){ ?>
             <tr class="text-center border border-blue-200">
-                <td  class="border border-blue-200 p-3" ><?php echo $key?></td>
+                <td  class="border border-blue-200 p-3" ><?php echo $value['id'] ?></td>
                 <td class="border border-blue-200"> <?php echo $value['name'] ?></td></td>
                 <td class="border border-blue-200"><button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-edit">Sửa </button>
                     <button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-delete">Xóa</button></td>
