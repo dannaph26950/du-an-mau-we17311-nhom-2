@@ -5,11 +5,11 @@ include_once '../dao/user.php';
 include_once '../dao/loai.php';
 include_once '../dao/role.php';
 $data_role = role_select_all();
+var_dump($data_role);
 $id = $_GET['id'];
-$conn = pdo_get_connection();
-$sql = "SELECT * FROM  user WHERE id ='$id'";
-$rows = $conn->query($sql)->fetch();
-$real_pass = password_verify($rows['password'], PASSWORD_DEFAULT);
+$rows =user_select_by_id($id);
+
+
 if (isset($_POST['edit'])) {
     $name = $_POST['name'];
     $mail = $_POST['mail'];
@@ -17,12 +17,9 @@ if (isset($_POST['edit'])) {
     $phone = $_POST['phone'];
     $role_id = $_POST['role_id'];
     $fake_pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-    $sql_update = "UPDATE user SET email='$mail',password='$fake_pass',address='$address',phone_number='$phone',role_id='$role_id',name='$name' WHERE id=$id";
-    // echo $sql_update;
-    $conn->exec($sql_update);
+    user_update($id,$mail,$fake_pass,$address,$phone,$role_id,$name);
     $succes = "sua nguoi dung thanh cong";
-    header("location: user.php");
+    header("location:user.php");
 }
 ?>
 <!DOCTYPE html>

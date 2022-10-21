@@ -4,7 +4,11 @@ include_once '../dao/pdo.php';
 include_once '../dao/products.php';
 
 
-$data =product_img();
+$data =products_select_all_by_role();
+
+function tinh_tien_sp_sale($goc,$sale){
+return $goc - $goc*$sale;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +80,7 @@ $data =product_img();
                
             </div>
         </div>
-        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
         </div>
     </div>
     <!-- nav -->
@@ -183,13 +187,15 @@ $data =product_img();
             <a href="details.php?id=<?= $value['id'] ?>" class="">
                 <div class="hover:shadow-2xl hover:rounded-2xl ">
                     <center>
-                        <img class="pt-4 w-[390px] h-[390px]" src='<?php echo ($value['img_url']); ?>' alt="">
+                        <img class="pt-4 w-[390px] h-[390px]" src='<?php echo ($value['img_name']); ?>' alt="">
                     </center>
                     <h1 class="text-center font-medium pt-2 text-lg"><?= $value['name'] ?></h1>
                     <!-- MSP -->
                     <!-- <h1 class="text-center font-medium py-2 text-lg text-orange-500">MSP:ASMTN 01</h1> -->
                     <p class="line-through text-red-600 text-center font-medium "><?= $value['price']?>.000đ</p>
-                    <p class="text-lg text-center font-medium "><?= ceil( ceil($value['price'])*0.75)?>.000đ</p>
+                    <p class="text-lg text-center font-medium "><?php
+                  echo  ceil(tinh_tien_sp_sale($value['price'],$value['sale']))
+                    // echo $value['price']*$value['sale'] ?>.000đ</p>
                 </div>
             </a>
 <?php }

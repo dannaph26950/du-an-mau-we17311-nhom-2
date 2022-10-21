@@ -2,8 +2,7 @@
 include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/products.php';
-$data = product_img();
-
+$data = products_select_all();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +71,7 @@ $data = product_img();
                
             </div>
         </div>
-        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
         </div>
         
 
@@ -140,7 +139,7 @@ $data = product_img();
             <a href="details.php?id=<?= $value['id'] ?>" class="">
                 <div class="hover:shadow-2xl hover:rounded-2xl ">
                     <center>
-                        <img class="pt-4 w-[390px] h-[390px]" src='<?php echo ($value['img_url']); ?>' alt="">
+                        <img class="pt-4 w-[390px] h-[390px]" src='<?php echo ($value['img_name']); ?>' alt="">
                     </center>
                     <h1 class="text-center font-medium pt-2 text-lg"><?= $value['name'] ?></h1>
                     <!-- MSP -->

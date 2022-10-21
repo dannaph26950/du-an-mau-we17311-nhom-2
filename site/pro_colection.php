@@ -73,7 +73,7 @@ $data = products_select_all();
                
             </div>
         </div>
-        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
         </div>
     </div>
     <!-- nav -->

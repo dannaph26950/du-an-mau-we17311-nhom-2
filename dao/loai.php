@@ -59,14 +59,5 @@ function loai_select_by_id($ma_loai){
     $sql = "SELECT * FROM loai WHERE id=?";
     return pdo_query_one($sql, $ma_loai);
 }
-/**
- * Kiểm tra sự tồn tại của một loại
- * @param int $ma_loai là mã loại cần kiểm tra
- * @return boolean có tồn tại hay không
- * @throws PDOException lỗi truy vấn
- */
-function loai_exist($id){
-    $sql = "SELECT count(*) FROM loai WHERE id=?";
-    return pdo_query_value($sql, $id) > 0;
-}
+
 ?>

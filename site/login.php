@@ -3,20 +3,33 @@ include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/role.php';
 include_once '../dao/user.php';
-$data = user_select_all();
+
 if(isset($_POST['login'])){
-   foreach($data as $key => $value){
-    if($_POST['user']==$value['email'] && $_POST['pass']==$value['password']){
-       
-        if($value['role_id'] == 2 ){
-            $_SESSION['name_admin'] = $value['name'];
-            header("Location:http://localhost/du-an-mau-we17311-nhom-2/admin/");
-        }else{
-            $_SESSION['name_user'] = $value['name'];
-            header("Location:http://localhost/du-an-mau-we17311-nhom-2/site/");
-        }
+   $password = $_POST['pass'];
+    $email = $_POST['email'];
+    $user = get_user_by_email($email);
+
+    // echo '<pre>';
+    // var_dump($user);
+   if(count($user)>0){
+  
+    if(password_verify($password,  $user['password'])){
+        $_SESSION['auth'] = [
+            'email' => $user['email'],
+            'name' => $user['name'],
+            'role_id' => $user['role_id'],
+            'role_name' => $user['role_name']
+        ];
+        header("location: " . ADMIN_URL);
     }
-   }
+         
+
+}
+else{
+    header('location: ' . SITE_URL . "?login&msg=Tài khoản không chính xác, hãy nhập lại!");
+    die;
+}
+
 }
 
 ?>
@@ -98,7 +111,7 @@ if(isset($_POST['login'])){
                
             </div>
         </div>
-        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
         </div>
         
 
@@ -127,8 +140,11 @@ if(isset($_POST['login'])){
             <div class="text-center mx-auto ">
                 <h1 class="font-medium text-5xl pt-11 py-5 italic text-white">ĐĂNG NHẬP</h1>
                 <form action="" method="POST">
+                <?php if(isset($_GET['msg'])): ?>
+        <h3 style="color: white;"><?= $_GET['msg'] ?></h3>
+    <?php endif?>
                     <div class="py-3 pt-7">
-                        <input type="email" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="user" placeholder="Username">
+                        <input type="email" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="email" placeholder="Username">
                     </div>
                     <div class="py-3">
                         <input type="text" class="w-[350px] h-[30px] italic border border-indigo-700 rounded-md" name="pass" placeholder="Password">

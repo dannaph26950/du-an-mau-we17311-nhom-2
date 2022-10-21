@@ -35,8 +35,6 @@ else{
 
     $VIEW_NAME = 'home.php';
 }
-
-
 include_once $VIEW_NAME;
 
 ?>
