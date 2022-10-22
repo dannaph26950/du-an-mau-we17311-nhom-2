@@ -14,23 +14,26 @@ if(isset($_POST['login'])){
     // echo '<pre>';
     // var_dump($user);
    if(count($user)>0){
-  
+
+ 
     if(password_verify($password,  $user['password'])){
         $_SESSION['auth'] = [
             'email' => $user['email'],
             'name' => $user['name'],
             'role_id' => $user['role_id'],
             'role_name' => $user['role_name']
-        ];
-        header("location: " . ADMIN_URL);
-        die;
-    }
          
+        ];  
+         header("location: " . ADMIN_URL);
+        die;
+      
+    }
+    
 
-}else{
-    header('location: ' . SITE_URL . "?login&msg=Tài khoản không chính xác, hãy nhập lại!");
-    die;
 }
+    header("location: " . SITE_URL . '?login&msg=sai_tai_khoan_hoac_mat_khau!');
+        die;
+
 
 
 }

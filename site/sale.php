@@ -65,7 +65,7 @@ return $goc - $goc*$sale;
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
                     <a href="<?= SITE_URL ?>?login" class="px-2 bg-blue-300 font-medium " href="">Đăng nhập</a>
                         <a href="<?= SITE_URL ?>?register" class="px-2  bg-blue-300 font-medium" href="">Đăng ký</a>
-                        <a class="px-2  bg-blue-300 font-medium" href="">Đăng xuất</a>
+                        <form action="<?= SITE_URL . '?login'?>" method="POST">  <button name='dx' class="px-2  bg-blue-300 font-medium" href="">Đăng xuất</button></form>
                     </div>
                 </div>
             </div>
