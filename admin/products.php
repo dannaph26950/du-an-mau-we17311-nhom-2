@@ -3,7 +3,7 @@
 include_once '../global.php';
 include_once '../dao/pdo.php';
 include_once '../dao/products.php';
-$data = product_img();
+$data = products_select_all();
 
 if(isset($_POST['add'])){
     $conn = pdo_get_connection();
@@ -13,9 +13,7 @@ if(isset($_POST['add'])){
     $price=$_POST["price"];
     $category_id=$_POST["category_id"];
     $sale_id=$_POST["sale_id"];
-    $sql = "INSERT INTO products VALUES (null, '$name',' $quantily',' $detail',' $price',' $category_id','$sale_id')";
-    $conn->exec($sql);
-    $succes = 'thêm sản phẩm thành công';
+    products_insert($name,$quantily,$detail,$price,$category_id,$sale_id);
 }
 ?>
 <!DOCTYPE html>
@@ -34,7 +32,7 @@ if(isset($_POST['add'])){
   
        <header class="mx-auto container bg-red-200 rounded-lg flex justify-between items-center">
          <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
-        <h2> <?php echo isset($_SESSION['name_admin'])? 'Xin chào,'.$_SESSION['name_admin']: '' ?> </h2>
+         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
 
     </header>
 
@@ -109,7 +107,7 @@ if(isset($_POST['add'])){
             <tr class="border border-blue-200">
                 <td class="border border-blue-200 p-3"><?php echo $key+1; ?></td>
                 <td class="border border-blue-200 p-3 md:w-60"><?php echo $value['name']; ?></td>
-                <td class="border border-blue-200 p-3"><center><img src='<?php echo ($value['img_url']); ?>' class=" w-24 h-24 "></center></td>
+                <td class="border border-blue-200 p-3"><center><img src='<?php echo ($value['img_name']); ?>' class=" w-24 h-24 "></center></td>
                 <td class="border border-blue-200 p-3"><?php echo $value['price']; ?> .000đ</td>
                 <td class="border border-blue-200 p-3"><?php echo $value['quantily']; ?></td>
                 <td class="border border-blue-200 p-3 md:w-96"><?php echo $value['detail']; ?></td>

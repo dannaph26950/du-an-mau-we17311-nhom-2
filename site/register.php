@@ -1,11 +1,9 @@
 <?php 
 include_once '../global.php';
 include_once '../dao/pdo.php';
-
-
+include_once '../dao/user.php';
 if(isset($_POST['register'])){
 $flag = true   ;
-
     $email = $_POST['email'];
     $password = $_POST['password'];
     $fake_pass=password_hash($password, PASSWORD_DEFAULT);
@@ -35,13 +33,10 @@ $flag = true   ;
     }
   
     if($flag==true){
-        $sql = "INSERT INTO user VALUES (null, '$email',' $fake_pass',' $adress',' $phone',' $role_id','$ho_ten')";
-        $conn=pdo_get_connection();
-        $conn->exec($sql);
+    
+        user_insert($email,$fake_pass,$adress,$phone,$role_id,$ho_ten);
         $succes='đăng kí người dùng thành công';
     }
-  
-
 }
 
 
@@ -124,7 +119,7 @@ $flag = true   ;
                
             </div>
         </div>
-        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
         </div>
 
     </div>

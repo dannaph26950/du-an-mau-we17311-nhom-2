@@ -1,6 +1,9 @@
 <?php
 include_once ('../global.php');
-
+if(check_admin_role() == false){
+    header("location: " . SITE_URL . '?login&msg=Bạn không có quyền truy cập!');
+    die;
+}
 if(isset($_GET['products'])){
 
     $VIEW_NAME = 'products.php';

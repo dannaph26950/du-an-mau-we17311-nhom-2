@@ -3,20 +3,43 @@ include_once ('../global.php');
 include_once ('../dao/user.php');
 include_once ('../dao/pdo.php');
 include_once '../dao/role.php';
-$data = user_select_all();
+$data = user_select_all_by_role();
 $data_role = role_select_all();
 
 if(isset($_POST['add'])){
+    $flag = true;
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $fake_pass=password_hash($password, PASSWORD_DEFAULT);
     $addres = $_POST['addres'];
     $phone = $_POST['phone'];
     $role_id = $_POST['role_id'];
-   $conn = pdo_get_connection();
-   $sql = "INSERT INTO user VALUES(null,'$email','$password','$addres','$phone','$role_id','$name') ";
-   $conn -> exec($sql);
-   $succes = "Them nguoi dung thanh cong";
+    if(empty($name)){
+        $err_name = 'không được để trống';
+       $flag=false;
+   }
+   if(empty($email)){
+       $err_email = 'không được để trống';
+       $flag=false;
+   }
+   if(empty($phone)){
+       $err_phone = 'không được để trống';
+       $flag=false;
+   }
+   if(empty($addres)){
+       $err_adress = 'không được để trống';
+       $flag=false;
+   }
+   if(empty($password)){
+       $err_pass = 'không được để trống';
+       $flag=false;
+   }
+   if($flag==true){
+    user_insert($email,$fake_pass,$addres,$phone,$role_id,$name);
+    $succes = "Them nguoi dung thanh cong";
+   }
+  
 }
 ?>
 <!DOCTYPE html>
@@ -35,7 +58,7 @@ if(isset($_POST['add'])){
    <header class="mx-auto container bg-red-200 rounded-lg">
        <header class="mx-auto container bg-red-200 rounded-lg flex justify-between items-center">
          <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
-        <h2> <?php echo isset($_SESSION['name_admin'])? 'Xin chào,'.$_SESSION['name_admin']: '' ?> </h2>
+         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
 
     </header>
     </header>
@@ -53,15 +76,15 @@ if(isset($_POST['add'])){
     <form action="" method="POST" class="w-1/2 container mx-auto">
         <p>them moi</p>
         <label class="">Name</label>
-        <input type="text" class="w-full border" name="name">
+        <input type="text" class="w-full border" placeholder="<?php echo isset($err_name)?  $err_name: 'full name' ?>" name="name">
         <label class="">Email</label>
-        <input type="text" class="w-full border" name="email">
+        <input type="text" class="w-full border" placeholder="<?php echo isset($err_email)?  $err_email: 'email' ?>" name="email">
         <label class="">Password</label>
-        <input type="password" class="w-full border" name="password">git
+        <input type="password" class="w-full border" placeholder="<?php echo isset($err_pass)?  $err_pass: 'password' ?>" name="password">
         <label class="">Addres</label>
-        <input type="text" class="w-full border" name="addres">
+        <input type="text" class="w-full border" placeholder="<?php echo isset($err_adress)?  $err_adress: 'address' ?>" name="addres">
         <label class="">Phone number</label>
-        <input type="text" class="w-full border" name="phone">
+        <input type="text" class="w-full border" placeholder="<?php echo isset($err_phone)?  $err_phone: 'phone' ?>" name="phone">
         <label class="">Vai trò</label>
         <select name="role_id">
                <?php foreach($data_role as $key =>$value){ ?>
@@ -93,9 +116,8 @@ foreach($data as $key => $value){
             <tr class="border border-blue-200">
                <td class="p-3 border border-blue-200"><?php echo $value['id']?></td>
                <td class="border border-blue-200"><?php echo $value['name'] ?></td>
-               <td class="border border-blue-200"><?php if($value['role_id'] ==1){
-                echo ('Khách hàng');
-               }elseif($value['role_id'] ==2){echo ('Khách hàng'); } else{ echo ('Tác giả');}?></td>
+               <td class="border border-blue-200">
+                <?php echo $value['role_name']  ?></td>
                <td class="border border-blue-200"></td>
                <!-- <td class="border border-blue-200">19</td> -->
                <td class="border border-blue-200">

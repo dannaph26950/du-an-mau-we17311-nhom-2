@@ -9,6 +9,7 @@ $cateAll = loai_select_all();
 $products = products_select_all();
 $products_img=products_img_All();
 $sale=sale_product();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +68,7 @@ $sale=sale_product();
 
             </div>
         </div>
-        <h2> <?php echo isset($_SESSION['name_user'])? 'Xin chào,'.$_SESSION['name_user']: '' ?> </h2>
+         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
         </div>
     </div>
     <!-- nav -->
