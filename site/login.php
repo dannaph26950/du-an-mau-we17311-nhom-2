@@ -23,6 +23,7 @@ if(isset($_POST['login'])){
             'role_name' => $user['role_name']
         ];
         header("location: " . ADMIN_URL);
+        die;
     }
          
 
