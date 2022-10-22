@@ -80,7 +80,7 @@ return $goc - $goc*$sale;
                
             </div>
         </div>
-         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
+        <?php echo isset($_SESSION['name_user']) ? 'Xin chào,' . $_SESSION['name_user'] : '' ?>
         </div>
     </div>
     <!-- nav -->

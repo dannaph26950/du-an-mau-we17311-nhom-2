@@ -71,7 +71,8 @@ include_once '../global.php'
                
             </div>
         </div>
-         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
+                 <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
+
         </div>
     </div>
     <!-- nav -->
