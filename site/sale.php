@@ -79,8 +79,7 @@ return $goc - $goc*$sale;
                 </button>
                
             </div>
-        </div>
-         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
+        </div>  
         </div>
     </div>
     <!-- nav -->

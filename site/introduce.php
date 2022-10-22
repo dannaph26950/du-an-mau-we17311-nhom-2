@@ -71,7 +71,7 @@ include_once '../global.php'
                
             </div>
         </div>
-         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
+         
         </div>
     </div>
     <!-- nav -->

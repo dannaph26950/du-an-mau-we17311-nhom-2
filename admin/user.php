@@ -58,7 +58,7 @@ if(isset($_POST['add'])){
    <header class="mx-auto container bg-red-200 rounded-lg">
        <header class="mx-auto container bg-red-200 rounded-lg flex justify-between items-center">
          <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
-         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
+         
 
     </header>
     </header>

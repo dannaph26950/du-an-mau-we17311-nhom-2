@@ -68,7 +68,7 @@ $sale=sale_product()
 
             </div>
         </div>
-         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
+         
         </div>
     </div>
     <!-- nav -->

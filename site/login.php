@@ -111,7 +111,7 @@ else{
                
             </div>
         </div>
-         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
+         
         </div>
         
 

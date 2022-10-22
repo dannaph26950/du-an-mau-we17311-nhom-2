@@ -71,7 +71,7 @@ $data = products_select_all();
                
             </div>
         </div>
-         <label for="">Xin chào, <?= $_SESSION['auth']['name']?></label>
+         
         </div>
         
 
