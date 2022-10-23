@@ -31,7 +31,7 @@ if(isset($_POST['login'])){
     
 
 }
-    header("location: " . SITE_URL . '?login&msg=sai_tai_khoan_hoac_mat_khau!');
+    header("location: " . SITE_URL . '?login&msg=sai tài khoản!');
         die;
 
 

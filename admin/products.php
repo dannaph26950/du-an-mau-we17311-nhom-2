@@ -113,7 +113,7 @@ if(isset($_POST['add'])){
                 <td class="border border-blue-200 p-3"><?php echo $value['quantily']; ?></td>
                 <td class="border border-blue-200 p-3 md:w-96"><?php echo $value['detail']; ?></td>
                 <th class="  flex flex-col p-3 m-3" >
-                <a href="edit.php?id=<?php echo $value['id']; ?> "> <button  class="border  rounded-md bg-slate-100 hover:bg-blue-200 mb-3"
+                <a href="edit.php?id=<?php echo $value['id'] ?> "> <button  class="border  rounded-md bg-slate-100 hover:bg-blue-200 mb-3"
                  name="btn-sua" > Sửa </button></a>
                  <button class="border  rounded-md bg-slate-100 hover:bg-blue-200 mb-3" onclick="del('delete.php?id=<?php echo $value['id']?>')" >xoa</button>
                     <button class="border  rounded-md bg-slate-100 hover:bg-blue-200" name="btn-sua" >Chi tiết </button>

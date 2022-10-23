@@ -23,6 +23,17 @@ join products_sale p_s
     ";
     return pdo_query($sql);
 }
+function products_destroy($id){
+    $removeProductsWithCategory = "DELETE from products where id = ?;
+    alter table categories drop constraint fk_category;
+    ";
+
+    pdo_execute($removeProductsWithCategory, $id);
+    // $removeCategoryQuery = "DELETE from categories where id = ?";
+    // pdo_execute($removeCategoryQuery, $id);
+    
+   
+}
 function products_select_one($id){
     $sql = "SELECT * FROM products where id  = ?";
     return pdo_query_one($sql,$id);
