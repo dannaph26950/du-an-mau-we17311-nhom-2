@@ -26,9 +26,6 @@
     }
 
     //Kiểm tra sự tồn tại của một size
-    function size_exist($id){
-        $sql = "SELECT count(*) FROM size WHERE id=?";
-        return pdo_query_value($sql, $id) > 0;
-    }
+  
     
 ?>
