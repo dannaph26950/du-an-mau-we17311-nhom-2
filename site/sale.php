@@ -80,9 +80,12 @@ return $goc - $goc*$sale;
                
             </div>
         </div>
-        <?php echo isset($_SESSION['name_user']) ? 'Xin chào,' . $_SESSION['name_user'] : '' ?>
+        <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
+
         </div>  
-        </div>
+      
+    </div>
+
     </div>
     <!-- nav -->
     <nav class=" justify-center gap-8 flex w-full p-6 font-medium text-2xl mx-auto container">

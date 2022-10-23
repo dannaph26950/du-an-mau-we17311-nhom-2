@@ -66,7 +66,8 @@ $data = products_select_all();
 
                 </div>
             </div>
-            <h2> <?php echo isset($_SESSION['name_user']) ? 'Xin chào,' . $_SESSION['name_user'] : '' ?> </h2>
+            <h2>                  <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
+ </h2>
         </div>
     </div>
     <!-- nav -->
