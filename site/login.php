@@ -15,7 +15,7 @@ if(isset($_POST['login'])){
     // var_dump($user);
    if(count($user)>0){
 
- 
+ //password_verify - Xác minh rằng mật khẩu khớp với một hàm băm
     if(password_verify($password,  $user['password'])){
         $_SESSION['auth'] = [
             'email' => $user['email'],

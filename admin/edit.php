@@ -4,11 +4,10 @@ include_once '../global.php';
 include_once '../dao/products.php';
 pdo_get_connection();
 
-$conn= pdo_get_connection();
-$id = $_GET["id"];
-$sql = "SELECT * FROM  products WHERE id ='$id'";
-$rows=$conn->query ($sql) ->fetch();
 
+$id = $_GET["id"];
+
+$rows =products_select_one($id);
 if(isset($_POST["edit"])){
     $name=$_POST["name"];
     $quantily=$_POST["quantily"];
@@ -16,9 +15,8 @@ if(isset($_POST["edit"])){
     $price=$_POST["price"];
     $category_id=$_POST["category_id"];
     $sale_id=$_POST["sale_id"];
-
-    $sql_update="UPDATE products SET name='$name',quantily='$quantily',detail='$detail',price='$price',category_id='$category_id',sale_id='$sale_id' WHERE id=$id";
-   $conn->exec($sql_update);
+    product_update($id,$name,$quantily,$detail,$price,$category_id,$sale_id);
+    
    header('location:index.php');
 }
 ?>

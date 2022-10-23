@@ -14,6 +14,7 @@ if(isset($_POST['add'])){
     $category_id=$_POST["category_id"];
     $sale_id=$_POST["sale_id"];
     products_insert($name,$quantily,$detail,$price,$category_id,$sale_id);
+    $succes  =  'thêm sản phẩm thành công !';
 }
 ?>
 <!DOCTYPE html>
