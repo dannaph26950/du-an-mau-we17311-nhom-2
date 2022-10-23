@@ -14,7 +14,7 @@ function product_update($id, $name, $quantily, $detail, $price,$category_id,$sal
     $sql = "UPDATE products SET name=?,quantily=?,detail=?,price=?,category_id=?,sale_id=? WHERE id=?";
     pdo_execute($sql,$name, $quantily, $detail, $price,$category_id,$sale_id ,$id);
 }
-function products_select_all_by_role(){
+function products_select_all_by_sale_img(){
     $sql = "SELECT 
     p.*, 
     p_i.img_url as img_name,

@@ -4,7 +4,7 @@ include_once '../dao/pdo.php';
 include_once '../dao/products.php';
 
 
-$data =products_select_all_by_role();
+$data =products_select_all_by_sale_img();
 
 function tinh_tien_sp_sale($goc,$sale){
 return $goc - $goc*$sale;

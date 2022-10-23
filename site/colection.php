@@ -105,7 +105,7 @@ $data = products_select_all();
                 <a class="w-1/4" href="pro_colection.php?cate=<?php echo $value['id'] ?>">
                     <div class="relative hover:scale-110 ">
 
-                        <img class="w-full h-auto " src="../content/img/image 12.png" alt="">
+                        <img class="w-full h-auto " src="<?= $value['img_name'] ?>" alt="">
                         <div class="absolute md:bottom-10 md:left-4">
                             <h1 class=" text-orange-400 text-lg font-medium">Thời trang nam</h1>
 
@@ -132,7 +132,7 @@ $data = products_select_all();
             ?>
                     <div class="">
                         <div class="img">
-                            <img src="../content/./img/./image 1.png" class=" w-full " alt="">
+                            <img src="<?=$value['img_name'] ?>" class=" w-full " alt="">
                         </div>
                         <div class="content text-center">
                             <div class="title font-medium text-xl">

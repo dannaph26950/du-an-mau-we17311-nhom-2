@@ -53,7 +53,8 @@ $data = loai_select_all();
             <tr class="text-center border border-blue-200">
                 <td  class="border border-blue-200 p-3" ><?php echo $value['id'] ?></td>
                 <td class="border border-blue-200"> <?php echo $value['name'] ?></td></td>
-                <td class="border border-blue-200"><button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-edit">Sửa </button>
+                <td class="border border-blue-200">
+                   <a href="edit_loai.php?id=<?= $value['id']?>"> <button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-edit">Sửa </button></a>
                     <button type="submit" class="border rounded-md bg-slate-100 px-2" name="btn-delete">Xóa</button></td>
             </tr>
             <?php  } ?>
