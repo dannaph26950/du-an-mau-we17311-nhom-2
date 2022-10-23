@@ -16,8 +16,8 @@ if (isset($_POST['edit'])) {
     $address = $_POST['address'];
     $phone = $_POST['phone'];
     $role_id = $_POST['role_id'];
-    $fake_pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    user_update($id,$mail,$fake_pass,$address,$phone,$role_id,$name);
+  
+    user_update($id,$mail,$address,$phone,$role_id,$name);
     $succes = "sua nguoi dung thanh cong";
     header("location:user.php");
 }

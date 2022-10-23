@@ -14,6 +14,7 @@ if(isset($_POST['add'])){
     $category_id=$_POST["category_id"];
     $sale_id=$_POST["sale_id"];
     products_insert($name,$quantily,$detail,$price,$category_id,$sale_id);
+    $succes  =  'thêm sản phẩm thành công !';
 }
 ?>
 <!DOCTYPE html>
@@ -32,7 +33,9 @@ if(isset($_POST['add'])){
   
        <header class="mx-auto container bg-red-200 rounded-lg flex justify-between items-center">
          <h1 class="text-5xl font-medium p-8 text-red-500">Quản trị website</h1>
-         
+                 <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
+
+
 
     </header>
 
@@ -112,7 +115,7 @@ if(isset($_POST['add'])){
                 <td class="border border-blue-200 p-3"><?php echo $value['quantily']; ?></td>
                 <td class="border border-blue-200 p-3 md:w-96"><?php echo $value['detail']; ?></td>
                 <th class="  flex flex-col p-3 m-3" >
-                <a href="edit.php?id=<?php echo $value['id']; ?> "> <button  class="border  rounded-md bg-slate-100 hover:bg-blue-200 mb-3"
+                <a href="edit.php?id=<?php echo $value['id'] ?> "> <button  class="border  rounded-md bg-slate-100 hover:bg-blue-200 mb-3"
                  name="btn-sua" > Sửa </button></a>
                  <button class="border  rounded-md bg-slate-100 hover:bg-blue-200 mb-3" onclick="del('delete.php?id=<?php echo $value['id']?>')" >xoa</button>
                     <button class="border  rounded-md bg-slate-100 hover:bg-blue-200" name="btn-sua" >Chi tiết </button>

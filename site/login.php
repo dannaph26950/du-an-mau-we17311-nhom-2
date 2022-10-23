@@ -14,22 +14,26 @@ if(isset($_POST['login'])){
     // echo '<pre>';
     // var_dump($user);
    if(count($user)>0){
-  
+
+ //password_verify - Xác minh rằng mật khẩu khớp với một hàm băm
     if(password_verify($password,  $user['password'])){
         $_SESSION['auth'] = [
             'email' => $user['email'],
             'name' => $user['name'],
             'role_id' => $user['role_id'],
             'role_name' => $user['role_name']
-        ];
-        header("location: " . ADMIN_URL);
-    }
          
+        ];  
+         header("location: " . ADMIN_URL);
+        die;
+      
+    }
+    
 
-}else{
-    header('location: ' . SITE_URL . "?login&msg=Tài khoản không chính xác, hãy nhập lại!");
-    die;
 }
+    header("location: " . SITE_URL . '?login&msg=sai tài khoản!');
+        die;
+
 
 
 }
@@ -114,6 +118,7 @@ if(isset($_POST['login'])){
                
             </div>
         </div>
+        <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
          
         </div>
         

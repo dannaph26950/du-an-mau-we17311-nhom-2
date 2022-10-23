@@ -10,9 +10,9 @@ function user_insert( $email,$pass,$address,$phone,$role,$name){
     pdo_execute($sql,$email,$pass,$address,$phone,$role,$name);
 }
 
-function user_update($id, $email, $password, $address, $phone,$role_id,$ho_ten ){
-    $sql = "UPDATE user SET email=?,password=?,address=?,phone_number=?,role_id=?,name=? WHERE id=?";
-    pdo_execute($sql, $email, $password, $address, $phone,$role_id,$ho_ten,$id);
+function user_update($id, $email,  $address, $phone,$role_id,$ho_ten ){
+    $sql = "UPDATE user SET email=?,address=?,phone_number=?,role_id=?,name=? WHERE id=?";
+    pdo_execute($sql, $email,  $address, $phone,$role_id,$ho_ten,$id);
 }
 
 function get_user_by_email($email){
@@ -54,6 +54,6 @@ function user_select_all(){
 }
 
 function user_select_by_id($ma_kh){
-    $sql = "SELECT * FROM user WHERE id=?";
-    return pdo_query_one($sql, $ma_kh);
+    $sql = "SELECT * FROM user WHERE id= $ma_kh";
+    return pdo_query_one($sql);
 }

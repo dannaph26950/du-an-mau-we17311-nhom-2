@@ -104,7 +104,7 @@ $flag = true   ;
                     <div class="grid grid-cols-1 gap-2 p-1 bg-orange-300">
                     <a href="<?= SITE_URL ?>?login" class="px-2 bg-blue-300 font-medium " href="">Đăng nhập</a>
                         <a href="<?= SITE_URL ?>?register" class="px-2  bg-blue-300 font-medium" href="">Đăng ký</a>
-                        <a class="px-2  bg-blue-300 font-medium" href="">Đăng xuất</a>
+                        <form action="<?= SITE_URL . '?login'?>" method="POST">  <button name='dx' class="px-2  bg-blue-300 font-medium" href="">Đăng xuất</button></form>
                     </div>
                 </div>
             </div>
@@ -119,6 +119,9 @@ $flag = true   ;
                
             </div>
         </div>
+                 <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
+
+
         </div>
 
     </div>
