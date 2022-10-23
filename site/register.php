@@ -121,6 +121,7 @@ $flag = true   ;
         </div>
                  <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
 
+
         </div>
 
     </div>

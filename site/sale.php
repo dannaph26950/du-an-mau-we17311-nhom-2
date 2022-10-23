@@ -81,6 +81,7 @@ return $goc - $goc*$sale;
             </div>
         </div>
         <?php echo isset($_SESSION['name_user']) ? 'Xin chào,' . $_SESSION['name_user'] : '' ?>
+        </div>  
         </div>
     </div>
     <!-- nav -->

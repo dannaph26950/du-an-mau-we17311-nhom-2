@@ -119,6 +119,7 @@ if(isset($_POST['login'])){
             </div>
         </div>
         <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
+         
         </div>
         
 

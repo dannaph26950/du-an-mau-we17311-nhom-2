@@ -23,6 +23,7 @@ $data = loai_select_all();
                  <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
 
 
+
     </header>
     </header>
     <!-- nav  -->

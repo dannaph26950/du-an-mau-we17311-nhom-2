@@ -73,6 +73,7 @@ include_once '../global.php'
         </div>
                  <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
 
+         
         </div>
     </div>
     <!-- nav -->

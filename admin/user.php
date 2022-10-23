@@ -61,6 +61,7 @@ if(isset($_POST['add'])){
                  <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
 
 
+
     </header>
     </header>
     <!-- nav  -->

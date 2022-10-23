@@ -37,6 +37,7 @@ if(isset($_POST["edit"])){
                  <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
 
 
+
     </header>
 
    

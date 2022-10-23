@@ -20,6 +20,7 @@ include_once ('../global.php')
                  <?php echo isset($_SESSION['auth']['name'])? 'Xin chào,' . $_SESSION['auth']['name'] : '' ?>
 
 
+
     </header>
     </header>
     <!-- nav  -->
